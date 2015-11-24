@@ -236,6 +236,60 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">hexo-使用&#39;hexo d&#39;报错</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>##“ERROR Deployer not found” 错误（for linux）##</p>
+<p>hexo 升级到3.0之后，再使用</p>
+<pre><code><span class="title">hexo</span> deploy
+</code></pre><p>会出现“ERROR Deployer not found”的错误，看了很多别人的评论，才知道原因。</p>
+<p>####原因是缺少”hexo deploy”的相关模块。####<br>既然缺少相关模块，那我们安装吧。但是安装也需要方法的，先给出安装步骤：</p>
+<p>#####1.进入博客所在的文件夹里#####<br>没错，这步是必须的，每个项目都有一个node_modules文件夹，正是里面缺少”hexo deploy”的相关模块,所以导致无法使用hexo deploy。网上都没有说这一步，害的菜鸟的我在坑里滚了很长时间，最后才发现这一步的关键。</p>
+<p>#####2.安装模块#####<br>在终端输入</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git  <span class="comment">--save</span></span>
+</code></pre><p>#####3.修改type#####<br>博客项目都有个“_config.yml”的文件，修改里面的type为“git”(以前是github；还要注意冒号后面空一格)</p>
+<p>好了，可以使用hexo deploy了，搞定！！</p>
+<p>如果还有其他原因，考虑有没有设置git config之类的问题，当初我刚安装的git，就忘了设置config global ×××，结果蛋疼了很久。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
       
       
@@ -397,6 +451,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
+    <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
+  
     <li><a href="/categories/node-js/">node.js</a><small>1</small></li>
   
   </ul>
@@ -407,9 +463,10 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <h3 class="title">个人介绍</h3>
 <ul class="entry">
 <li>博主：吴敬</li>
+<li><img src="/source/imgs/me.jpg"/></li>
 <li>星座：极具敏锐的双鱼座</li>
 <li>现状：合肥工业大学本科生</li>
-<li>想要约我的<a href="×××">联系我</a>！</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
 </ul>
 </div>
 

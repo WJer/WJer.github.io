@@ -303,14 +303,14 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"zippera"};
+var duoshuoQuery = {short_name:"wjer"};
 	(function() {
 		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
 	</script>
 <!-- Duoshuo Comment END -->  
@@ -333,6 +333,8 @@ var duoshuoQuery = {short_name:"zippera"};
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
+    <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
+  
     <li><a href="/categories/node-js/">node.js</a><small>1</small></li>
   
   </ul>
@@ -343,9 +345,10 @@ var duoshuoQuery = {short_name:"zippera"};
 <h3 class="title">个人介绍</h3>
 <ul class="entry">
 <li>博主：吴敬</li>
+<li><img src="/source/imgs/me.jpg"/></li>
 <li>星座：极具敏锐的双鱼座</li>
 <li>现状：合肥工业大学本科生</li>
-<li>想要约我的<a href="×××">联系我</a>！</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
 </ul>
 </div>
 

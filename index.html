@@ -60,7 +60,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       <li><a href="/about">关于</a></li>
     
-<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+<li> <a title="bigbang的歌曲真好听" href='javascript:(function() {
 	function c() {
 		var e = document.createElement("link");
 		e.setAttribute("type", "text/css");
@@ -246,17 +246,16 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </header>
     <div class="entry">
       
-        <p>##“ERROR Deployer not found” 错误（for linux）##</p>
-<p>hexo 升级到3.0之后，再使用</p>
+        <h2 id="“ERROR_Deployer_not_found”_错误（for_linux）">“ERROR Deployer not found” 错误（for linux）</h2><p>hexo 升级到3.0之后，再使用</p>
 <pre><code><span class="title">hexo</span> deploy
 </code></pre><p>会出现“ERROR Deployer not found”的错误，看了很多别人的评论，才知道原因。</p>
-<p>####原因是缺少”hexo deploy”的相关模块。####<br>既然缺少相关模块，那我们安装吧。但是安装也需要方法的，先给出安装步骤：</p>
-<p>#####1.进入博客所在的文件夹里#####<br>没错，这步是必须的，每个项目都有一个node_modules文件夹，正是里面缺少”hexo deploy”的相关模块,所以导致无法使用hexo deploy。网上都没有说这一步，害的菜鸟的我在坑里滚了很长时间，最后才发现这一步的关键。</p>
-<p>#####2.安装模块#####<br>在终端输入</p>
+<h4 id="原因是缺少”hexo_deploy”的相关模块。">原因是缺少”hexo deploy”的相关模块。</h4><p>既然缺少相关模块，那我们安装吧。但是安装也需要方法的，先给出安装步骤：</p>
+<h5 id="1-进入博客所在的文件夹里">1.进入博客所在的文件夹里</h5><p>没错，这步是必须的，每个项目都有一个node_modules文件夹，正是里面缺少”hexo deploy”的相关模块,所以导致无法使用hexo deploy。网上都没有说这一步，害的菜鸟的我在坑里滚了很长时间，最后才发现这一步的关键。</p>
+<h5 id="2-安装模块">2.安装模块</h5><p>在终端输入</p>
 <pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git  <span class="comment">--save</span></span>
-</code></pre><p>#####3.修改type#####<br>博客项目都有个“_config.yml”的文件，修改里面的type为“git”(以前是github；还要注意冒号后面空一格)</p>
+</code></pre><h5 id="3-修改type">3.修改type</h5><p>博客项目都有个“_config.yml”的文件，修改里面的type为“git”(以前是github；还要注意冒号后面空一格)</p>
 <p>好了，可以使用hexo deploy了，搞定！！</p>
-<p>如果还有其他原因，考虑有没有设置git config之类的问题，当初我刚安装的git，就忘了设置config global ×××，结果蛋疼了很久。</p>
+<p>如果还报了其他的错误，考虑有没有设置git config。当初我是刚安装的git，就忘了设置config global ×××，结果蛋疼了很久。</p>
 
       
     </div>

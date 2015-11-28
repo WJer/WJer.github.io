@@ -236,6 +236,59 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/11/28/nodejs-supervisor/">nodejs-supervisor</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>###使用supervisor提高调试效率###</p>
+<p>每次改完项目的js文件，都要重新node一下，实在麻烦。</p>
+<p>后来知道了supervisor，才终结了这个麻烦的过程。<br>通过</p>
+<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
+</code></pre><p>启动之后，你修改项目之后，它会检测到你的修改，自动启动项目，不需要你再输入命令启动项目。</p>
+<p>直接用npm安装既可，键入命令: </p>
+<pre><code>npm -g <span class="keyword">install</span> supervisor
+</code></pre><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
+<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
+</code></pre><p>通过软连接的方式来实现全局。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
       
       
@@ -453,6 +506,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
   
     <li><a href="/categories/node-js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
   
   </ul>
 </div>

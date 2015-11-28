@@ -5,13 +5,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>彙整：2015/11 | WJer&#39;s time</title>
+  <title>nodejs-supervisor | WJer&#39;s time</title>
   <meta name="author" content="WJer">
+  
+  <meta name="description" content="###使用supervisor提高调试效率###
+每次改完项目的js文件，都要重新node一下，实在麻烦。
+后来知道了supervisor，才终结了这个麻烦的过程。通过
+supervisor app.js
+启动之后，你修改项目之后，它会检测到你的修改，自动启动项目，不需要你再输入命令启动项目。
+直接">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="nodejs-supervisor"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -217,49 +224,98 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2015/11</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
-            
-              <h1 class="title"><a href="/2015/11/28/nodejs-supervisor/">nodejs-supervisor</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
-            
-              <h1 class="title"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">hexo-使用&#39;hexo d&#39;报错</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
-            
-              <h1 class="title"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">nodejs-使用npm安装模块失败</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
+      
+      
+  
+    <h1 class="title">nodejs-supervisor</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>###使用supervisor提高调试效率###</p>
+<p>每次改完项目的js文件，都要重新node一下，实在麻烦。</p>
+<p>后来知道了supervisor，才终结了这个麻烦的过程。<br>通过</p>
+<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
+</code></pre><p>启动之后，你修改项目之后，它会检测到你的修改，自动启动项目，不需要你再输入命令启动项目。</p>
+<p>直接用npm安装既可，键入命令: </p>
+<pre><code>npm -g <span class="keyword">install</span> supervisor
+</code></pre><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
+<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
+</code></pre><p>通过软连接的方式来实现全局。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/nodejs/">nodejs</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

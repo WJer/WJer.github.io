@@ -8,12 +8,11 @@
   <title>nodejs-supervisor | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="###使用supervisor提高调试效率###
-每次改完项目的js文件，都要重新node一下，实在麻烦。
+  <meta name="description" content="使用supervisor提高调试效率每次改完项目的js文件，都要重新node一下，实在麻烦。
 后来知道了supervisor，才终结了这个麻烦的过程。通过
 supervisor app.js
-启动之后，你修改项目之后，它会检测到你的修改，自动启动项目，不需要你再输入命令启动项目。
-直接">
+启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。
+直接用npm安">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -252,11 +251,10 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </header>
     <div class="entry">
       
-        <p>###使用supervisor提高调试效率###</p>
-<p>每次改完项目的js文件，都要重新node一下，实在麻烦。</p>
+        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在麻烦。</p>
 <p>后来知道了supervisor，才终结了这个麻烦的过程。<br>通过</p>
 <pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
-</code></pre><p>启动之后，你修改项目之后，它会检测到你的修改，自动启动项目，不需要你再输入命令启动项目。</p>
+</code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
 <p>直接用npm安装既可，键入命令: </p>
 <pre><code>npm -g <span class="keyword">install</span> supervisor
 </code></pre><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>

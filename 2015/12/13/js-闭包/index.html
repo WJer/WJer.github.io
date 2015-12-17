@@ -5,15 +5,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>nodejs-使用npm安装模块失败 | WJer&#39;s time</title>
+  <title>js-闭包 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="npm install express，报错！！！npm install formidable，报错！！！我的天！这什么情况啊！！！起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的">
+  <meta name="description" content="闭包闭包就是指有权访问另一个函数作用域中的变量的函数。
+执行环境和作用域执行环境定义了变量或函数有权访问的其他数据。
+每个执行环境都有一个对应的变量对象，eg：window对象，环境内声明的变量和方法都保存在这个对象中。
+函数执行时都会创建自己的执行环境及相应的作用域链。
+作用域链本质上是一个变量对">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="nodejs-使用npm安装模块失败"/>
+  <meta property="og:title" content="js-闭包"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -237,31 +241,65 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
+        <time datetime="2015-12-13T12:31:20.000Z"><a href="/2015/12/13/js-闭包/">2015-12-13</a></time>
       
       
   
-    <h1 class="title">nodejs-使用npm安装模块失败</h1>
+    <h1 class="title">js-闭包</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
-<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
-<pre><code>cnpm <span class="keyword">install</span> 模块名字
-</code></pre><p>来下载安装模块，很简单吧。</p>
-<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
-<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
-</code></pre><p>我们再输入</p>
-<pre><code><span class="built_in">npm</span> config ls
-</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
-<pre><code>npm <span class="keyword">install</span> 模块名字
-</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
-<p><em>注意</em>：我们可以通过</p>
-<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
-</code></pre><p>来删除新添加的配置项。</p>
-
+        <h2 id="闭包">闭包</h2><p>闭包就是指有权访问另一个函数作用域中的变量的函数。</p>
+<h4 id="执行环境和作用域">执行环境和作用域</h4><p>执行环境定义了变量或函数有权访问的其他数据。</p>
+<p>每个执行环境都有一个对应的变量对象，eg：window对象，环境内声明的变量和方法都保存在这个对象中。</p>
+<p>函数执行时都会创建自己的执行环境及相应的作用域链。</p>
+<p>作用域链本质上是一个变量对象的指针列表。函数在访问某一个变量时就会从作用域链一层一层的寻找。</p>
+<pre><code><span class="keyword">var</span> name=<span class="string">"china"</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">provice</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> name=<span class="string">"anhui"</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">city</span><span class="params">()</span></span>{
+        <span class="keyword">var</span> name=<span class="string">"hefei"</span>;
+    }
+}
+</code></pre><p>分析下这个简单的例子：<br>    1.三个执行环境：全局执行环境，provice()执行环境，city()执行环境<br>    2.city()函数执行时会创建自己的作用域链，依次是city()的活动对象，provice()的活动对象，window对象。<br>    3.provice()函数执行时会创建自己的作用域链，依次是provice()的活动对象，window对象。<br>    4.查找变量时就是按照从最里面到最外面的作用域链访问变量。<br>    5.当city()执行完时，这个函数的执行环境就会退出环境栈，并且对应的变量对象也会相应的销毁。同理 provice()也是。</p>
+<h4 id="闭包-1">闭包</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> name=<span class="number">1</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
+        <span class="keyword">var</span> age=<span class="number">2</span>;
+    }
+}
+<span class="keyword">var</span> b=a();<span class="comment">//b的作用域链包括a函数的活动对象</span>
+b=<span class="literal">null</span>;<span class="comment">//匿名函数不再有引用，垃圾回收机制会安全销毁b函数的作用域链。</span>
+</code></pre><p>以上看来，在a函数的外部可以访问a内部声明的变量和函数。</p>
+<h4 id="闭包的问题">闭包的问题</h4><p>问题例子：</p>
+<pre><code>function createF(){
+    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+        <span class="literal">result</span>[i]=function(){
+            <span class="keyword">return</span> i;
+        }
+    }
+}
+<span class="keyword">var</span> fs=createF();
+<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+    console.log(fs[i]());//输出<span class="number">5</span>个<span class="number">5</span>
+}
+</code></pre><p>本来每个函数都输出自己的i，结果全都输出相同的数。<br>原因：函数数组中每个函数的作用域链都保存着createF()函数的活动对象，所以它们访问的是同一个i。</p>
+<p>解决方式：</p>
+<pre><code>function createF(){
+    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+        <span class="literal">result</span>[i]=function(num){
+            <span class="keyword">return</span> function(){//又创建了一个闭包
+                <span class="keyword">return</span> num;//每个函数都有自己的num变量
+            }
+        }(i);
+    }
+    <span class="keyword">return</span> <span class="literal">result</span>；
+}
+</code></pre>
       
     </div>
     <footer>
@@ -269,7 +307,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
         
   
   <div class="categories">
-    <a href="/categories/node-js/">node.js</a>
+    <a href="/categories/js/">js</a>
   </div>
 
         

@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>nodejs-使用npm安装模块失败 | WJer&#39;s time</title>
+  <title>js-客户端检测 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="npm install express，报错！！！npm install formidable，报错！！！我的天！这什么情况啊！！！起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的">
+  <meta name="description" content="客户端检测客户端检测分为三种检测，分别是能力检测，怪癖检测以及用户代理检测。
+ps：优先使用能力检测，其次考虑怪癖检测，最后再是用户代理检测。
+ps：客户端检测是一种补救措施，不到万不得已，不要使用客户端检测。尽量找到最通用的方案，也就是说各大浏览器都可以识别并正常运行的代码。
+能力检测能力检测不是">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="nodejs-使用npm安装模块失败"/>
+  <meta property="og:title" content="js-客户端检测"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -237,31 +240,38 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
+        <time datetime="2015-12-16T12:28:30.000Z"><a href="/2015/12/16/js-客户端检测/">2015-12-16</a></time>
       
       
   
-    <h1 class="title">nodejs-使用npm安装模块失败</h1>
+    <h1 class="title">js-客户端检测</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
-<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
-<pre><code>cnpm <span class="keyword">install</span> 模块名字
-</code></pre><p>来下载安装模块，很简单吧。</p>
-<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
-<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
-</code></pre><p>我们再输入</p>
-<pre><code><span class="built_in">npm</span> config ls
-</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
-<pre><code>npm <span class="keyword">install</span> 模块名字
-</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
-<p><em>注意</em>：我们可以通过</p>
-<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
-</code></pre><p>来删除新添加的配置项。</p>
-
+        <h2 id="客户端检测">客户端检测</h2><p>客户端检测分为三种检测，分别是能力检测，怪癖检测以及用户代理检测。</p>
+<p>ps：优先使用能力检测，其次考虑怪癖检测，最后再是用户代理检测。</p>
+<p>ps：客户端检测是一种补救措施，不到万不得已，不要使用客户端检测。尽量找到最通用的方案，也就是说各大浏览器都可以识别并正常运行的代码。</p>
+<h4 id="能力检测">能力检测</h4><p>能力检测不是在识别浏览器，而是识别浏览器的能力，具体的指某个方法支不支持或者某个属性具不具备。<br>两个重要的概念：<br>1.先检测达成目的最常用的特性</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>{
+    <span class="keyword">if</span>(<span class="built_in">document</span>.getElementById){
+        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.all){
+        <span class="keyword">return</span> <span class="built_in">document</span>.all[id];
+    }<span class="keyword">else</span>{
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"没有这样的方法"</span>);
+    }
+}<span class="comment">//IE5之前不支持document.getElementById，但是IE6+、chrome、safari等其他浏览器都支持，所以它被认为是最常用的特性。</span>
+</code></pre><p>2.测试实际要用到的特性。就是说，你要用哪个方法，就测那个方法存不存在。存在的话提供一套方案，不存在的话提供另外一套方案。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">getWindowWidth</span>(<span class="params"></span>)</span>{
+    <span class="keyword">if</span>(<span class="built_in">document</span>.all){
+        <span class="keyword">return</span> <span class="built_in">document</span>.documentElement.clientWidth;<span class="comment">//错误的用法</span>
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="built_in">window</span>.innerWidth;
+    }
+}<span class="comment">//document.all存在并不意味着clientWidth也存在</span>
+</code></pre>
       
     </div>
     <footer>
@@ -269,7 +279,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
         
   
   <div class="categories">
-    <a href="/categories/node-js/">node.js</a>
+    <a href="/categories/js/">js</a>
   </div>
 
         

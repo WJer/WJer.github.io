@@ -5,15 +5,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>nodejs-使用npm安装模块失败 | WJer&#39;s time</title>
+  <title>js-继承 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="npm install express，报错！！！npm install formidable，报错！！！我的天！这什么情况啊！！！起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的">
+  <meta name="description" content="继承javascript是通过原型链来实现继承。实现继承的方式有很多，但总的思路就是原型链，本人总结了一下，如下：
+原型链function Super(){
+    ......
+}
+Super.prototype.saySupername=function(){
+    ......
+}//此处代">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="nodejs-使用npm安装模块失败"/>
+  <meta property="og:title" content="js-继承"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -237,30 +243,95 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
+        <time datetime="2015-12-12T13:31:34.000Z"><a href="/2015/12/12/js-继承/">2015-12-12</a></time>
       
       
   
-    <h1 class="title">nodejs-使用npm安装模块失败</h1>
+    <h1 class="title">js-继承</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
-<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
-<pre><code>cnpm <span class="keyword">install</span> 模块名字
-</code></pre><p>来下载安装模块，很简单吧。</p>
-<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
-<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
-</code></pre><p>我们再输入</p>
-<pre><code><span class="built_in">npm</span> config ls
-</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
-<pre><code>npm <span class="keyword">install</span> 模块名字
-</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
-<p><em>注意</em>：我们可以通过</p>
-<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
-</code></pre><p>来删除新添加的配置项。</p>
+        <h2 id="继承">继承</h2><p>javascript是通过原型链来实现继承。<br>实现继承的方式有很多，但总的思路就是原型链，本人总结了一下，如下：</p>
+<h4 id="原型链">原型链</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+    ......
+}
+Super.prototype.saySupername=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    ......
+}<span class="comment">//此处代表对超类型的原型的操作</span>
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
+    ......
+}
+Sub.prototype=<span class="keyword">new</span> Super();
+</code></pre><p>通过上面的方式，便实现了继承。</p>
+<p>注意：<br>1.这种方式的原型链在最顶层还有一个Object.prototype，不要忽略。<br>2.可以通过instanceof和isPrototypeOf来确定实例和原型的关系<br>3.存在的问题：原型中的值会被共享、在创建子类型的实例时无法向超类型的构造函数传递参数。</p>
+<h4 id="借用构造函数">借用构造函数</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+    ......
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
+    ......
+    Super.call(<span class="keyword">this</span>,[参数]);<span class="comment">//超类型的构造函数当普通函数使用</span>
+}
+</code></pre><p>注意：<br>1.这种方式可以在创建子类型的实例时给超类型的构造函数传递参数。<br>2.存在的问题：当只借用构造函数这种方式时，那么就无法做到函数复用，除非使用原型。</p>
+<h4 id="组合继承">组合继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">(name)</span></span>{
+    <span class="keyword">this</span>.name=name;
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.name;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">(name,age)</span></span>{
+    Super.call(<span class="keyword">this</span>,name);
+    <span class="keyword">this</span>.age=age;
+}
+Sub.prototype=<span class="keyword">new</span> Super();
+</code></pre><p>就是把原型链和借用构造函数两种方式组合起来使用。<br>注意：1.这是最常用到的继承模式。</p>
+<h4 id="原型式继承">原型式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>{
+    <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>{};
+    F.prototype=o;
+    <span class="keyword">return</span> <span class="keyword">new</span> F();
+}
+</code></pre><p>注意：<br>1.使用Object.create(o);来代替上面的函数，这是ECMAScript5规范了的方法。<br>2.使用条件：只想使两个对象保持类似的问题。<br>3.存在的问题：包含引用类型的属性都会共享相应的值，也就是无法有私有的属性和方法。</p>
+<h4 id="寄生式继承">寄生式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(o)</span></span>{
+    <span class="keyword">var</span> <span class="keyword">clone</span>=object(o);
+    <span class="keyword">clone</span>.sayHi=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//这里可以创建一些私有的属性和方法</span>
+        ......
+    }
+    <span class="keyword">return</span> <span class="keyword">clone</span>;
+}
+</code></pre><p>注意：<br>1.和构造函数一样，若只是使用这种方式，那么就无法达到函数复用。</p>
+<h4 id="寄生组合式继承">寄生组合式继承</h4><p>先看看组合继承的缺点：重复执行相同的函数两次</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
+    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
+    <span class="keyword">this</span>.age=age;
+}
+Sub.prototype=<span class="keyword">new</span> Super();<span class="comment">//执行第二次</span>
+</code></pre><p>改变后：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">Sub,Super</span>)</span>{
+    <span class="keyword">var</span> prototype=object(Super.prototype);
+    prototype.constructor=Sub;
+    Sub.prototype=prototype;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
+    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
+    <span class="keyword">this</span>.age=age;
+}
+inheritPrototype(Sub,Sup);
+</code></pre><p>注意：<br>普遍认为这是最理想的继承方法。</p>
 
       
     </div>
@@ -269,7 +340,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
         
   
   <div class="categories">
-    <a href="/categories/node-js/">node.js</a>
+    <a href="/categories/js/">js</a>
   </div>
 
         

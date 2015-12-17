@@ -8,11 +8,11 @@
   <title>nodejs-supervisor | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="使用supervisor提高调试效率每次改完项目的js文件，都要重新node一下，实在麻烦。
-后来知道了supervisor，才终结了这个麻烦的过程。通过
+  <meta name="description" content="使用supervisor提高调试效率每次改完项目的js文件，都要重新node一下，实在是麻烦。
+后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。
+如何安装通过
 supervisor app.js
-启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。
-直接用npm安">
+启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -251,13 +251,14 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     </header>
     <div class="entry">
       
-        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在麻烦。</p>
-<p>后来知道了supervisor，才终结了这个麻烦的过程。<br>通过</p>
+        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在是麻烦。</p>
+<p>后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。</p>
+<h4 id="如何安装">如何安装</h4><p>通过</p>
 <pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
 </code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
 <p>直接用npm安装既可，键入命令: </p>
 <pre><code>npm -g <span class="keyword">install</span> supervisor
-</code></pre><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
+</code></pre><h4 id="自己电脑的问题">自己电脑的问题</h4><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
 <pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
 </code></pre><p>通过软连接的方式来实现全局。</p>
 
@@ -333,6 +334,8 @@ var duoshuoQuery = {short_name:"wjer"};
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
   
     <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>4</small></li>
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
   

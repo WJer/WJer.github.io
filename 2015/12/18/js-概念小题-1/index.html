@@ -5,13 +5,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 2 頁 | 彙整 | WJer&#39;s time</title>
+  <title>js-概念小题(1) | WJer&#39;s time</title>
   <meta name="author" content="WJer">
+  
+  <meta name="description" content="第一题if (!(&quot;a&quot; in window)) {
+        var a = 1;
+}
+alert (a);
+输出结果：underfined分析原因：因为预编译的原因，a变量的定义会比if语句先发生，但不会进行赋值操作，所以是underfined
+这道题，我还不晓得预编译，蒙也能蒙对。
+第二">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="js-概念小题(1)"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -217,37 +225,118 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">彙整</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="js">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-08-23T16:18:24.000Z"><a href="/2015/08/24/linux-install/">2015-08-24</a></time>
-            
-              <h1 class="title"><a href="/2015/08/24/linux-install/">安装ubuntu系统</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-13T11:06:14.000Z"><a href="/2014/12/13/js-递归/">2014-12-13</a></time>
-            
-              <h1 class="title"><a href="/2014/12/13/js-递归/">js-递归</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T03:57:41.000Z"><a href="/2015/12/18/js-概念小题-1/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title">js-概念小题(1)</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="第一题">第一题</h4><pre><code><span class="keyword">if</span> (!(<span class="string">"a"</span> <span class="keyword">in</span> <span class="built_in">window</span>)) {
+        <span class="keyword">var</span> a = <span class="number">1</span>;
+}
+alert (a);
+</code></pre><p>输出结果：underfined<br>分析原因：因为预编译的原因，a变量的定义会比if语句先发生，但不会进行赋值操作，所以是underfined</p>
+<p>这道题，我还不晓得预编译，蒙也能蒙对。</p>
+<h4 id="第二题">第二题</h4><pre><code><span class="keyword">var</span> a = <span class="number">1</span>,
+        b = <span class="function"><span class="keyword">function</span> <span class="title">a</span> <span class="params">(x)</span> <span class="comment">{
+            x &amp;&amp; a (--x);
+        }</span>;</span>
+alert (a);
+</code></pre><p>输出结果：1<br>分析原因：这样创建函数的方式并不是函数声明方式，a函数并不是全局的。</p>
+<h4 id="第三题">第三题</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span> <span class="params">(x)</span> </span>{
+        <span class="keyword">return</span> x * <span class="number">2</span>;
+}
+<span class="keyword">var</span> a;
+alert (a);
+</code></pre><p>输出结果：function….<br>分析原因：后定义的变量a并没有进行赋值，所以a还是原来的函数，并不会覆盖，所以…..</p>
+<h4 id="第四题">第四题</h4><pre><code><span class="function">function <span class="title">b</span> <span class="params">(x, y, a)</span> </span>{
+        arguments[<span class="number">2</span>] = <span class="number">10</span>;
+        alert (a);
+}
+b(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
+</code></pre><p>输出结果：10<br>分析原因：参数会和方法的arguments属性保持同步，一个变，另外一个也会跟着变。</p>
+<h4 id="第五题">第五题</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span> <span class="params">()</span> </span>{
+        alert (<span class="keyword">this</span>);
+}
+a.call (<span class="literal">null</span>);
+</code></pre><p>输出结果：window<br>分析原因：call()第一个参数为函数执行环境，如果参数是null，会和不传递任何参数有同样的结果，函数的执行环境都是全局的。</p>
+<p>这些题在实际开发中并没有什么卵用，放出来只是帮助你深刻了解js的一些概念而已。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/js/">js</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

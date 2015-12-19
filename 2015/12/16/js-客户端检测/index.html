@@ -288,6 +288,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <span class="keyword">return</span> (<span class="keyword">count</span> &gt; 1);
 }();
 </code></pre><p>如果是在safari3以前的版本下运行会返回true，因为他会枚举被隐藏的属性。</p>
+<p>ps:另外一种检测怪癖的方式是通过try-catch。</p>
 <h4 id="用户代理检测">用户代理检测</h4><p><strong> 用户代理字符串 </strong></p>
 <pre><code><span class="variable"><span class="keyword">var</span> ua</span>=navigator.userAgent;<span class="comment">//获取用户代理字符串</span>
 </code></pre><p>用户代理字符串提供的信息：平台、呈现引擎、版本号（浏览器、内核、Mozilla）等。</p>
@@ -468,7 +469,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
             system: system
         };    
 }();
-</code></pre>
+</code></pre><p>ps:不同的浏览器具备不同的能力，同一款浏览器在不同的平台具备不同的能力；不能直接准确地使用能力检测或怪癖检测；为了跟踪分析等目的需要知道确切的浏览器。</p>
+
       
     </div>
     <footer>
@@ -540,11 +542,13 @@ var duoshuoQuery = {short_name:"wjer"};
   
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
   
-    <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>5</small></li>
+    <li><a href="/categories/js/">js</a><small>7</small></li>
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>1</small></li>
   
   </ul>
 </div>

@@ -5,13 +5,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>彙整：2014/12 | WJer&#39;s time</title>
+  <title>浏览器-浏览器缓存机制 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
+  
+  <meta name="description" content="304状态和200状态当客户端的浏览器向服务器第一次发送HTTP请求时，服务器在给客户端响应时，在响应上提供一些标记（last-modified或者etag），因为是第一次响应，返回的必然是200状态。
+缓存过期时，当客户端第二次向服务器发送HTTP请求，该请求头中会有这些标记，服务器会利用这些标记">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="浏览器-浏览器缓存机制"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -217,25 +220,104 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014/12</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-13T11:06:14.000Z"><a href="/2014/12/13/js-递归/">2014-12-13</a></time>
-            
-              <h1 class="title"><a href="/2014/12/13/js-递归/">js-递归</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T10:14:22.000Z"><a href="/2015/12/18/浏览器-浏览器缓存机制/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title">浏览器-浏览器缓存机制</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="304状态和200状态">304状态和200状态</h4><p>当客户端的浏览器向服务器第一次发送HTTP请求时，服务器在给客户端响应时，在响应上提供一些标记（last-modified或者etag），因为是第一次响应，返回的必然是200状态。</p>
+<p>缓存过期时，当客户端第二次向服务器发送HTTP请求，该请求头中会有这些标记，服务器会利用这些标记进行比对，如果文件没有被修改，则返回<strong>304状态</strong>，告诉浏览器上一次的文件还可以使用（它们是留存在cache中的）；如果被修改了，则返回最新的文件信息，返回的是<strong>200状态</strong>。</p>
+<h4 id="两种缓存">两种缓存</h4><p>协商缓存：会和服务器商量，看看文件是否修改过，缓存的内容时时保持在最新状态。<br>彻底缓存：在到期之间都不会和服务器交互。即使文件内容发生改变，加载网页还在使用缓存中旧的内容。</p>
+<p>last-modified和etag都属于协商缓存，expires和cache-control属于彻底缓存。</p>
+<h4 id="详解两种标记">详解两种标记</h4><p><strong>last-modified</strong><br>这个标记在服务器响应客户端时提供，格式是这样的：</p>
+<pre><code><span class="keyword">last</span>-modifeid：时间（精确到秒）
+</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求头便会带上这个时间信息，但是格式会发生一些变化：</p>
+<pre><code><span class="keyword">if</span>-modified-<span class="keyword">since</span>：时间点（和上面的时间是一样的）
+</code></pre><p>服务器收到这个事件信息，如果在这个事件之后，文件有更新，那么发送新的文件，返回200状态，否则返回304状态。</p>
+<p><strong>etag</strong><br>区别于last-modified标志，它的格式是这样的：</p>
+<pre><code>Etag:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
+</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求便会带上这个信息，但是格式会发生一些变化：</p>
+<pre><code>If-None-Match:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
+</code></pre><p>服务器进行比对，如果不一致，则发送新的文件，返回200状态，否则返回304状态。</p>
+<p><strong>为什么会出现etag？</strong><br>1.Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>2.如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存<br>3.有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形<br>（from 百度上某大牛的总结）</p>
+<p>ps:两种标记可以一起使用</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/浏览器/">浏览器</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

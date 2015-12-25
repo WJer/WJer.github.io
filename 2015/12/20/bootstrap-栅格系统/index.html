@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>WJer&#39;s time</title>
+  <meta name="author" content="WJer">
+  
+  <meta name="description" content="title: bootstrap-栅格系统date: 2015-12-12 16:36:34tags:category: bootstrap栅格系统可以说是bootstrap的核心之一，响应式设计就是建立在这个基础之上。
+实现原理定义容器，调整内外边距，平分12份，媒体查询
+这四个合起来就能实现栅格">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="WJer&#39;s time"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="WJer&#39;s time" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe3814b5f53cc394a493cbeb2368f2af' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41207871-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">WJer&#39;s time</a></h1>
+  <h2><a href="/">Windy,only try to survive</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+<li> <a title="bigbang的歌曲真好听" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "http://qzone.haoduoge.com/music1/2015-05-02/1430539073.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>bigbang了</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+  
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-20T13:21:52.575Z"><a href="/2015/12/20/bootstrap-栅格系统/">2015-12-20</a></time>
+      
+      
+  
+    <h1 class="title"></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>title: bootstrap-栅格系统<br>date: 2015-12-12 16:36:34<br>tags:<br>category: bootstrap<br>栅格系统可以说是bootstrap的核心之一，响应式设计就是建立在这个基础之上。</p>
+<h3 id="实现原理">实现原理</h3><p>定义容器，调整内外边距，平分12份，媒体查询</p>
+<p>这四个合起来就能实现栅格系统。<br>ps：12等分是默认的，我们可以重新编译LESS来修改这个数值。</p>
+<p>一个简单的例子：</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"container"</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+    &lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h3 id="响应式栅格">响应式栅格</h3><p><strong>超小型屏幕：</strong></p>
+<ul>
+<li>&lt;768px</li>
+<li>任何分辨率下都水平排列</li>
+<li>最大容器宽度时自动</li>
+<li>.col-xs-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p><strong>小型屏幕设备：</strong></p>
+<ul>
+<li><992px &&="">=768px</992px></li>
+<li>小于768时，垂直排列；超过768，水平排列</li>
+<li>最大容器宽度是750px</li>
+<li>.col-sm-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p><strong>中等屏幕设备：</strong></p>
+<ul>
+<li><1200px &&="">=992px</1200px></li>
+<li>小于992，垂直排列；超过992，水平排列</li>
+<li>最大容器宽度是970px</li>
+<li>.col-md-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p><strong>大屏幕设备：</strong></p>
+<ul>
+<li>>1200px</li>
+<li>小于1200时，垂直排列；超过1200，水平排列</li>
+<li>最大容器宽度是1170px</li>
+<li>.col-lg-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p>ps：向大兼容，小于媒体查询中的最小宽度，就不起作用了。</p>
+<p>跨设备组合：由于向大兼容的原因，小就无法兼容，那么可以再设置一套样式，如下：</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-6 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-6 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="comment">&lt;!--自己试试，效果必然不同--&gt;</span>
+</code></pre><p>清除浮动：栅格里的所有格都有左浮动的样式，如果受到浮动影响了，可以使用<strong>.clearfix</strong>来清除浮动。使用如下</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1内容好多好多好多好多,把高度撑大了<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="comment">&lt;!--此处开始受到浮动影响，新添加一个div--&gt;</span>
+
+        <span class="comment">&lt;!----新添加的div-----&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"clearfix"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="comment">&lt;!-----------------------------&gt;</span>
+
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><h3 id="基本使用方法">基本使用方法</h3><p>列偏移：</p>
+<pre><code><span class="built_in">col</span>-xs-offset-
+<span class="built_in">col</span>-<span class="keyword">sm</span>-offset-
+<span class="built_in">col</span>-md-offset-
+<span class="built_in">col</span>-<span class="keyword">lg</span>-offset-
+</code></pre><p>列嵌套</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"container"</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-9"</span>&gt;
+            &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+                此处再次分格
+            &lt;/<span class="keyword">div</span>&gt;
+        &lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>列排序</p>
+<pre><code>col-<span class="built_in">md</span>-pull-
+col-<span class="built_in">md</span>-push-
+其他屏幕同理
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Buscar">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categorías</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
+  
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>7</small></li>
+  
+    <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">个人介绍</h3>
+<ul class="entry">
+
+<li><img src="/imgs/jinmu.jpg" style="width:100%"/></li>
+<li>博主：吴敬</li>
+<li>星座：双鱼座</li>
+<li>现状：合肥工业大学本科生</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
+
+</ul>
+</div>
+
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src=""></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 WJer
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
+
+
+

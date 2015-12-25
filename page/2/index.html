@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 2 頁 | WJer&#39;s time</title>
+  <title>Página 2 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
   
@@ -218,6 +218,266 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-14T16:58:08.000Z"><a href="/2015/12/15/js-双感叹号/">2015-12-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/15/js-双感叹号/">js-双感叹号</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="双感叹号">双感叹号</h2><pre><code><span class="keyword">var</span> a;<span class="comment">//ａ的值为underfined</span>
+<span class="keyword">var</span> b=!!a;<span class="comment">//b=false</span>
+</code></pre><p>在js当中，每种类型的值都有着相对应的布尔值。双感叹号的目的就是为了将其转换成对应的布尔值。</p>
+<h4 id="为什么要这样做">为什么要这样做</h4><p>这是个大大的疑问？？？？？<br>现在还不清楚，日后一定补充。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-13T12:31:20.000Z"><a href="/2015/12/13/js-闭包/">2015-12-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/13/js-闭包/">js-闭包</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="闭包">闭包</h2><p>闭包就是指有权访问另一个函数作用域中的变量的函数。</p>
+<h4 id="执行环境和作用域">执行环境和作用域</h4><p>执行环境定义了变量或函数有权访问的其他数据。</p>
+<p>每个执行环境都有一个对应的变量对象，eg：window对象，环境内声明的变量和方法都保存在这个对象中。</p>
+<p>函数执行时都会创建自己的执行环境及相应的作用域链。</p>
+<p>作用域链本质上是一个变量对象的指针列表。函数在访问某一个变量时就会从作用域链一层一层的寻找。</p>
+<pre><code><span class="keyword">var</span> name=<span class="string">"china"</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">provice</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> name=<span class="string">"anhui"</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">city</span><span class="params">()</span></span>{
+        <span class="keyword">var</span> name=<span class="string">"hefei"</span>;
+    }
+}
+</code></pre><p>分析下这个简单的例子：<br>    1.三个执行环境：全局执行环境，provice()执行环境，city()执行环境<br>    2.city()函数执行时会创建自己的作用域链，依次是city()的活动对象，provice()的活动对象，window对象。<br>    3.provice()函数执行时会创建自己的作用域链，依次是provice()的活动对象，window对象。<br>    4.查找变量时就是按照从最里面到最外面的作用域链访问变量。<br>    5.当city()执行完时，这个函数的执行环境就会退出环境栈，并且对应的变量对象也会相应的销毁。同理 provice()也是。</p>
+<h4 id="闭包-1">闭包</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> name=<span class="number">1</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
+        <span class="keyword">var</span> age=<span class="number">2</span>;
+    }
+}
+<span class="keyword">var</span> b=a();<span class="comment">//b的作用域链包括a函数的活动对象</span>
+b=<span class="literal">null</span>;<span class="comment">//匿名函数不再有引用，垃圾回收机制会安全销毁b函数的作用域链。</span>
+</code></pre><p>以上看来，在a函数的外部可以访问a内部声明的变量和函数。</p>
+<h4 id="闭包的问题">闭包的问题</h4><p>问题例子：</p>
+<pre><code>function createF(){
+    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+        <span class="literal">result</span>[i]=function(){
+            <span class="keyword">return</span> i;
+        }
+    }
+}
+<span class="keyword">var</span> fs=createF();
+<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+    console.log(fs[i]());//输出<span class="number">5</span>个<span class="number">5</span>
+}
+</code></pre><p>本来每个函数都输出自己的i，结果全都输出相同的数。<br>原因：函数数组中每个函数的作用域链都保存着createF()函数的活动对象，所以它们访问的是同一个i。</p>
+<p>解决方式：</p>
+<pre><code>function createF(){
+    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+        <span class="literal">result</span>[i]=function(num){
+            <span class="keyword">return</span> function(){//又创建了一个闭包
+                <span class="keyword">return</span> num;//每个函数都有自己的num变量
+            }
+        }(i);
+    }
+    <span class="keyword">return</span> <span class="literal">result</span>；
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-12T13:31:34.000Z"><a href="/2015/12/12/js-继承/">2015-12-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/12/js-继承/">js-继承</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="继承">继承</h2><p>javascript是通过原型链来实现继承。<br>实现继承的方式有很多，但总的思路就是原型链，本人总结了一下，如下：</p>
+<h4 id="原型链">原型链</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+    ......
+}
+Super.prototype.saySupername=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    ......
+}<span class="comment">//此处代表对超类型的原型的操作</span>
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
+    ......
+}
+Sub.prototype=<span class="keyword">new</span> Super();
+</code></pre><p>通过上面的方式，便实现了继承。</p>
+<p>注意：<br>1.这种方式的原型链在最顶层还有一个Object.prototype，不要忽略。<br>2.可以通过instanceof和isPrototypeOf来确定实例和原型的关系<br>3.存在的问题：原型中的值会被共享、在创建子类型的实例时无法向超类型的构造函数传递参数。</p>
+<h4 id="借用构造函数">借用构造函数</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+    ......
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
+    ......
+    Super.call(<span class="keyword">this</span>,[参数]);<span class="comment">//超类型的构造函数当普通函数使用</span>
+}
+</code></pre><p>注意：<br>1.这种方式可以在创建子类型的实例时给超类型的构造函数传递参数。<br>2.存在的问题：当只借用构造函数这种方式时，那么就无法做到函数复用，除非使用原型。</p>
+<h4 id="组合继承">组合继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">(name)</span></span>{
+    <span class="keyword">this</span>.name=name;
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.name;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">(name,age)</span></span>{
+    Super.call(<span class="keyword">this</span>,name);
+    <span class="keyword">this</span>.age=age;
+}
+Sub.prototype=<span class="keyword">new</span> Super();
+</code></pre><p>就是把原型链和借用构造函数两种方式组合起来使用。<br>注意：1.这是最常用到的继承模式。</p>
+<h4 id="原型式继承">原型式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>{
+    <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>{};
+    F.prototype=o;
+    <span class="keyword">return</span> <span class="keyword">new</span> F();
+}
+</code></pre><p>注意：<br>1.使用Object.create(o);来代替上面的函数，这是ECMAScript5规范了的方法。<br>2.使用条件：只想使两个对象保持类似的问题。<br>3.存在的问题：包含引用类型的属性都会共享相应的值，也就是无法有私有的属性和方法。</p>
+<h4 id="寄生式继承">寄生式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(o)</span></span>{
+    <span class="keyword">var</span> <span class="keyword">clone</span>=object(o);
+    <span class="keyword">clone</span>.sayHi=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//这里可以创建一些私有的属性和方法</span>
+        ......
+    }
+    <span class="keyword">return</span> <span class="keyword">clone</span>;
+}
+</code></pre><p>注意：<br>1.和构造函数一样，若只是使用这种方式，那么就无法达到函数复用。</p>
+<h4 id="寄生组合式继承">寄生组合式继承</h4><p>先看看组合继承的缺点：重复执行相同的函数两次</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
+    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
+    <span class="keyword">this</span>.age=age;
+}
+Sub.prototype=<span class="keyword">new</span> Super();<span class="comment">//执行第二次</span>
+</code></pre><p>改变后：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">Sub,Super</span>)</span>{
+    <span class="keyword">var</span> prototype=object(Super.prototype);
+    prototype.constructor=Sub;
+    Sub.prototype=prototype;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
+    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
+    <span class="keyword">this</span>.age=age;
+}
+inheritPrototype(Sub,Sup);
+</code></pre><p>注意：<br>普遍认为这是最理想的继承方法。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
   <article class="post">
   
     <div class="gallery">
@@ -559,7 +819,7 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
 
 <nav id="pagination">
   
-    <a href="/" class="alignleft prev">上一頁</a>
+    <a href="/" class="alignleft prev">Anterior</a>
   
   
   <div class="clearfix"></div>
@@ -567,14 +827,14 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="search" name="q" results="0" placeholder="Buscar">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
 
   
 <div class="widget tag">
-  <h3 class="title">分類</h3>
+  <h3 class="title">Categorías</h3>
   <ul class="entry">
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
@@ -587,7 +847,9 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
   
-    <li><a href="/categories/浏览器/">浏览器</a><small>1</small></li>
+    <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
   
   </ul>
 </div>
@@ -596,11 +858,13 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   <div class="widget tag">
 <h3 class="title">个人介绍</h3>
 <ul class="entry">
+
+<li><img src="/imgs/jinmu.jpg" style="width:100%"/></li>
 <li>博主：吴敬</li>
-<li><img src="/source/imgs/jinmu.jpg"/></li>
-<li>星座：极具敏锐的双鱼座</li>
+<li>星座：双鱼座</li>
 <li>现状：合肥工业大学本科生</li>
 <li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
+
 </ul>
 </div>
 

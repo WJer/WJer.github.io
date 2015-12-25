@@ -5,13 +5,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archivo: 2014 | WJer&#39;s time</title>
+  <title>bootstrap-响应式启示 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
+  
+  <meta name="description" content="启示一使用百分比
+像栅格系统那样，通过设置宽度为百分比来适应浏览器的屏幕。
+缺点：如果某行的元素数为5，那百分比应设置为20%；如果一行的元素为9，那就得人工计算；如果数目再次改变，那么又得在css样式中修改这个数值。
+虽然得计算，但确实是个很好的办法。
+启示二这个思路不需要去计算除法。
+我们在写导">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="bootstrap-响应式启示"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -217,25 +224,105 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2014</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2014-12-13T11:06:14.000Z"><a href="/2014/12/13/js-递归/">2014-12-13</a></time>
-            
-              <h1 class="title"><a href="/2014/12/13/js-递归/">js-递归</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-24T04:52:16.000Z"><a href="/2015/12/24/bootstrap-响应式启示/">2015-12-24</a></time>
+      
+      
+  
+    <h1 class="title">bootstrap-响应式启示</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="启示一">启示一</h3><p>使用百分比</p>
+<p>像栅格系统那样，通过<strong>设置宽度为百分比</strong>来适应浏览器的屏幕。</p>
+<p>缺点：如果某行的元素数为5，那百分比应设置为20%；如果一行的元素为9，那就得人工计算；如果数目再次改变，那么又得在css样式中修改这个数值。</p>
+<p>虽然得计算，但确实是个很好的办法。</p>
+<h3 id="启示二">启示二</h3><p>这个思路不需要去计算除法。</p>
+<p>我们在写导航栏的时候用的都是ul li等元素，那么以此为例：</p>
+<pre><code><span class="tag">ul</span>&gt;<span class="tag">li</span><span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value">table-cell</span></span>;
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">1%</span></span></span>; 
+}</span>
+</code></pre><p>为什么是1%？<br>至今没想出来。</p>
+<p>这样一设置，导航栏各li元素的宽度就会随着屏幕的宽度变化而变化，不论你怎么改变，它们都会平均的分配宽度。</p>
+<p>关于table-cell值：<br>    这个属性不能和float、position:absolute同时使用，它会被这些属性破坏。<br>    IE8+浏览器及其他浏览器都支持。</p>
+<h3 id="启示三">启示三</h3><p>学会使用<strong>媒体查询</strong>，根据不同的浏览器宽度使用不同的样式。</p>
+<pre><code>@media(最小宽度或最大宽度){
+    <span class="attribute">...</span><span class="attribute">...</span>
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/bootstrap/">bootstrap</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

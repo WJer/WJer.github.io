@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-事件-提高性能 | WJer&#39;s time</title>
+  <meta name="author" content="WJer">
+  
+  <meta name="description" content="性能问题当我们创建事件处理程序时，首先需要找到DOM对象，然后再绑定什么事件如何处理。
+如果一个页面的事件很多的话，首先访问的DOM对象就会很多，其次每个事件都是一个对象，那么内存中的对象也就越多，这样一来，性能就会下降。
+如何从事件的角度提高性能事件委托例如：
+&amp;lt;ul&amp;gt;
+    &amp;lt">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="js-事件-提高性能"/>
+  <meta property="og:site_name" content="WJer&#39;s time"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="WJer&#39;s time" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe3814b5f53cc394a493cbeb2368f2af' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41207871-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">WJer&#39;s time</a></h1>
+  <h2><a href="/">Windy,only try to survive</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+  
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-06T11:08:09.000Z"><a href="/2016/01/06/js-事件-提高性能/">2016-01-06</a></time>
+      
+      
+  
+    <h1 class="title">js-事件-提高性能</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="性能问题">性能问题</h4><p>当我们创建事件处理程序时，首先需要找到DOM对象，然后再绑定什么事件如何处理。</p>
+<p>如果一个页面的事件很多的话，首先访问的DOM对象就会很多，其次每个事件都是一个对象，那么内存中的对象也就越多，这样一来，性能就会下降。</p>
+<h4 id="如何从事件的角度提高性能">如何从事件的角度提高性能</h4><p><strong>事件委托</strong><br>例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>4<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+</code></pre><p>如果要为这个列表的li添加点击事件，传统的方法是分别获取这四个li，然后每个li添加一个点击事件，这样内存中就会出现四个相同的点击事件，内存真的好浪费呀，代码还长。</p>
+<p>而事件委托是这样的：</p>
+<pre><code><span class="keyword">var</span> ul=<span class="built_in">document</span>.getElementByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];
+ul.onclick=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>{
+    <span class="keyword">var</span> li=e.target;
+    <span class="keyword">switch</span>(li.id){
+        .......<span class="comment">//针对不同的li执行不同的动作</span>
+    }
+}
+</code></pre><p>可以看出，事件委托就是把事件绑定到高层元素，然后通过target来判断具体是哪个子元素发生事件。只需一个事件就能达到多种事件的效果。</p>
+<p>ps:可以看出事件必须冒泡，才有可能事件委托。</p>
+<p>ps:可以使用事件委托的事件：click,mousedown,mouseup,keydown,keyup,keypress</p>
+<p>ps:mouseout和mouseover无法使用事件委托。因为鼠标从父元素到子元素和从子元素到父元素都会触发事件，这样就无法确定是不是子元素触发的事件。</p>
+<p><strong>移除事件处理程序</strong><br>设想一下这样的情况，假如我们通过js删除了某个元素节点，但是这个节点已经绑定了某个事件，虽然删除了该节点，但是事件仍然留在内存当中，不能被垃圾回收。甚至对DOM节点的引用也保留在内存里。</p>
+<p>移除事件处理程序就是如果我们要修改文档结构，例如删除某个节点，我们事先也知道这个节点上有事件监听，我们应该先删除事件处理程序，再删除节点。垃圾回收机制会将事件处理程序回收，从而清理内存。</p>
+<p>早起的IE浏览器将页面卸载后还会保留绑定在该页面上的所有事件，这样每关闭一个页面，内存的容量就要减少许多。针对这样的情况，最好的做法就是通过unload事件来移除手游的事件处理程序。</p>
+<p>ps:事件委托也可以避免这样的情况，因为我们把事件绑定在高层元素，子元素删了有何妨？什么都会影响嘛。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/js/">js</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
+  
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>16</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/插件/">插件</a><small>1</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">个人介绍</h3>
+<ul class="entry">
+
+<li><img src="/imgs/jinmu.jpg" style="width:100%"/></li>
+<li>博主：吴敬</li>
+<li>星座：双鱼座</li>
+<li>现状：合肥工业大学本科生</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
+<!--
+<li><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=86 src="http://music.163.com/outchain/player?type=2&id=39443443&auto=1&height=66"></iframe></li>
+-->
+</ul>
+</div>
+
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src=""></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 WJer
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
+
+
+

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Página 2 | WJer&#39;s time</title>
+  <title>第 2 頁 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
   
@@ -60,157 +60,6 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       <li><a href="/about">关于</a></li>
     
-<li> <a title="bigbang的歌曲真好听" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "http://qzone.haoduoge.com/music1/2015-05-02/1430539073.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>bigbang了</a> </li>
-
   </ul>
   <div class="clearfix"></div>
   
@@ -236,572 +85,927 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-12-14T16:58:08.000Z"><a href="/2015/12/15/js-双感叹号/">2015-12-15</a></time>
+        <time datetime="2015-12-26T14:02:23.000Z"><a href="/2015/12/26/插件-上下轮播图片插件/">2015-12-26</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/12/15/js-双感叹号/">js-双感叹号</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="双感叹号">双感叹号</h2><pre><code><span class="keyword">var</span> a;<span class="comment">//ａ的值为underfined</span>
-<span class="keyword">var</span> b=!!a;<span class="comment">//b=false</span>
-</code></pre><p>在js当中，每种类型的值都有着相对应的布尔值。双感叹号的目的就是为了将其转换成对应的布尔值。</p>
-<h4 id="为什么要这样做">为什么要这样做</h4><p>这是个大大的疑问？？？？？<br>现在还不清楚，日后一定补充。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-13T12:31:20.000Z"><a href="/2015/12/13/js-闭包/">2015-12-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/13/js-闭包/">js-闭包</a></h1>
+    <h1 class="title"><a href="/2015/12/26/插件-上下轮播图片插件/">插件-上下轮播图片插件</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="闭包">闭包</h2><p>闭包就是指有权访问另一个函数作用域中的变量的函数。</p>
-<h4 id="执行环境和作用域">执行环境和作用域</h4><p>执行环境定义了变量或函数有权访问的其他数据。</p>
-<p>每个执行环境都有一个对应的变量对象，eg：window对象，环境内声明的变量和方法都保存在这个对象中。</p>
-<p>函数执行时都会创建自己的执行环境及相应的作用域链。</p>
-<p>作用域链本质上是一个变量对象的指针列表。函数在访问某一个变量时就会从作用域链一层一层的寻找。</p>
-<pre><code><span class="keyword">var</span> name=<span class="string">"china"</span>;
-<span class="function"><span class="keyword">function</span> <span class="title">provice</span><span class="params">()</span></span>{
-    <span class="keyword">var</span> name=<span class="string">"anhui"</span>;
-    <span class="function"><span class="keyword">function</span> <span class="title">city</span><span class="params">()</span></span>{
-        <span class="keyword">var</span> name=<span class="string">"hefei"</span>;
-    }
-}
-</code></pre><p>分析下这个简单的例子：<br>    1.三个执行环境：全局执行环境，provice()执行环境，city()执行环境<br>    2.city()函数执行时会创建自己的作用域链，依次是city()的活动对象，provice()的活动对象，window对象。<br>    3.provice()函数执行时会创建自己的作用域链，依次是provice()的活动对象，window对象。<br>    4.查找变量时就是按照从最里面到最外面的作用域链访问变量。<br>    5.当city()执行完时，这个函数的执行环境就会退出环境栈，并且对应的变量对象也会相应的销毁。同理 provice()也是。</p>
-<h4 id="闭包-1">闭包</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span></span>{
-    <span class="keyword">var</span> name=<span class="number">1</span>;
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
-        <span class="keyword">var</span> age=<span class="number">2</span>;
-    }
-}
-<span class="keyword">var</span> b=a();<span class="comment">//b的作用域链包括a函数的活动对象</span>
-b=<span class="literal">null</span>;<span class="comment">//匿名函数不再有引用，垃圾回收机制会安全销毁b函数的作用域链。</span>
-</code></pre><p>以上看来，在a函数的外部可以访问a内部声明的变量和函数。</p>
-<h4 id="闭包的问题">闭包的问题</h4><p>问题例子：</p>
-<pre><code>function createF(){
-    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
-    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
-        <span class="literal">result</span>[i]=function(){
-            <span class="keyword">return</span> i;
-        }
-    }
-}
-<span class="keyword">var</span> fs=createF();
-<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
-    console.log(fs[i]());//输出<span class="number">5</span>个<span class="number">5</span>
-}
-</code></pre><p>本来每个函数都输出自己的i，结果全都输出相同的数。<br>原因：函数数组中每个函数的作用域链都保存着createF()函数的活动对象，所以它们访问的是同一个i。</p>
-<p>解决方式：</p>
-<pre><code>function createF(){
-    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
-    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
-        <span class="literal">result</span>[i]=function(num){
-            <span class="keyword">return</span> function(){//又创建了一个闭包
-                <span class="keyword">return</span> num;//每个函数都有自己的num变量
-            }
-        }(i);
-    }
-    <span class="keyword">return</span> <span class="literal">result</span>；
-}
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
+        <p>这是前端网看到的一个插件，样子还是挺不错的，于是研究了一下源码，力图吸取一些经验，将来，自己也可以写出高效而又美观的代码。</p>
+<p>先看html，再看js源码<br>附上js源码：</p>
+<pre><code><span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">A</span>)</span><span class="collection">{//A就是jquery对象
+A.fn.th_video_focus=function<span class="list">(<span class="keyword">E</span>)</span><span class="collection">{//E为参数信息        
+    var G=<span class="collection">{//默认的参数
+        actClass:<span class="string">"cur"</span>,
+        navContainerClass:<span class="string">".focus_pic_preview"</span>,
+        focusContainerClass:<span class="string">".focus_pic"</span>,
+        animTime:600,
+        delayTime:5000
+    }</span><span class="comment">;</span>
+    if<span class="list">(<span class="keyword">E</span>)</span><span class="collection">{
+        A.extend<span class="list">(<span class="keyword">G</span>,E)</span><span class="comment">;</span>
+    }</span>        
+    var C=G.actClass;
+    var D=G.navContainerClass;
+    var B=G.focusContainerClass;
+    var F=G.animTime;
+    var H=G.delayTime;
+    var I=null;
+    return this.each<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{    
+        var O=A<span class="list">(<span class="keyword">this</span>)</span><span class="comment">;</span>
+        var M=A<span class="list">(<span class="keyword">D+</span><span class="string">" li"</span>,O)</span><span class="comment">;</span>
+        var P=A<span class="list">(<span class="keyword">B+</span><span class="string">" li"</span>,O)</span><span class="comment">;</span>
+        var L=M.length;
+        var K=O.height<span class="list">()</span><span class="comment">;</span>
+        function N<span class="list">(<span class="keyword">R</span>)</span><span class="collection">{//轮播动作
+            var V=K*R*<span class="list">(<span class="keyword">-1</span>)</span><span class="comment">;</span>
+            A<span class="list">(<span class="keyword">B</span>,O)</span>.stop<span class="list">()</span>.animate<span class="list">(<span class="collection">{top:V}</span>,F,function<span class="list">()</span><span class="collection">{
+                var Y=O.find<span class="list">(<span class="string">"h3"</span>)</span>, X=Y.height<span class="list">()</span><span class="comment">;</span>
+                Y.height<span class="list">(<span class="number">0</span>)</span>
+                   .html<span class="list">(<span class="keyword">A</span><span class="list">(<span class="keyword">B+</span><span class="string">" li"</span>)</span>
+                   .eq<span class="list">(<span class="keyword">R</span>)</span>.find<span class="list">(<span class="string">"img"</span>)</span>
+                      .attr<span class="list">(<span class="string">"alt"</span>)</span>)</span>
+                     .animate<span class="list">(<span class="collection">{height:X}</span>,<span class="number">600</span>)</span>
+            }</span>)</span><span class="comment">;</span>
+            A<span class="list">(<span class="keyword">D+</span><span class="string">" li"</span>)</span>.eq<span class="list">(<span class="keyword">R</span>)</span>
+                        .addClass<span class="list">(<span class="keyword">C</span>)</span>
+                        .siblings<span class="list">()</span>
+                        .removeClass<span class="list">(<span class="keyword">C</span>)</span><span class="comment">;</span>
+        }</span>            
+        function Q<span class="list">()</span><span class="collection">{//清除循环，设定轮播动作循环
+            if<span class="list">(<span class="keyword">I</span>)</span><span class="collection">{
+                clearInterval<span class="list">(<span class="keyword">I</span>)</span>
+            }</span>
+            I=setInterval<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+                var R=A<span class="list">(<span class="keyword">D+</span><span class="string">" li."</span>+C)</span>.index<span class="list">()</span><span class="comment">;</span>
+                N<span class="list">(<span class="list">(<span class="keyword">R+1</span>)</span>%L)</span>
+            }</span>,H)</span><span class="comment">;</span>
+        }</span>    
+        O.hover<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+                    if<span class="list">(<span class="keyword">I</span>)</span><span class="collection">{
+                        clearInterval<span class="list">(<span class="keyword">I</span>)</span>
+                    }</span>
+                }</span>,function<span class="list">()</span><span class="collection">{
+                    Q<span class="list">()</span>
+                }</span>)</span><span class="comment">;        </span>
+            var J=null;
+        M.hover<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{                
+            var R=A<span class="list">(<span class="keyword">this</span>)</span>.index<span class="list">()</span><span class="comment">;            </span>
+            if<span class="list">(<span class="keyword">I</span>)</span><span class="collection">{
+                clearInterval<span class="list">(<span class="keyword">I</span>)</span>
+            }</span>
+            J=setTimeout<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+                N<span class="list">(<span class="keyword">R</span>)</span>
+            }</span>,<span class="number">300</span>)</span>
+        }</span>,function<span class="list">()</span><span class="collection">{
+            if<span class="list">(<span class="keyword">J</span>)</span><span class="collection">{
+                clearTimeout<span class="list">(<span class="keyword">J</span>)</span>
+            }</span>
+            Q<span class="list">()</span><span class="comment">;</span>
+        }</span>)</span><span class="comment">;            </span>
+        Q<span class="list">()</span><span class="comment">;    </span>
+    }</span>)</span>
+}</span></span></span>
+</code></pre><p>})(jQuery);</p>
+<p>这样的命名太无奈了，竟然使用大写的字母，根本分不清哪个变量是干嘛用的。我换了一下变量名称，以求大家更容易理解。</p>
+<p>附上html源码：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span> /&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span>5屏jQuery上下轮播焦点图代码 - 中国前端网<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/cnqianduan.css"</span> <span class="attribute">media</span>=<span class="value">"screen"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>/&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"js/jquery-1.8.3.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"js/cnqianduan.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="comment">&lt;!--焦点图--&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"film_focus"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"film_focus_desc"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">h3</span>&gt;</span>中国前端网 - www.cnqianduan.com<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"film_focus_nav"</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"cur"</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题1<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题1<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题2<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题2<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题3<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题3<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题4<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题4<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题5<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题5<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"film_focus_imgs_wrap"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"film_focus_imgs"</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题1"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题2"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"images/a3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题3"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题4"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                 <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a5.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题5"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="comment">&lt;!--焦点图END--&gt;</span> 
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    $(<span class="string">".film_focus"</span>).th_video_focus({
+        navContainerClass:<span class="string">".film_focus_nav"</span>,
+        focusContainerClass:<span class="string">".film_focus_imgs"</span>,
+        delayTime:<span class="number">3000</span>
+    });
 
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-12T13:31:34.000Z"><a href="/2015/12/12/js-继承/">2015-12-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/12/js-继承/">js-继承</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="继承">继承</h2><p>javascript是通过原型链来实现继承。<br>实现继承的方式有很多，但总的思路就是原型链，本人总结了一下，如下：</p>
-<h4 id="原型链">原型链</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+});    
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>用过Jquery的都知道，为了避免$冲突，可以通过匿名函数的方式替换掉$,使用其他的名称，我们暂且使用jquery吧。</p>
+<pre><code><span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">jquery</span>)</span><span class="collection">{
+    //这里jquery就相当于$
+}</span>)</span><span class="list">(<span class="keyword">jQuery</span>)</span><span class="comment">;</span>
+</code></pre><p>想一个方法名，就lunbo吧，简单从粗暴。然后添加到jQuery对象中，设置一个参数，传递的是对象。<br><em>为什么要传递对象，在java中数组、集合都能作为保存数据容器，但是在js中，对象是最好的选择，它可以保存各式各样的数据。</em></p>
+<pre><code>jquery.fn.lunbo=<span class="function"><span class="keyword">function</span><span class="params">(paramObj)</span></span>{
     ......
 }
-Super.prototype.saySupername=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    ......
-}<span class="comment">//此处代表对超类型的原型的操作</span>
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
-    ......
+</code></pre><p>如果你调用lunbo方法，不传递参数,那么就应该要有一些默认的设置：</p>
+<pre><code>var defaultObj={
+    actClass:<span class="string">"cur"</span>,<span class="comment">//聚焦的样式</span>
+    navContainerClass:<span class="string">".focus_pic_preview"</span>,<span class="comment">//左侧的标题nav</span>
+    focusContainerClass:<span class="string">".focus_pic"</span>,<span class="comment">//右侧的图片列表</span>
+    animTime:<span class="number">600</span>,<span class="comment">//动作完成的时间</span>
+    delayTime:<span class="number">5000</span><span class="comment">//循环的周期</span>
 }
-Sub.prototype=<span class="keyword">new</span> Super();
-</code></pre><p>通过上面的方式，便实现了继承。</p>
-<p>注意：<br>1.这种方式的原型链在最顶层还有一个Object.prototype，不要忽略。<br>2.可以通过instanceof和isPrototypeOf来确定实例和原型的关系<br>3.存在的问题：原型中的值会被共享、在创建子类型的实例时无法向超类型的构造函数传递参数。</p>
-<h4 id="借用构造函数">借用构造函数</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
-    ......
+</code></pre><p>默认的设置好了，如果传递参数，怎么去覆盖默认值呢？</p>
+<pre><code><span class="keyword">if</span>(paramObj){
+    jquery.<span class="keyword">extend</span>(defaultObj,paramObj);
 }
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
-    ......
-    Super.call(<span class="keyword">this</span>,[参数]);<span class="comment">//超类型的构造函数当普通函数使用</span>
+</code></pre><p>如果要用到默认值中的某个属性，总是通过obj.attribute是不是很麻烦？拿出来保存到变量中吧。</p>
+<pre><code>var cur=<span class="keyword">default</span>Obj.actClass,
+    navClass=<span class="keyword">default</span>Obj.navContainerClass,
+    focusClass=<span class="keyword">default</span>Obj.focusContainerClass,
+    animate=<span class="keyword">default</span>Obj.animTime,
+    delay=<span class="keyword">default</span>Obj.delayTime;
+</code></pre><p>顺便获取dom对象吧。</p>
+<pre><code>var film_focus=jquery(<span class="keyword">this</span>),<span class="comment">//最外层的那个div</span>
+    nav=jquery(navClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取左侧的文字li</span>
+    imgs=jquery(focusClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取右侧的图片li</span>
+    liamount=nav.length,<span class="comment">//获取左侧文字li的数量</span>
+    <span class="variable">height</span>=film_focus.<span class="variable">height</span>();<span class="comment">//获取一张图片的高度</span>
+</code></pre><p>图片轮播这个动作是一个单独的方法，这样可以多次调用。它需要一个下标参数，用来保存哪个nav获得聚焦，图片需要移动多少px。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">imgmove</span><span class="params">(index)</span></span>{
+    <span class="keyword">var</span> newtop=index*height*(-<span class="number">1</span>);<span class="comment">//计算图片移动的位置</span>
+    jquery(focusClass,film_focus)<span class="comment">//获取图片列表</span>
+        .stop()<span class="comment">//移动停止</span>
+        .animate({top:newtop},animate,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//开始移动</span>
+            <span class="keyword">var</span> h3=film_focus.find(<span class="string">"h3"</span>),
+                h3_height=h3.height();<span class="comment">//获取h3高度</span>
+                h3
+                    .height(<span class="number">0</span>)<span class="comment">//h3消失</span>
+                    .html(imgs.eq(index).find(<span class="string">'img'</span>).attr(‘alt’))<span class="comment">//修改h3的内容</span>
+                    .animate({height:h3_height},<span class="number">600</span>)<span class="comment">//h3出现</span>
+        });
+        nav.eq(index).addClass(cur).siblings().removeClass(cur);<span class="comment">//左侧显示指定的文字li        </span>
 }
-</code></pre><p>注意：<br>1.这种方式可以在创建子类型的实例时给超类型的构造函数传递参数。<br>2.存在的问题：当只借用构造函数这种方式时，那么就无法做到函数复用，除非使用原型。</p>
-<h4 id="组合继承">组合继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">(name)</span></span>{
-    <span class="keyword">this</span>.name=name;
-}
-Super.prototype.sayName=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    <span class="keyword">return</span> <span class="keyword">this</span>.name;
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">(name,age)</span></span>{
-    Super.call(<span class="keyword">this</span>,name);
-    <span class="keyword">this</span>.age=age;
-}
-Sub.prototype=<span class="keyword">new</span> Super();
-</code></pre><p>就是把原型链和借用构造函数两种方式组合起来使用。<br>注意：1.这是最常用到的继承模式。</p>
-<h4 id="原型式继承">原型式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>{
-    <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>{};
-    F.prototype=o;
-    <span class="keyword">return</span> <span class="keyword">new</span> F();
-}
-</code></pre><p>注意：<br>1.使用Object.create(o);来代替上面的函数，这是ECMAScript5规范了的方法。<br>2.使用条件：只想使两个对象保持类似的问题。<br>3.存在的问题：包含引用类型的属性都会共享相应的值，也就是无法有私有的属性和方法。</p>
-<h4 id="寄生式继承">寄生式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(o)</span></span>{
-    <span class="keyword">var</span> <span class="keyword">clone</span>=object(o);
-    <span class="keyword">clone</span>.sayHi=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//这里可以创建一些私有的属性和方法</span>
-        ......
+</code></pre><p>如果不点击左侧的nav，图片应该循环轮播。</p>
+<pre><code>var <span class="built_in">circle</span>=null;<span class="comment">//循环事件</span>
+<span class="function"><span class="keyword">function</span> <span class="title">autoLunbo</span><span class="params">()</span>{</span>
+    <span class="keyword">if</span>(<span class="built_in">circle</span>){
+        clearInterval(<span class="built_in">circle</span>);<span class="comment">//清除循环事件</span>
     }
-    <span class="keyword">return</span> <span class="keyword">clone</span>;
+    <span class="built_in">circle</span>=setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        var index=jquery(navClass+<span class="string">" li."</span>+cur).index();
+        imgmove((index+<span class="number">1</span>)<span class="built_in">%</span>liamount);
+    },delay);
 }
-</code></pre><p>注意：<br>1.和构造函数一样，若只是使用这种方式，那么就无法达到函数复用。</p>
-<h4 id="寄生组合式继承">寄生组合式继承</h4><p>先看看组合继承的缺点：重复执行相同的函数两次</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
-    <span class="keyword">this</span>.name=name;
-    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
-}
-Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
-    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
-    <span class="keyword">this</span>.age=age;
-}
-Sub.prototype=<span class="keyword">new</span> Super();<span class="comment">//执行第二次</span>
-</code></pre><p>改变后：</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">Sub,Super</span>)</span>{
-    <span class="keyword">var</span> prototype=object(Super.prototype);
-    prototype.constructor=Sub;
-    Sub.prototype=prototype;
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
-    <span class="keyword">this</span>.name=name;
-    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
-}
-Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
-    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
-    <span class="keyword">this</span>.age=age;
-}
-inheritPrototype(Sub,Sup);
-</code></pre><p>注意：<br>普遍认为这是最理想的继承方法。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/28/nodejs-supervisor/">nodejs-supervisor</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在是麻烦。</p>
-<p>后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。</p>
-<h4 id="如何安装">如何安装</h4><p>通过</p>
-<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
-</code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
-<p>直接用npm安装既可，键入命令: </p>
-<pre><code>npm -g <span class="keyword">install</span> supervisor
-</code></pre><h4 id="自己电脑的问题">自己电脑的问题</h4><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
-<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
-</code></pre><p>通过软连接的方式来实现全局。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">hexo-使用&#39;hexo d&#39;报错</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="“ERROR_Deployer_not_found”_错误（for_linux）">“ERROR Deployer not found” 错误（for linux）</h2><p>hexo 升级到3.0之后，再使用</p>
-<pre><code><span class="title">hexo</span> deploy
-</code></pre><p>会出现“ERROR Deployer not found”的错误，看了很多别人的评论，才知道原因。</p>
-<h4 id="原因是缺少”hexo_deploy”的相关模块。">原因是缺少”hexo deploy”的相关模块。</h4><p>既然缺少相关模块，那我们安装吧。但是安装也需要方法的，先给出安装步骤：</p>
-<h5 id="1-进入博客所在的文件夹里">1.进入博客所在的文件夹里</h5><p>没错，这步是必须的，每个项目都有一个node_modules文件夹，正是里面缺少”hexo deploy”的相关模块,所以导致无法使用hexo deploy。网上都没有说这一步，害的菜鸟的我在坑里滚了很长时间，最后才发现这一步的关键。</p>
-<h5 id="2-安装模块">2.安装模块</h5><p>在终端输入</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git  <span class="comment">--save</span></span>
-</code></pre><h5 id="3-修改type">3.修改type</h5><p>博客项目都有个“_config.yml”的文件，修改里面的type为“git”(以前是github；还要注意冒号后面空一格)</p>
-<p>好了，可以使用hexo deploy了，搞定！！</p>
-<p>如果还报了其他的错误，考虑有没有设置git config。当初我是刚安装的git，就忘了设置config global ×××，结果蛋疼了很久。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">nodejs-使用npm安装模块失败</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
-<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
-<pre><code>cnpm <span class="keyword">install</span> 模块名字
-</code></pre><p>来下载安装模块，很简单吧。</p>
-<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
-<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
-</code></pre><p>我们再输入</p>
-<pre><code><span class="built_in">npm</span> config ls
-</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
-<pre><code>npm <span class="keyword">install</span> 模块名字
-</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
-<p><em>注意</em>：我们可以通过</p>
-<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
-</code></pre><p>来删除新添加的配置项。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-10-23T16:22:03.000Z"><a href="/2015/10/24/linux-解决sublime中文输入/">2015-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/10/24/linux-解决sublime中文输入/">linux-解决sublime中文输入</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>今天用sublime写网页的时候发现竟然不能使用中文，那个蛋疼啊，不得不感慨，技术发展的如此之快（瞎逼逼）。<br>不多说了，说说解决办法吧。</p>
-<h3 id="1-sublime_text3安装">1.sublime text3安装</h3><p>安装方式很多，我直接下载下来安装。</p>
-<h3 id="2-依赖软件安装">2.依赖软件安装</h3><p>这个必须安装，我之前没有安装，后面的步骤一直报错，苦恼了好几天。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libgtk2.<span class="number">0</span>-dev</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-拷贝如下代码到文件sublime_imfix-c文件中，该文件需要自己创建，随便放到那里都行">3.拷贝如下代码到文件sublime_imfix.c文件中，该文件需要自己创建，随便放到那里都行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;gtk/gtk.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;gdk/gdkx.h&gt;</span></span><br><span class="line"></span><br><span class="line">typedef GdkSegment GdkRegionBox;</span><br><span class="line"></span><br><span class="line">struct _GdkRegion</span><br><span class="line">&#123;</span><br><span class="line">    long size;</span><br><span class="line">    long numRects;</span><br><span class="line">    GdkRegionBox *rects;</span><br><span class="line">    GdkRegionBox extents;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">GtkIMContext *<span class="built_in">local</span>_context;</span><br><span class="line"></span><br><span class="line">void</span><br><span class="line">gdk_region_get_clipbox (const GdkRegion *region,</span><br><span class="line">                        GdkRectangle    *rectangle)</span><br><span class="line">&#123;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (region != NULL);</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (rectangle != NULL);</span><br><span class="line"></span><br><span class="line">    rectangle-&gt;x = region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;y = region-&gt;extents.y1;</span><br><span class="line">    rectangle-&gt;width = region-&gt;extents.x2 - region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;height = region-&gt;extents.y2 - region-&gt;extents.y1;</span><br><span class="line">    GdkRectangle rect;</span><br><span class="line">    rect.x = rectangle-&gt;x;</span><br><span class="line">    rect.y = rectangle-&gt;y;</span><br><span class="line">    rect.width = <span class="number">0</span>;</span><br><span class="line">    rect.height = rectangle-&gt;height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rectangle-&gt;width == <span class="number">2</span> &amp;&amp; GTK_IS_IM_CONTEXT(<span class="built_in">local</span>_context)) &#123;</span><br><span class="line">        gtk_im_context_<span class="built_in">set</span>_cursor_location(<span class="built_in">local</span>_context, rectangle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static GdkFilterReturn event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer im_context)</span><br><span class="line">&#123;</span><br><span class="line">    XEvent *xev = (XEvent *)xevent;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (xev-&gt;<span class="built_in">type</span> == KeyRelease &amp;&amp; GTK_IS_IM_CONTEXT(im_context)) &#123;</span><br><span class="line">        GdkWindow *win = g_object_get_data(G_OBJECT(im_context), <span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (GDK_IS_WINDOW(win)) &#123;</span><br><span class="line">            gtk_im_context_<span class="built_in">set</span>_client_window(im_context, win);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> GDK_FILTER_CONTINUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void gtk_im_context_<span class="built_in">set</span>_client_window (GtkIMContext *context,</span><br><span class="line">                                       GdkWindow    *window)</span><br><span class="line">&#123;</span><br><span class="line">    GtkIMContextClass *klass;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (GTK_IS_IM_CONTEXT (context));</span><br><span class="line">    klass = GTK_IM_CONTEXT_GET_CLASS (context);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (klass-&gt;<span class="built_in">set</span>_client_window) &#123;</span><br><span class="line">        klass-&gt;<span class="built_in">set</span>_client_window (context, window);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!GDK_IS_WINDOW (window)) &#123;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    g_object_<span class="built_in">set</span>_data(G_OBJECT(context), <span class="string">"window"</span>, window);</span><br><span class="line">    int width = gdk_window_get_width(window);</span><br><span class="line">    int height = gdk_window_get_height(window);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (width != <span class="number">0</span> &amp;&amp; height != <span class="number">0</span>) &#123;</span><br><span class="line">        gtk_im_context_focus_<span class="keyword">in</span>(context);</span><br><span class="line">        <span class="built_in">local</span>_context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gdk_window_add_filter (window, event_filter, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>进入保留该文件的目录，在终端输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-<span class="number">2.0</span>` <span class="operator">-f</span>PIC</span><br></pre></td></tr></table></figure>
-<h3 id="4-中文输入">4.中文输入</h3><p>我们试试能不能用吧。<br>在终端中输入如下命令：</p>
-<pre><code class="bash">LD_PRELOAD=./libsublime-imfix.so subl             <span class="comment">#subl是安装好SublimeText 3后的程序启动命令</span>
-</code></pre>
-<p>如果一切正常，在启动之后，搜狗输入法就能可以使用了。</p>
-<h3 id="5-最后的设置">5.最后的设置</h3><p>将libsublime-imfix.so拷贝到系统库的默认路径中：</p>
-<pre><code class="bash">sudo cp libsublime-imfix.so /usr/lib/
-</code></pre>
-<p>sudo vim /usr/share/applications/sublime_text.desktop<br>  讲sublime text3启动程序用记事本打开后：<br>将<br>Exec=/opt/sublime_text/sublime_text %F<br>修改为<br>Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ %F</p>
-<p>   将<br>    Exec=/opt/sublime_text/sublime_text -n<br>    修改为<br>      Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ -n<br>    这样通过快捷方式就可以打开支持中文输入的sublime了，通过终端输入subl打开的sublime仍然部支持中文输入。<br>    <em>注：快捷方式可在/usr/share/applications中找到。</em></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-23T16:18:24.000Z"><a href="/2015/08/24/linux-install/">2015-08-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/24/linux-install/">安装ubuntu系统</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-12-13T11:06:14.000Z"><a href="/2014/12/13/js-递归/">2014-12-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/12/13/js-递归/">js-递归</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="递归">递归</h2><p>函数的递归很简单，但是在js中要注意一下递归的问题。</p>
-<pre><code><span class="function">function <span class="title">jiecheng</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function">num * <span class="title">jiecheng</span><span class="params">(num - <span class="number">1</span>)</span></span>;
+</code></pre><p>如果鼠标放上去，图片应该停止轮播;拿开继续轮播</p>
+<pre><code>film_focus.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="keyword">if</span>(<span class="built_in">circle</span>){
+        clearInterval(<span class="built_in">circle</span>);
     }
-}
-</code></pre><p>这是个简单的阶乘，但是存在个问题。</p>
-<pre><code><span class="variable"><span class="keyword">var</span> a</span>=jiecheng;
-jiecheng=<span class="literal">null</span>;
-a(<span class="number">4</span>);<span class="comment">//报错</span>
-</code></pre><p>因为函数的内部是通过调用函数名来实现递归，一旦函数名为null值了，所以就导致错误。</p>
-<p>解决办法：</p>
-<pre><code><span class="function">function <span class="title">jiecheng</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> num * arguments.callee(num - <span class="number">1</span>);
-    }
-}
-</code></pre><p>这种方式是通过使用arguments.callee来代替函数名，但是又会有新的问题：严格模式下，脚本无法访问arguments.callee。</p>
-<p>解决办法：</p>
-<pre><code>var jiecheng=(<span class="function">function <span class="title">f</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function">num*<span class="title">f</span><span class="params">(num-<span class="number">1</span>)</span></span>;
-    }
+},<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    autoLunbo();
 });
-</code></pre><p>不管怎么变，f函数名都是有效的，而且也能在严格模式下使用。</p>
+</code></pre><p>如果鼠标放在nav上，就要轮播到相对应的图片</p>
+<pre><code><span class="keyword">var</span> J=<span class="literal">null</span>;
+nav.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> index=jquery.index();<span class="comment">//获取鼠标停在li的下标</span>
+    <span class="keyword">if</span>(circle){
+        clearInterval(circle);<span class="comment">//停止轮播</span>
+    }
+    J=setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        imgmove(index);<span class="comment">//图片移动到指定位置</span>
+    },<span class="number">300</span>);
 
+},<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">if</span>(J){
+        clearTimeout(J);
+    }
+    autoLunbo();<span class="comment">//继续从当前位置开始轮播</span>
+});
+</code></pre><p>我们为了保持jquery对象的链式调用方法，需要`return this.each(function(){……})</p>
+<p>最后整理一下，得到如下代码：</p>
+<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">(jquery)</span></span>{
+jquery.fn.lunbo=<span class="function"><span class="keyword">function</span><span class="params">(paramObj)</span></span>{
+    <span class="keyword">var</span> <span class="keyword">default</span>={
+        actClass:<span class="string">"cur"</span>,<span class="comment">//聚焦的样式</span>
+        navContainerClass:<span class="string">".focus_pic_preview"</span>,<span class="comment">//左侧的标题nav</span>
+        focusContainerClass:<span class="string">".focus_pic"</span>,<span class="comment">//右侧的图片列表</span>
+        animTime:<span class="number">600</span>,<span class="comment">//动作完成的时间</span>
+        delayTime:<span class="number">5000</span><span class="comment">//循环的周期</span>
+    };
+
+    <span class="keyword">var</span> cur=<span class="keyword">default</span>.actClass,
+        navClass=<span class="keyword">default</span>.navContainerClass,
+        focusClass=<span class="keyword">default</span>.focusContainerClass,
+        animate=<span class="keyword">default</span>.animTime,
+        delay=<span class="keyword">default</span>.delayTime;
+
+    <span class="keyword">var</span> film_focus=jquery(<span class="keyword">this</span>),<span class="comment">//最外层的那个div</span>
+        nav=jquery(navClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取左侧的文字li</span>
+        imgs=jquery(focusClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取右侧的图片li</span>
+        liamount=film_focus_nav.length,<span class="comment">//获取左侧文字li的数量</span>
+        height=film_focus.height();<span class="comment">//获取一张图片的高度</span>
+
+    <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">each</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="function"><span class="keyword">function</span> <span class="title">imgmove</span><span class="params">(index)</span></span>{
+        <span class="keyword">var</span> newtop=index*height*(-<span class="number">1</span>);<span class="comment">//计算图片移动的位置</span>
+        jquery(focusClass,film_focus)<span class="comment">//获取图片列表</span>
+            .stop()<span class="comment">//移动停止</span>
+            .animate({top:newtop},animate,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//开始移动</span>
+                <span class="keyword">var</span> h3=film_focus.find(<span class="string">"h3"</span>),
+                    h3_height=h3.height();<span class="comment">//获取h3高度</span>
+                    h3
+                        .height(<span class="number">0</span>)<span class="comment">//h3消失</span>
+                        .html(imgs.eq(index).find(<span class="string">'img'</span>).attr(‘alt’))<span class="comment">//修改h3的内容</span>
+                        .animate({height:h3_height},<span class="number">600</span>)<span class="comment">//h3出现</span>
+            });
+            nav.eq(index).addClass(cur).siblings().removeClass(cur);<span class="comment">//左侧显示指定的文字li        </span>
+        }
+
+        <span class="keyword">var</span> circle=<span class="literal">null</span>;<span class="comment">//循环事件</span>
+        <span class="function"><span class="keyword">function</span> <span class="title">autoLunbo</span><span class="params">()</span></span>{
+            <span class="keyword">if</span>(circle){
+                clearInterval(circle);<span class="comment">//清除循环事件</span>
+            }
+            circle=setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                <span class="keyword">var</span> index=jquery(nav+<span class="string">" li."</span>+cur);
+                imgmove((index+<span class="number">1</span>)%liamount);
+            },delay);
+        }
+
+        film_focus.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">if</span>(circle){
+                clearInterval(circle);
+            }
+        },<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            autoLunbo();
+        });
+
+        <span class="keyword">var</span> J=<span class="literal">null</span>;
+        nav.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">var</span> index=jquery.index();<span class="comment">//获取鼠标停在li的下标</span>
+            <span class="keyword">if</span>(circle){
+                clearInterval(circle);<span class="comment">//停止轮播</span>
+            }
+            J=setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                imgmove(index);<span class="comment">//图片移动到指定位置</span>
+            },<span class="number">300</span>);
+
+        },<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">if</span>(J){
+                clearTimeout(J);
+            }
+            autoLunbo();<span class="comment">//继续从当前位置开始轮播</span>
+        });
+
+        autoLunbo();
+    })
+}})(jQuery);
+`
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-25T15:19:39.000Z"><a href="/2015/12/25/js-DOM节点类型-Attr类型/">2015-12-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/25/js-DOM节点类型-Attr类型/">js-DOM节点类型-Attr类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Attr类型">Attr类型</h3><p>比较冷门的类型，不经常用到。<br><strong>特征</strong><br>    nodeType:2;<br>    nodeName:特性的名称;<br>    nodeValue: 特性的值;<br>    parentNode: null;</p>
+<p>ps：通常操作特性时通过<code>getAttribute()</code>、<code>setAttribute()</code>、<code>removeAttribute()</code>等方法，很少使用特性节点。</p>
+<p><strong>属性</strong><br>特性节点的属性：<code>name</code>、<code>value</code>、<code>specified</code>。</p>
+<p>ps：因为ie7及以下版本的浏览器存在着问题，一个元素节点的attributes属性可能会返回几十个特性，这时需要specified属性来进行筛选。</p>
+<p><strong>方法</strong><br>获取特性节点：</p>
+<pre><code><span class="tag">element</span><span class="class">.getAttributeNode</span>(<span class="tag">attrName</span>);
+</code></pre><p>or</p>
+<pre><code><span class="tag">element</span><span class="class">.attributes</span><span class="attr_selector">[i]</span>;
+</code></pre><p>当然你也可以通过特性节点来获取特性的值，只是不推荐使用。</p>
+<p>添加特性节点：</p>
+<pre><code><span class="tag">element</span><span class="class">.setAttributeNode</span>(<span class="tag">attrNode</span>);
+</code></pre><p>or</p>
+<pre><code>element.setAttribute(<span class="keyword">name</span>,<span class="keyword">value</span>);
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-25T15:00:01.000Z"><a href="/2015/12/25/js-DOM节点类型-Comment类型/">2015-12-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/25/js-DOM节点类型-Comment类型/">js-DOM节点类型-Comment类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Comment类型">Comment类型</h3><p><strong>特征</strong><br>    nodeType:8;<br>    nodeName:#comment;<br>    nodeValue: 注释的内容;<br>    parentNode: Document or Element;<br>    无子节点</p>
+<p>ps：和文本节点都继承同一个类，具有共同的操作字符串的方法。</p>
+<p>ps：该节点无法访问到html后面的注释，也就是最最外层的注释。</p>
+<p><strong>创建注释节点</strong></p>
+<pre><code><span class="built_in">document</span>.createComment(text);<span class="comment">//返回注释节点</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-25T07:01:25.000Z"><a href="/2015/12/25/js-DOM节点类型-Text类型/">2015-12-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/25/js-DOM节点类型-Text类型/">js-DOM节点类型-Text类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Text类型">Text类型</h3><p><strong>特征</strong><br>nodeType:3;<br>nodeName:#text;<br>nodeValue: 所包含的文本;<br>parentNode: element类型;</p>
+<p><strong>文本节点的属性和方法</strong><br>1.通过<code>nodeValue属性</code>或者<code>data属性</code>获取文本内容。<br>2.</p>
+<pre><code>appendData(text);
+deleteData(<span class="operator"><span class="keyword">start</span>,<span class="keyword">count</span>);</span>
+insertData(<span class="operator"><span class="keyword">start</span>,<span class="built_in">text</span>);</span>
+replaceData(<span class="operator"><span class="keyword">start</span>,<span class="keyword">count</span>,<span class="built_in">text</span>);</span>
+splitText(<span class="operator"><span class="keyword">start</span>);</span>
+substringData(<span class="operator"><span class="keyword">start</span>,<span class="keyword">count</span>);</span>
+</code></pre><p>3.<code>length属性</code>获取文本的长度</p>
+<p><strong> 获取文本节点 </strong></p>
+<p>通过父节点的子节点属性（childNodes）获取<br><strong>创建文本节点</strong></p>
+<pre><code><span class="built_in">document</span>.createTextNode(text);<span class="comment">//返回文本节点</span>
+</code></pre><p><strong>合并文本节点</strong></p>
+<pre><code><span class="tag">parentNode</span><span class="class">.normalize</span>();
+</code></pre><p>相邻的两个文本节点合并成一个节点。当然，浏览器在解析html时永远不会创建相邻的两个文本节点。</p>
+<p><strong>分割文本节点</strong></p>
+<pre><code>textNode.splitText(<span class="keyword">count</span>);<span class="comment">//返回新的文本节点，原文本节点删除分割的文本内容</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-24T04:52:16.000Z"><a href="/2015/12/24/bootstrap-响应式启示/">2015-12-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/24/bootstrap-响应式启示/">bootstrap-响应式启示</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="启示一">启示一</h3><p>使用百分比</p>
+<p>像栅格系统那样，通过<strong>设置宽度为百分比</strong>来适应浏览器的屏幕。</p>
+<p>缺点：如果某行的元素数为5，那百分比应设置为20%；如果一行的元素为9，那就得人工计算；如果数目再次改变，那么又得在css样式中修改这个数值。</p>
+<p>虽然得计算，但确实是个很好的办法。</p>
+<h3 id="启示二">启示二</h3><p>这个思路不需要去计算除法。</p>
+<p>我们在写导航栏的时候用的都是ul li等元素，那么以此为例：</p>
+<pre><code><span class="tag">ul</span>&gt;<span class="tag">li</span><span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value">table-cell</span></span>;
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">1%</span></span></span>; 
+}</span>
+</code></pre><p>为什么是1%？<br>至今没想出来。</p>
+<p>这样一设置，导航栏各li元素的宽度就会随着屏幕的宽度变化而变化，不论你怎么改变，它们都会平均的分配宽度。</p>
+<p>关于table-cell值：<br>    这个属性不能和float、position:absolute同时使用，它会被这些属性破坏。<br>    IE8+浏览器及其他浏览器都支持。</p>
+<h3 id="启示三">启示三</h3><p>学会使用<strong>媒体查询</strong>，根据不同的浏览器宽度使用不同的样式。</p>
+<pre><code>@media(最小宽度或最大宽度){
+    <span class="attribute">...</span><span class="attribute">...</span>
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-20T13:21:52.575Z"><a href="/2015/12/20/bootstrap-栅格系统/">2015-12-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/20/bootstrap-栅格系统/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>title: bootstrap-栅格系统<br>date: 2015-12-12 16:36:34<br>tags:<br>category: bootstrap<br>栅格系统可以说是bootstrap的核心之一，响应式设计就是建立在这个基础之上。</p>
+<h3 id="实现原理">实现原理</h3><p>定义容器，调整内外边距，平分12份，媒体查询</p>
+<p>这四个合起来就能实现栅格系统。<br>ps：12等分是默认的，我们可以重新编译LESS来修改这个数值。</p>
+<p>一个简单的例子：</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"container"</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-2"</span>&gt;<span class="number">1</span>&lt;/<span class="keyword">div</span>&gt;
+    &lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h3 id="响应式栅格">响应式栅格</h3><p><strong>超小型屏幕：</strong></p>
+<ul>
+<li>&lt;768px</li>
+<li>任何分辨率下都水平排列</li>
+<li>最大容器宽度时自动</li>
+<li>.col-xs-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p><strong>小型屏幕设备：</strong></p>
+<ul>
+<li><992px &&="">=768px</992px></li>
+<li>小于768时，垂直排列；超过768，水平排列</li>
+<li>最大容器宽度是750px</li>
+<li>.col-sm-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p><strong>中等屏幕设备：</strong></p>
+<ul>
+<li><1200px &&="">=992px</1200px></li>
+<li>小于992，垂直排列；超过992，水平排列</li>
+<li>最大容器宽度是970px</li>
+<li>.col-md-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p><strong>大屏幕设备：</strong></p>
+<ul>
+<li>>1200px</li>
+<li>小于1200时，垂直排列；超过1200，水平排列</li>
+<li>最大容器宽度是1170px</li>
+<li>.col-lg-</li>
+<li>可嵌套，可排序，可偏移</li>
+</ul>
+<p>ps：向大兼容，小于媒体查询中的最小宽度，就不起作用了。</p>
+<p>跨设备组合：由于向大兼容的原因，小就无法兼容，那么可以再设置一套样式，如下：</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-6 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-6 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-sm-3 col-md-2"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="comment">&lt;!--自己试试，效果必然不同--&gt;</span>
+</code></pre><p>清除浮动：栅格里的所有格都有左浮动的样式，如果受到浮动影响了，可以使用<strong>.clearfix</strong>来清除浮动。使用如下</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1内容好多好多好多好多,把高度撑大了<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="comment">&lt;!--此处开始受到浮动影响，新添加一个div--&gt;</span>
+
+        <span class="comment">&lt;!----新添加的div-----&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"clearfix"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="comment">&lt;!-----------------------------&gt;</span>
+
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-6"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><h3 id="基本使用方法">基本使用方法</h3><p>列偏移：</p>
+<pre><code><span class="built_in">col</span>-xs-offset-
+<span class="built_in">col</span>-<span class="keyword">sm</span>-offset-
+<span class="built_in">col</span>-md-offset-
+<span class="built_in">col</span>-<span class="keyword">lg</span>-offset-
+</code></pre><p>列嵌套</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"container"</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"col-md-9"</span>&gt;
+            &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"row"</span>&gt;
+                此处再次分格
+            &lt;/<span class="keyword">div</span>&gt;
+        &lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>列排序</p>
+<pre><code>col-<span class="built_in">md</span>-pull-
+col-<span class="built_in">md</span>-push-
+其他屏幕同理
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-20T08:56:53.000Z"><a href="/2015/12/20/推荐技术网站/">2015-12-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/20/推荐技术网站/">推荐技术网站</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>网络安全方面：<br><a href="http://www.freebuf.com/" target="_blank" rel="external">http://www.freebuf.com/</a></p>
+<p>前端：<br><a href="http://www.awesomes.cn/" target="_blank" rel="external">http://www.awesomes.cn/</a><br><a href="http://www.cnqianduan.com/" target="_blank" rel="external">http://www.cnqianduan.com/</a><br><a href="http://www.w3cfuns.com/" target="_blank" rel="external">http://www.w3cfuns.com/</a></p>
+<p>linux：<br><a href="http://www.linuxidc.com/" target="_blank" rel="external">http://www.linuxidc.com/</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-19T09:37:19.000Z"><a href="/2015/12/19/js-DOM节点类型-Element类型/">2015-12-19</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/19/js-DOM节点类型-Element类型/">js-DOM节点类型-Element类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Element类型">Element类型</h3><p><strong>特征</strong><br>    nodeType:1;<br>    nodeName:元素的标签名;<br>    nodeValue: null;<br>    parentNode: Document/Element;<br>    ownerDocument: null;</p>
+<p><strong>特性</strong><br>    特性就是元素标签的属性，只是换了个名字而已。本人分析是为了区别元素标签的属性和DOM对象的属性而这样干的。</p>
+<p><strong>取得特性</strong><br>两种方式：getAttribute()和直接访问DOM对象属性。</p>
+<p>ps：并不是所有的特性都有对应的属性。对于一些公认的特性，才有与之对应的DOM对象的属性。</p>
+<p>ps：在公认的特性中，有两类特殊的特性：style和onclick。两种方式取得的值不想同。由于这样的存在，开发人员在取得自定义特性使用getAttribute(),最普遍使用的还是DOM对象属性。</p>
+<p>ps：ie浏览器中自定义特性也有对应的属性</p>
+<p><strong>设置特性</strong><br>两种方式：setAttribute()和直接设置DOM属性。</p>
+<p>ps：setAttribute()无法设置class和style特性。</p>
+<p>ps：setAttribute()可以设置自定义特性，直接设置DOM属性只能设置属性，如果不是公共特性，并不能反应到元素的特性上。</p>
+<p><strong>移除特性</strong><br>removeAttribute()</p>
+<p><strong>attributes属性</strong><br>所有的特性都保存在这个属性当中。</p>
+<p>ps：这个属性实质上是一个对象集合，它具有一些查找集合元素的方法。</p>
+<p>ps：如果要遍历元素的特性，就可以使用这个属性。</p>
+<p><strong>创建元素</strong><br>大部分浏览器支持：document.createElement()</p>
+<p>ps：大部分浏览器的该方法传递的参数为标签的名称，例如div、a等；</p>
+<pre><code><span class="built_in">document</span>.createElement(<span class="string">'div'</span>);
+</code></pre><p>但是IE浏览器还支持传递整个标签，例如:</p>
+<pre><code>document.createElement("<span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>");
+</code></pre><p>ps：ie7即其以下的浏览器都存在着bug，解决方式是使用下面的方法：</p>
+<pre><code><span class="keyword">if</span>(client.browser.ie &amp;&amp; client.browser.ie&lt;=7){
+    <span class="comment">//低版本无法设置动态创建&lt;iframe&gt;的name特性</span>
+    <span class="keyword">var</span> iframe=document.createElement(<span class="string">"&lt;iframe name=\"</span>myframe\<span class="string">"&gt;&lt;/iframe&gt;"</span>);
+
+    <span class="comment">//低版本无法使用reset()方法重置input元素</span>
+    <span class="keyword">var</span> <span class="keyword">input</span>=document.createElement(<span class="string">"&lt;input type=\"</span>checkbox\<span class="string">"&gt;"</span>);
+
+    <span class="comment">//低版本创建的reset按钮无法重置表单</span>
+    <span class="keyword">var</span> button=document.createElement(<span class="string">"&lt;button type=\"</span>reset\<span class="string">"&gt;&lt;/button&gt;"</span>);
+
+    <span class="comment">//低版本创建的单选按钮，即使name相同，但是也无法实现单选</span>
+    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>1\<span class="string">"&gt;"</span>);
+    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>2\<span class="string">"&gt;"</span>);
+}
+</code></pre><p><strong>元素子节点</strong><br>通过childNodes属性获取直接子节点(所有子节点)。<br>ie浏览器在识别子节点时不会计算文本节点（空白符），而其他浏览器会记录文本节点(空白符)。</p>
+<pre><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="comment">&lt;!--ul子节点数：ie浏览器返回3，其他浏览器返回7--&gt;</span>
+
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="comment">&lt;!--所有浏览器都返回3--&gt;</span>
+</code></pre><p><strong>添加子节点</strong><br>appendChild(node);<br><strong>两类特殊的元素标签</strong><br><code>&lt;script&gt;&lt;/script&gt;</code>和<code>&lt;style&gt;&lt;/style&gt;</code></p>
+<p><code>&lt;script&gt;&lt;/script&gt;</code><br>IE浏览器是不允许对script和style的DOM对象使用操作子节点的方法，例如。<br>appendChild()、removeChild()等。</p>
+<p>动态加载js文件</p>
+<p>加载外部js文件(各浏览器通用)：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);
+    script.type=<span class="string">"text/javascript"</span>;
+    script.src=<span class="string">"url"</span>;
+    <span class="built_in">document</span>.body.appendChild(script);
+}
+</code></pre><p>加载行内js代码</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">'script'</span>);
+    script.type=<span class="string">"text/javascript"</span>;
+    <span class="keyword">try</span>{<span class="comment">//其它浏览器</span>
+        script.appendChild(<span class="built_in">document</span>.createTextNode(code));
+    }<span class="keyword">catch</span>(ex){<span class="comment">//ie浏览器</span>
+        script.text=<span class="string">"code"</span>;
+    }
+    <span class="built_in">document</span>.body.appendChild(script);
+}
+</code></pre><p>动态加载css</p>
+<p>加载外部css文件</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCss</span>(<span class="params">url</span>)</span>{
+    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">'style'</span>);
+    style.rel=<span class="string">"stylesheet"</span>;
+    style.type=<span class="string">"text/css"</span>;
+    style.href=url;
+    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];
+    head.appendChild(style);
+}
+</code></pre><p>加载css样式</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCssString</span>(<span class="params">css</span>)</span>{
+    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">"style"</span>);
+    style.rel=<span class="string">"stylesheet"</span>;
+    style.type=<span class="string">"text/css"</span>;
+    <span class="keyword">try</span>{<span class="comment">//其他浏览器</span>
+        style.appendChild(<span class="built_in">document</span>.createTextNode(css));
+    }<span class="keyword">catch</span>(ex){<span class="comment">//IE浏览器</span>
+        style.stylesheet.cssText=css;
+    }
+    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];
+    head.appendChild(style);
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T15:55:12.000Z"><a href="/2015/12/18/js-JSONP跨域/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/js-JSONP跨域/">js-JSONP跨域</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T15:43:05.000Z"><a href="/2015/12/18/浏览器-同源策略/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/浏览器-同源策略/">浏览器-同源策略</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
       
     </div>
     <footer>
@@ -819,22 +1023,24 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
 
 <nav id="pagination">
   
-    <a href="/" class="alignleft prev">Anterior</a>
+    <a href="/" class="alignleft prev">上一頁</a>
   
+  
+    <a href="/page/3/" class="alignright next">下一頁</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Buscar">
+    <input type="search" name="q" results="0" placeholder="搜尋">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
 
   
 <div class="widget tag">
-  <h3 class="title">Categorías</h3>
+  <h3 class="title">分類</h3>
   <ul class="entry">
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
@@ -843,11 +1049,15 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>7</small></li>
+    <li><a href="/categories/js/">js</a><small>16</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
   
     <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/插件/">插件</a><small>1</small></li>
   
     <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
   
@@ -864,7 +1074,9 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
 <li>星座：双鱼座</li>
 <li>现状：合肥工业大学本科生</li>
 <li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
-
+<!--
+<li><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=86 src="http://music.163.com/outchain/player?type=2&id=39443443&auto=1&height=66"></iframe></li>
+-->
 </ul>
 </div>
 
@@ -876,7 +1088,7 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 WJer
+  &copy; 2016 WJer
   
 </div>
 <div class="clearfix"></div></footer>

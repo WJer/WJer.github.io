@@ -5,19 +5,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>nodejs-supervisor | WJer&#39;s time</title>
+  <title>css-居中篇 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="使用supervisor提高调试效率每次改完项目的js文件，都要重新node一下，实在是麻烦。
-后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。
-如何安装通过
-supervisor app.js
-启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令">
+  <meta name="description" content="块级元素居中之一可以直接设置样式：
+margin:0 auto;
+注意:这种方式只能对块级元素使用，inline-block都不行；不能对没有在标准流的元素使用。
+#所有子元素通过css3中的盒模型
+父元素{
+    display:-moz-box;
+    display:-webkit-box">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="nodejs-supervisor"/>
+  <meta property="og:title" content="css-居中篇"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -90,26 +92,29 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
+        <time datetime="2016-02-11T10:12:24.000Z"><a href="/2016/02/11/css-居中篇/">2016-02-11</a></time>
       
       
   
-    <h1 class="title">nodejs-supervisor</h1>
+    <h1 class="title">css-居中篇</h1>
   
 
     </header>
     <div class="entry">
       
-        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在是麻烦。</p>
-<p>后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。</p>
-<h4 id="如何安装">如何安装</h4><p>通过</p>
-<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
-</code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
-<p>直接用npm安装既可，键入命令: </p>
-<pre><code>npm -g <span class="keyword">install</span> supervisor
-</code></pre><h4 id="自己电脑的问题">自己电脑的问题</h4><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
-<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
-</code></pre><p>通过软连接的方式来实现全局。</p>
+        <h4 id="块级元素居中之一">块级元素居中之一</h4><p>可以直接设置样式：</p>
+<pre><code>margin:<span class="number">0</span> <span class="keyword">auto</span>;
+</code></pre><p>注意:这种方式只能对块级元素使用，inline-block都不行；不能对没有在标准流的元素使用。</p>
+<h4 id="#">#</h4><h4 id="所有子元素">所有子元素</h4><p>通过css3中的盒模型</p>
+<pre><code>父元素<span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value">-moz-box</span></span>;
+    <span class="rule"><span class="attribute">display</span>:<span class="value">-webkit-box</span></span>;
+    <span class="rule"><span class="attribute">-moz-box-align</span>:<span class="value">center</span></span>;
+    <span class="rule"><span class="attribute">-webkit-box-align</span>:<span class="value">center</span></span>;
+    <span class="rule"><span class="attribute">-moz-box-pack</span>:<span class="value">center</span></span>;
+    <span class="rule"><span class="attribute">-webkit-box-pack</span>:<span class="value">center</span></span>;
+}</span>
+</code></pre><p>这样内部的子元素元素就可以居中了。<br>注意：如果内部元素为块级元素，块级元素的宽度会随内容的变化而变化，而不是充满整个一行</p>
 
       
     </div>
@@ -118,7 +123,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
         
   
   <div class="categories">
-    <a href="/categories/node-js/">node.js</a>
+    <a href="/categories/css/">css</a>
   </div>
 
         

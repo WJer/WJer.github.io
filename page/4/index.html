@@ -85,6 +85,116 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">hexo-使用&#39;hexo d&#39;报错</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="“ERROR_Deployer_not_found”_错误（for_linux）">“ERROR Deployer not found” 错误（for linux）</h2><p>hexo 升级到3.0之后，再使用</p>
+<pre><code><span class="title">hexo</span> deploy
+</code></pre><p>会出现“ERROR Deployer not found”的错误，看了很多别人的评论，才知道原因。</p>
+<h4 id="原因是缺少”hexo_deploy”的相关模块。">原因是缺少”hexo deploy”的相关模块。</h4><p>既然缺少相关模块，那我们安装吧。但是安装也需要方法的，先给出安装步骤：</p>
+<h5 id="1-进入博客所在的文件夹里">1.进入博客所在的文件夹里</h5><p>没错，这步是必须的，每个项目都有一个node_modules文件夹，正是里面缺少”hexo deploy”的相关模块,所以导致无法使用hexo deploy。网上都没有说这一步，害的菜鸟的我在坑里滚了很长时间，最后才发现这一步的关键。</p>
+<h5 id="2-安装模块">2.安装模块</h5><p>在终端输入</p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git  <span class="comment">--save</span></span>
+</code></pre><h5 id="3-修改type">3.修改type</h5><p>博客项目都有个“_config.yml”的文件，修改里面的type为“git”(以前是github；还要注意冒号后面空一格)</p>
+<p>好了，可以使用hexo deploy了，搞定！！</p>
+<p>如果还报了其他的错误，考虑有没有设置git config。当初我是刚安装的git，就忘了设置config global ×××，结果蛋疼了很久。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">nodejs-使用npm安装模块失败</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
+<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
+<pre><code>cnpm <span class="keyword">install</span> 模块名字
+</code></pre><p>来下载安装模块，很简单吧。</p>
+<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
+<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
+</code></pre><p>我们再输入</p>
+<pre><code><span class="built_in">npm</span> config ls
+</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
+<pre><code>npm <span class="keyword">install</span> 模块名字
+</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
+<p><em>注意</em>：我们可以通过</p>
+<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
+</code></pre><p>来删除新添加的配置项。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-10-23T16:22:03.000Z"><a href="/2015/10/24/linux-解决sublime中文输入/">2015-10-24</a></time>
       
       
@@ -266,6 +376,8 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>1</small></li>
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   

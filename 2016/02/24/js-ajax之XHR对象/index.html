@@ -5,15 +5,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>css-影响 | WJer&#39;s time</title>
+  <title>js-ajax之XHR对象 | WJer&#39;s time</title>
   <meta name="author" content="WJer">
   
-  <meta name="description" content="影响一float:left/right的设定会导致块级元素显示内联元素的特征,就是说不再充满整个一行，宽度由内容来决定。">
+  <meta name="description" content="XMLHttpRequest对象基础属性：
+readyState属性
+0:XMLHttpRequest对象未初始化
+1:open方法成功调用
+2:send方法成功调用
+3:正在接受数据，但未未完成
+4:已经完成
+
+onreadystatechange属性
+readyState改变触发的事件
+
+res">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="css-影响"/>
+  <meta property="og:title" content="js-ajax之XHR对象"/>
   <meta property="og:site_name" content="WJer&#39;s time"/>
 
   
@@ -86,23 +97,100 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-02-23T06:16:43.000Z"><a href="/2016/02/23/css-影响/">2016-02-23</a></time>
+        <time datetime="2016-02-24T02:11:16.000Z"><a href="/2016/02/24/js-ajax之XHR对象/">2016-02-24</a></time>
       
       
   
-    <h1 class="title">css-影响</h1>
+    <h1 class="title">js-ajax之XHR对象</h1>
   
 
     </header>
     <div class="entry">
       
-        <h4 id="影响一">影响一</h4><p><code>float:left/right</code>的设定会导致<code>块级元素</code>显示<code>内联元素</code>的特征,就是说不再充满整个一行，宽度由内容来决定。</p>
+        <h2 id="XMLHttpRequest对象">XMLHttpRequest对象</h2><h2 id="基础">基础</h2><p>属性：</p>
+<pre><code>readyState属性
+<span class="number">0</span>:XMLHttpRequest对象未初始化
+<span class="number">1</span>:open方法成功调用
+<span class="number">2</span>:send方法成功调用
+<span class="number">3</span>:正在接受数据，但未未完成
+<span class="number">4</span>:已经完成
 
+onreadystatechange属性
+readyState改变触发的事件
+
+responseText属性
+responseXML属性
+返回的xml或者text内容
+
+status属性
+服务器返回的http状态码
+
+statusText属性
+服务器返回的状态文本
+</code></pre><p>方法：</p>
+<pre><code>open<span class="list">(<span class="keyword">post/get</span>,url,sync,username,password)</span><span class="comment">;</span>
+
+send<span class="list">(<span class="keyword">content</span>)</span><span class="comment">;</span>
+
+setRequestHeader<span class="list">(<span class="keyword">key</span>,value)</span><span class="comment">;</span>
+
+getResponseHeader<span class="list">(<span class="keyword">key</span>)</span><span class="comment">;</span>
+
+abort<span class="list">()</span><span class="comment">;</span>
+</code></pre><h2 id="如何使用">如何使用</h2><p>第一步：创建对象</p>
+<pre><code><span class="keyword">var</span> xmlhttprequest;
+<span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest){  
+           xmlhttprequest=<span class="keyword">new</span> XMLHttpRequest();  
+           <span class="keyword">if</span>(xmlhttprequest.overrideMimeType){  
+               xmlhttprequest.overrideMimeType(<span class="string">"text/xml"</span>);  
+           }  
+   }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.ActiveXObject){  
+          <span class="keyword">var</span> activeName=[<span class="string">"MSXML2.XMLHTTP"</span>,<span class="string">"Microsoft.XMLHTTP"</span>];  
+           <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;activeName.length;i++){  
+               <span class="keyword">try</span>{  
+                      xmlhttprequest=<span class="keyword">new</span> ActiveXObject(activeName[i]);  
+                       <span class="keyword">break</span>;  
+               }<span class="keyword">catch</span>(e){  
+
+               }  
+           }  
+   }  
+
+   <span class="keyword">if</span>(xmlhttprequest==<span class="literal">undefined</span> || xmlhttprequest==<span class="literal">null</span>){  
+           alert(<span class="string">"XMLHttpRequest对象创建失败！！"</span>);  
+   }<span class="keyword">else</span>{  
+           <span class="keyword">this</span>.xmlhttp=xmlhttprequest;  
+   }
+</code></pre><p>第二步：回调方法</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">callback</span><span class="params">()</span></span>{  
+    <span class="keyword">if</span>（xmlhttp.readState==<span class="number">4</span>）{  
+         <span class="comment">//表示服务器的相应代码是200；正确返回了数据   </span>
+            <span class="keyword">if</span>(xmlhttp.status==<span class="number">200</span>){   
+                <span class="comment">//纯文本数据的接受方法   </span>
+                    <span class="keyword">var</span> message=xmlhttp.responseText;   
+                    <span class="comment">//使用的前提是，服务器端需要设置content-type为text/xml   </span>
+                    <span class="comment">//var domXml=xmlhttp.responseXML;   </span>
+                    <span class="comment">//其它代码  </span>
+             }   
+        }  
+ }
+</code></pre><p>第三步：注册回调方法</p>
+<pre><code>xmlhttprequest.onreadystatechange=callback<span class="comment">;</span>
+</code></pre><p>第四步：设置请求参数</p>
+<pre><code>xmlhttprequest.<span class="keyword">open</span>('<span class="keyword">get</span>',url,<span class="literal">true</span>);
+</code></pre><p>第五步：发送请求</p>
+<pre><code>xmlhttprequest.<span class="built_in">send</span>(<span class="literal">null</span> <span class="literal">or</span> content)<span class="comment">;</span>
+</code></pre>
       
     </div>
     <footer>
       
         
+  
+  <div class="categories">
+    <a href="/categories/js/">js</a>
+  </div>
+
         
         <!--分享的模块-->
 <!-- Baidu Button BEGIN -->

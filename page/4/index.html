@@ -85,6 +85,181 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-12-12T13:31:34.000Z"><a href="/2015/12/12/js-继承/">2015-12-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/12/js-继承/">js-继承</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="继承">继承</h2><p>javascript是通过原型链来实现继承。<br>实现继承的方式有很多，但总的思路就是原型链，本人总结了一下，如下：</p>
+<h4 id="原型链">原型链</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+    ......
+}
+Super.prototype.saySupername=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    ......
+}<span class="comment">//此处代表对超类型的原型的操作</span>
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
+    ......
+}
+Sub.prototype=<span class="keyword">new</span> Super();
+</code></pre><p>通过上面的方式，便实现了继承。</p>
+<p>注意：<br>1.这种方式的原型链在最顶层还有一个Object.prototype，不要忽略。<br>2.可以通过instanceof和isPrototypeOf来确定实例和原型的关系<br>3.存在的问题：原型中的值会被共享、在创建子类型的实例时无法向超类型的构造函数传递参数。</p>
+<h4 id="借用构造函数">借用构造函数</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
+    ......
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
+    ......
+    Super.call(<span class="keyword">this</span>,[参数]);<span class="comment">//超类型的构造函数当普通函数使用</span>
+}
+</code></pre><p>注意：<br>1.这种方式可以在创建子类型的实例时给超类型的构造函数传递参数。<br>2.存在的问题：当只借用构造函数这种方式时，那么就无法做到函数复用，除非使用原型。</p>
+<h4 id="组合继承">组合继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">(name)</span></span>{
+    <span class="keyword">this</span>.name=name;
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.name;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">(name,age)</span></span>{
+    Super.call(<span class="keyword">this</span>,name);
+    <span class="keyword">this</span>.age=age;
+}
+Sub.prototype=<span class="keyword">new</span> Super();
+</code></pre><p>就是把原型链和借用构造函数两种方式组合起来使用。<br>注意：1.这是最常用到的继承模式。</p>
+<h4 id="原型式继承">原型式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>{
+    <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>{};
+    F.prototype=o;
+    <span class="keyword">return</span> <span class="keyword">new</span> F();
+}
+</code></pre><p>注意：<br>1.使用Object.create(o);来代替上面的函数，这是ECMAScript5规范了的方法。<br>2.使用条件：只想使两个对象保持类似的问题。<br>3.存在的问题：包含引用类型的属性都会共享相应的值，也就是无法有私有的属性和方法。</p>
+<h4 id="寄生式继承">寄生式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(o)</span></span>{
+    <span class="keyword">var</span> <span class="keyword">clone</span>=object(o);
+    <span class="keyword">clone</span>.sayHi=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//这里可以创建一些私有的属性和方法</span>
+        ......
+    }
+    <span class="keyword">return</span> <span class="keyword">clone</span>;
+}
+</code></pre><p>注意：<br>1.和构造函数一样，若只是使用这种方式，那么就无法达到函数复用。</p>
+<h4 id="寄生组合式继承">寄生组合式继承</h4><p>先看看组合继承的缺点：重复执行相同的函数两次</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
+    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
+    <span class="keyword">this</span>.age=age;
+}
+Sub.prototype=<span class="keyword">new</span> Super();<span class="comment">//执行第二次</span>
+</code></pre><p>改变后：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">Sub,Super</span>)</span>{
+    <span class="keyword">var</span> prototype=object(Super.prototype);
+    prototype.constructor=Sub;
+    Sub.prototype=prototype;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+}
+Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
+    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
+    <span class="keyword">this</span>.age=age;
+}
+inheritPrototype(Sub,Sup);
+</code></pre><p>注意：<br>普遍认为这是最理想的继承方法。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/11/28/nodejs-supervisor/">nodejs-supervisor</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在是麻烦。</p>
+<p>后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。</p>
+<h4 id="如何安装">如何安装</h4><p>通过</p>
+<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
+</code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
+<p>直接用npm安装既可，键入命令: </p>
+<pre><code>npm -g <span class="keyword">install</span> supervisor
+</code></pre><h4 id="自己电脑的问题">自己电脑的问题</h4><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
+<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
+</code></pre><p>通过软连接的方式来实现全局。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
       
       
@@ -373,6 +548,8 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   <h3 class="title">分類</h3>
   <ul class="entry">
   
+    <li><a href="/categories/HTML5/">HTML5</a><small>1</small></li>
+  
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
@@ -381,7 +558,7 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>16</small></li>
+    <li><a href="/categories/js/">js</a><small>17</small></li>
   
     <li><a href="/categories/linux/">linux</a><small>3</small></li>
   

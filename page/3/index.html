@@ -85,6 +85,182 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-12-20T08:56:53.000Z"><a href="/2015/12/20/推荐技术网站/">2015-12-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/20/推荐技术网站/">推荐技术网站</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>网络安全方面：<br><a href="http://www.freebuf.com/" target="_blank" rel="external">http://www.freebuf.com/</a></p>
+<p>前端：<br><a href="http://www.awesomes.cn/" target="_blank" rel="external">http://www.awesomes.cn/</a><br><a href="http://www.cnqianduan.com/" target="_blank" rel="external">http://www.cnqianduan.com/</a><br><a href="http://www.w3cfuns.com/" target="_blank" rel="external">http://www.w3cfuns.com/</a></p>
+<p>linux：<br><a href="http://www.linuxidc.com/" target="_blank" rel="external">http://www.linuxidc.com/</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-19T09:37:19.000Z"><a href="/2015/12/19/js-DOM节点类型-Element类型/">2015-12-19</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/19/js-DOM节点类型-Element类型/">js-DOM节点类型-Element类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Element类型">Element类型</h3><p><strong>特征</strong><br>    nodeType:1;<br>    nodeName:元素的标签名;<br>    nodeValue: null;<br>    parentNode: Document/Element;<br>    ownerDocument: null;</p>
+<p><strong>特性</strong><br>    特性就是元素标签的属性，只是换了个名字而已。本人分析是为了区别元素标签的属性和DOM对象的属性而这样干的。</p>
+<p><strong>取得特性</strong><br>两种方式：getAttribute()和直接访问DOM对象属性。</p>
+<p>ps：并不是所有的特性都有对应的属性。对于一些公认的特性，才有与之对应的DOM对象的属性。</p>
+<p>ps：在公认的特性中，有两类特殊的特性：style和onclick。两种方式取得的值不想同。由于这样的存在，开发人员在取得自定义特性使用getAttribute(),最普遍使用的还是DOM对象属性。</p>
+<p>ps：ie浏览器中自定义特性也有对应的属性</p>
+<p><strong>设置特性</strong><br>两种方式：setAttribute()和直接设置DOM属性。</p>
+<p>ps：setAttribute()无法设置class和style特性。</p>
+<p>ps：setAttribute()可以设置自定义特性，直接设置DOM属性只能设置属性，如果不是公共特性，并不能反应到元素的特性上。</p>
+<p><strong>移除特性</strong><br>removeAttribute()</p>
+<p><strong>attributes属性</strong><br>所有的特性都保存在这个属性当中。</p>
+<p>ps：这个属性实质上是一个对象集合，它具有一些查找集合元素的方法。</p>
+<p>ps：如果要遍历元素的特性，就可以使用这个属性。</p>
+<p><strong>创建元素</strong><br>大部分浏览器支持：document.createElement()</p>
+<p>ps：大部分浏览器的该方法传递的参数为标签的名称，例如div、a等；</p>
+<pre><code><span class="built_in">document</span>.createElement(<span class="string">'div'</span>);
+</code></pre><p>但是IE浏览器还支持传递整个标签，例如:</p>
+<pre><code>document.createElement("<span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>");
+</code></pre><p>ps：ie7即其以下的浏览器都存在着bug，解决方式是使用下面的方法：</p>
+<pre><code><span class="keyword">if</span>(client.browser.ie &amp;&amp; client.browser.ie&lt;=7){
+    <span class="comment">//低版本无法设置动态创建&lt;iframe&gt;的name特性</span>
+    <span class="keyword">var</span> iframe=document.createElement(<span class="string">"&lt;iframe name=\"</span>myframe\<span class="string">"&gt;&lt;/iframe&gt;"</span>);
+
+    <span class="comment">//低版本无法使用reset()方法重置input元素</span>
+    <span class="keyword">var</span> <span class="keyword">input</span>=document.createElement(<span class="string">"&lt;input type=\"</span>checkbox\<span class="string">"&gt;"</span>);
+
+    <span class="comment">//低版本创建的reset按钮无法重置表单</span>
+    <span class="keyword">var</span> button=document.createElement(<span class="string">"&lt;button type=\"</span>reset\<span class="string">"&gt;&lt;/button&gt;"</span>);
+
+    <span class="comment">//低版本创建的单选按钮，即使name相同，但是也无法实现单选</span>
+    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>1\<span class="string">"&gt;"</span>);
+    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>2\<span class="string">"&gt;"</span>);
+}
+</code></pre><p><strong>元素子节点</strong><br>通过childNodes属性获取直接子节点(所有子节点)。<br>ie浏览器在识别子节点时不会计算文本节点（空白符），而其他浏览器会记录文本节点(空白符)。</p>
+<pre><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="comment">&lt;!--ul子节点数：ie浏览器返回3，其他浏览器返回7--&gt;</span>
+
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="comment">&lt;!--所有浏览器都返回3--&gt;</span>
+</code></pre><p><strong>添加子节点</strong><br>appendChild(node);<br><strong>两类特殊的元素标签</strong><br><code>&lt;script&gt;&lt;/script&gt;</code>和<code>&lt;style&gt;&lt;/style&gt;</code></p>
+<p><code>&lt;script&gt;&lt;/script&gt;</code><br>IE浏览器是不允许对script和style的DOM对象使用操作子节点的方法，例如。<br>appendChild()、removeChild()等。</p>
+<p>动态加载js文件</p>
+<p>加载外部js文件(各浏览器通用)：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);
+    script.type=<span class="string">"text/javascript"</span>;
+    script.src=<span class="string">"url"</span>;
+    <span class="built_in">document</span>.body.appendChild(script);
+}
+</code></pre><p>加载行内js代码</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">'script'</span>);
+    script.type=<span class="string">"text/javascript"</span>;
+    <span class="keyword">try</span>{<span class="comment">//其它浏览器</span>
+        script.appendChild(<span class="built_in">document</span>.createTextNode(code));
+    }<span class="keyword">catch</span>(ex){<span class="comment">//ie浏览器</span>
+        script.text=<span class="string">"code"</span>;
+    }
+    <span class="built_in">document</span>.body.appendChild(script);
+}
+</code></pre><p>动态加载css</p>
+<p>加载外部css文件</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCss</span>(<span class="params">url</span>)</span>{
+    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">'style'</span>);
+    style.rel=<span class="string">"stylesheet"</span>;
+    style.type=<span class="string">"text/css"</span>;
+    style.href=url;
+    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];
+    head.appendChild(style);
+}
+</code></pre><p>加载css样式</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCssString</span>(<span class="params">css</span>)</span>{
+    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">"style"</span>);
+    style.rel=<span class="string">"stylesheet"</span>;
+    style.type=<span class="string">"text/css"</span>;
+    <span class="keyword">try</span>{<span class="comment">//其他浏览器</span>
+        style.appendChild(<span class="built_in">document</span>.createTextNode(css));
+    }<span class="keyword">catch</span>(ex){<span class="comment">//IE浏览器</span>
+        style.stylesheet.cssText=css;
+    }
+    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];
+    head.appendChild(style);
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-12-18T15:55:12.000Z"><a href="/2015/12/18/js-JSONP跨域/">2015-12-18</a></time>
       
       
@@ -734,181 +910,6 @@ b=<span class="literal">null</span>;<span class="comment">//匿名函数不再�
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-12T13:31:34.000Z"><a href="/2015/12/12/js-继承/">2015-12-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/12/js-继承/">js-继承</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="继承">继承</h2><p>javascript是通过原型链来实现继承。<br>实现继承的方式有很多，但总的思路就是原型链，本人总结了一下，如下：</p>
-<h4 id="原型链">原型链</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
-    ......
-}
-Super.prototype.saySupername=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    ......
-}<span class="comment">//此处代表对超类型的原型的操作</span>
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
-    ......
-}
-Sub.prototype=<span class="keyword">new</span> Super();
-</code></pre><p>通过上面的方式，便实现了继承。</p>
-<p>注意：<br>1.这种方式的原型链在最顶层还有一个Object.prototype，不要忽略。<br>2.可以通过instanceof和isPrototypeOf来确定实例和原型的关系<br>3.存在的问题：原型中的值会被共享、在创建子类型的实例时无法向超类型的构造函数传递参数。</p>
-<h4 id="借用构造函数">借用构造函数</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">()</span></span>{
-    ......
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">()</span></span>{
-    ......
-    Super.call(<span class="keyword">this</span>,[参数]);<span class="comment">//超类型的构造函数当普通函数使用</span>
-}
-</code></pre><p>注意：<br>1.这种方式可以在创建子类型的实例时给超类型的构造函数传递参数。<br>2.存在的问题：当只借用构造函数这种方式时，那么就无法做到函数复用，除非使用原型。</p>
-<h4 id="组合继承">组合继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span><span class="params">(name)</span></span>{
-    <span class="keyword">this</span>.name=name;
-}
-Super.prototype.sayName=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    <span class="keyword">return</span> <span class="keyword">this</span>.name;
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span><span class="params">(name,age)</span></span>{
-    Super.call(<span class="keyword">this</span>,name);
-    <span class="keyword">this</span>.age=age;
-}
-Sub.prototype=<span class="keyword">new</span> Super();
-</code></pre><p>就是把原型链和借用构造函数两种方式组合起来使用。<br>注意：1.这是最常用到的继承模式。</p>
-<h4 id="原型式继承">原型式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>{
-    <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>{};
-    F.prototype=o;
-    <span class="keyword">return</span> <span class="keyword">new</span> F();
-}
-</code></pre><p>注意：<br>1.使用Object.create(o);来代替上面的函数，这是ECMAScript5规范了的方法。<br>2.使用条件：只想使两个对象保持类似的问题。<br>3.存在的问题：包含引用类型的属性都会共享相应的值，也就是无法有私有的属性和方法。</p>
-<h4 id="寄生式继承">寄生式继承</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(o)</span></span>{
-    <span class="keyword">var</span> <span class="keyword">clone</span>=object(o);
-    <span class="keyword">clone</span>.sayHi=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//这里可以创建一些私有的属性和方法</span>
-        ......
-    }
-    <span class="keyword">return</span> <span class="keyword">clone</span>;
-}
-</code></pre><p>注意：<br>1.和构造函数一样，若只是使用这种方式，那么就无法达到函数复用。</p>
-<h4 id="寄生组合式继承">寄生组合式继承</h4><p>先看看组合继承的缺点：重复执行相同的函数两次</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
-    <span class="keyword">this</span>.name=name;
-    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
-}
-Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
-    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
-    <span class="keyword">this</span>.age=age;
-}
-Sub.prototype=<span class="keyword">new</span> Super();<span class="comment">//执行第二次</span>
-</code></pre><p>改变后：</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">Sub,Super</span>)</span>{
-    <span class="keyword">var</span> prototype=object(Super.prototype);
-    prototype.constructor=Sub;
-    Sub.prototype=prototype;
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">name</span>)</span>{
-    <span class="keyword">this</span>.name=name;
-    <span class="keyword">this</span>.color=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
-}
-Super.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-}
-<span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">name,age</span>)</span>{
-    Super.call(<span class="keyword">this</span>,name);<span class="comment">//执行第一次</span>
-    <span class="keyword">this</span>.age=age;
-}
-inheritPrototype(Sub,Sup);
-</code></pre><p>注意：<br>普遍认为这是最理想的继承方法。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/28/nodejs-supervisor/">nodejs-supervisor</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在是麻烦。</p>
-<p>后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。</p>
-<h4 id="如何安装">如何安装</h4><p>通过</p>
-<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
-</code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
-<p>直接用npm安装既可，键入命令: </p>
-<pre><code>npm -g <span class="keyword">install</span> supervisor
-</code></pre><h4 id="自己电脑的问题">自己电脑的问题</h4><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
-<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
-</code></pre><p>通过软连接的方式来实现全局。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -932,6 +933,8 @@ inheritPrototype(Sub,Sup);
   <h3 class="title">分類</h3>
   <ul class="entry">
   
+    <li><a href="/categories/HTML5/">HTML5</a><small>1</small></li>
+  
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
@@ -940,7 +943,7 @@ inheritPrototype(Sub,Sup);
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>16</small></li>
+    <li><a href="/categories/js/">js</a><small>17</small></li>
   
     <li><a href="/categories/linux/">linux</a><small>3</small></li>
   

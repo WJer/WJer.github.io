@@ -85,6 +85,180 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-02-24T02:11:16.000Z"><a href="/2016/02/24/js-ajax之XHR对象/">2016-02-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/24/js-ajax之XHR对象/">js-ajax之XHR对象</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="XMLHttpRequest对象">XMLHttpRequest对象</h2><h2 id="基础">基础</h2><p>属性：</p>
+<pre><code>readyState属性
+<span class="number">0</span>:XMLHttpRequest对象未初始化
+<span class="number">1</span>:open方法成功调用
+<span class="number">2</span>:send方法成功调用
+<span class="number">3</span>:正在接受数据，但未未完成
+<span class="number">4</span>:已经完成
+
+onreadystatechange属性
+readyState改变触发的事件
+
+responseText属性
+responseXML属性
+返回的xml或者text内容
+
+status属性
+服务器返回的http状态码
+
+statusText属性
+服务器返回的状态文本
+</code></pre><p>方法：</p>
+<pre><code>open<span class="list">(<span class="keyword">post/get</span>,url,sync,username,password)</span><span class="comment">;</span>
+
+send<span class="list">(<span class="keyword">content</span>)</span><span class="comment">;</span>
+
+setRequestHeader<span class="list">(<span class="keyword">key</span>,value)</span><span class="comment">;</span>
+
+getResponseHeader<span class="list">(<span class="keyword">key</span>)</span><span class="comment">;</span>
+
+abort<span class="list">()</span><span class="comment">;</span>
+</code></pre><h2 id="如何使用">如何使用</h2><p>第一步：创建对象</p>
+<pre><code><span class="keyword">var</span> xmlhttprequest;
+<span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest){  
+           xmlhttprequest=<span class="keyword">new</span> XMLHttpRequest();  
+           <span class="keyword">if</span>(xmlhttprequest.overrideMimeType){  
+               xmlhttprequest.overrideMimeType(<span class="string">"text/xml"</span>);  
+           }  
+   }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.ActiveXObject){  
+          <span class="keyword">var</span> activeName=[<span class="string">"MSXML2.XMLHTTP"</span>,<span class="string">"Microsoft.XMLHTTP"</span>];  
+           <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;activeName.length;i++){  
+               <span class="keyword">try</span>{  
+                      xmlhttprequest=<span class="keyword">new</span> ActiveXObject(activeName[i]);  
+                       <span class="keyword">break</span>;  
+               }<span class="keyword">catch</span>(e){  
+
+               }  
+           }  
+   }  
+
+   <span class="keyword">if</span>(xmlhttprequest==<span class="literal">undefined</span> || xmlhttprequest==<span class="literal">null</span>){  
+           alert(<span class="string">"XMLHttpRequest对象创建失败！！"</span>);  
+   }<span class="keyword">else</span>{  
+           <span class="keyword">this</span>.xmlhttp=xmlhttprequest;  
+   }
+</code></pre><p>第二步：回调方法</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">callback</span><span class="params">()</span></span>{  
+    <span class="keyword">if</span>（xmlhttp.readState==<span class="number">4</span>）{  
+         <span class="comment">//表示服务器的相应代码是200；正确返回了数据   </span>
+            <span class="keyword">if</span>(xmlhttp.status==<span class="number">200</span>){   
+                <span class="comment">//纯文本数据的接受方法   </span>
+                    <span class="keyword">var</span> message=xmlhttp.responseText;   
+                    <span class="comment">//使用的前提是，服务器端需要设置content-type为text/xml   </span>
+                    <span class="comment">//var domXml=xmlhttp.responseXML;   </span>
+                    <span class="comment">//其它代码  </span>
+             }   
+        }  
+ }
+</code></pre><p>第三步：注册回调方法</p>
+<pre><code>xmlhttprequest.onreadystatechange=callback<span class="comment">;</span>
+</code></pre><p>第四步：设置请求参数</p>
+<pre><code>xmlhttprequest.<span class="keyword">open</span>('<span class="keyword">get</span>',url,<span class="literal">true</span>);
+</code></pre><p>第五步：发送请求</p>
+<pre><code>xmlhttprequest.<span class="built_in">send</span>(<span class="literal">null</span> <span class="literal">or</span> content)<span class="comment">;</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-23T07:43:42.000Z"><a href="/2016/02/23/HTML5-webworker见解/">2016-02-23</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/23/HTML5-webworker见解/">HTML5-webworker见解</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>多线程是个很高效的事情，HTML5也增加了关于线程的新API。</p>
+<h4 id="如何使用">如何使用</h4><p>script.js</p>
+<pre><code>onmessage=<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{
+    var <span class="type">data</span>=event.<span class="type">data</span>;
+    postmessage(<span class="type">data</span>);
+}
+</code></pre><p>index.html</p>
+<pre><code><span class="comment">&lt;!--js部分--&gt;</span>
+var worker=new WebWorker('script.js');
+worker.onmessage=function(event){
+    alert(event.data);
+}
+worker.postmessage("hello world");
+</code></pre><h4 id="哪种场合可以使用">哪种场合可以使用</h4><p><strong>提高渲染速度</strong><br>我们都知道浏览器在执行js时是不渲染页面的，如果我们要使用js处理一大堆数据，势必会浪费时间，这时我们可以交给线程来做，最后再将处理的结果返回给浏览器。<br>这样渲染和执行js同时进行，大大提高了页面的加载速度。<br><strong>ajax请求</strong><br>线程中是可以进行ajax请求的，</p>
+<h4 id="能力有限">能力有限</h4><p>线程中是无法访问window、document对象的，意味着不能进行DOM操作。<br>不是所有的浏览器都支持该API</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-02-23T06:16:43.000Z"><a href="/2016/02/23/css-影响/">2016-02-23</a></time>
       
       
@@ -504,112 +678,6 @@ ul.onclick=<span class="function"><span class="keyword">function</span>(<span cl
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-04T09:38:00.000Z"><a href="/2016/01/04/js-事件-事件流/">2016-01-04</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/04/js-事件-事件流/">js-事件-事件流</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="事件流">事件流</h2><p>如今浏览器的事件流分为两种：事件冒泡和事件捕获。</p>
-<p>为什么会出现事件流呢？<br>假如子div和父div都添加了click事件，当我们点击子div时，浏览器应该先处理子div的事件还是父div的事件呢？为了解决这个问题，因此产生了事件流。</p>
-<p>事件冒泡：先执行子div,再是父div<br>事件捕获：先执行父div,再是子div<br>两者的顺序刚好相反。</p>
-<h4 id="浏览器支持">浏览器支持</h4><p>IE8只支持事件冒泡，IE9和其他浏览器两者都支持。</p>
-<h4 id="如何切换事件流">如何切换事件流</h4><p>如果我们想指定使用哪种事件流，可以使用下列的方法来添加事件。</p>
-<pre><code>addEventListener(交互方式,处理函数,<span class="literal">true</span>/<span class="literal">false</span>)<span class="comment">;</span>
-//<span class="literal">true</span>为事件捕获，<span class="literal">false</span>为事件冒泡
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-03T06:38:18.000Z"><a href="/2016/01/03/js-DOM扩展-HTML5/">2016-01-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/03/js-DOM扩展-HTML5/">js-DOM扩展-HTML5</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="HTML5">HTML5</h2><p>传统HTML规范的核心内容是定义标记，而和js先关的API是由DOM规范来定义。<br>HTML5规范不仅定义了新的标签，而且定义了大量的js API。</p>
-<h4 id="与类相关">与类相关</h4><p><strong>getElementsByClassName()</strong><br>通过类名来获得DOM节点，可以传多个类名。</p>
-<p>返回NodeList对象,同样也具有性能问题。</p>
-<p>支持的浏览器：IE9+,FF3+,SF3.1+,CH,OP9.5+</p>
-<p><strong>classLIst属性</strong><br>所有的元素节点都有这个属性，这是个类的集合。</p>
-<p>该属性具有的方法：</p>
-<ul>
-<li>add()</li>
-<li>contains()</li>
-<li>remove()</li>
-<li>toggle()</li>
-</ul>
-<p>支持的浏览器：FF3.6+,CH</p>
-<h4 id="焦点管理">焦点管理</h4>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -631,6 +699,8 @@ ul.onclick=<span class="function"><span class="keyword">function</span>(<span cl
   <h3 class="title">分類</h3>
   <ul class="entry">
   
+    <li><a href="/categories/HTML5/">HTML5</a><small>1</small></li>
+  
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
@@ -639,7 +709,7 @@ ul.onclick=<span class="function"><span class="keyword">function</span>(<span cl
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>16</small></li>
+    <li><a href="/categories/js/">js</a><small>17</small></li>
   
     <li><a href="/categories/linux/">linux</a><small>3</small></li>
   

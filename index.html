@@ -85,6 +85,467 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-02-26T03:24:46.000Z"><a href="/2016/02/26/jquery-on()/">2016-02-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/26/jquery-on()/">jquery-on()</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>过去我使用jquery添加方法时，确实如官方推荐，使用on()代替bind()，殊不知，on()方法的用法有很多种，现在来补补过去遗漏的用法。</p>
+<h4 id="一个元素一个事件一个函数">一个元素一个事件一个函数</h4><pre><code>$(<span class="string">'#ele'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><h4 id="多个元素一个事件一个函数">多个元素一个事件一个函数</h4><pre><code>$(<span class="string">'#ele1,#ele2'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><p>####　一个元素多个事件一个函数 ####</p>
+<pre><code>$(<span class="string">'#ele'</span>).<span class="keyword">on</span>(<span class="string">'mouseover mouseout'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><h4 id="一个元素多个事件多个函数">一个元素多个事件多个函数</h4><pre><code>$(<span class="string">'#ele'</span>).on({
+    click:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ......
+    },
+    mouseover:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ......
+    }
+});
+</code></pre><h4 id="自定义事件">自定义事件</h4><pre><code>$(<span class="string">'#ele'</span>).<span class="keyword">on</span>(<span class="string">'myevent'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><h4 id="给子元素添加事件">给子元素添加事件</h4><pre><code>$(<span class="string">'#parent'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="string">'#sub'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>    
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-26T03:09:39.000Z"><a href="/2016/02/26/backbonejs-view-setElement()源码分析/">2016-02-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/26/backbonejs-view-setElement()源码分析/">backbonejs-view-setElement源码分析</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>源码：</p>
+<pre><code>setElement: <span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>{
+    <span class="keyword">this</span>.undelegateEvents();<span class="comment">//移除所有事件</span>
+    <span class="keyword">this</span>._setElement(element);<span class="comment">//重新设置视图管理的标签</span>
+    <span class="keyword">this</span>.delegateEvents();<span class="comment">//绑定所有事件</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;<span class="comment">//返回视图对象</span>
+},
+
+<span class="comment">//重新设置视图管理的标签：$el和el</span>
+_setElement: <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>{
+    <span class="keyword">this</span>.$el = el <span class="keyword">instanceof</span> Backbone.$ ? el : Backbone.$(el);<span class="comment">//如果标签已经包装成backbone.$样子，那么直接赋值；否则进行包装再赋值</span>
+    <span class="keyword">this</span>.el = <span class="keyword">this</span>.$el[<span class="number">0</span>];
+},
+
+<span class="comment">//委托所有事件</span>
+delegateEvents: <span class="function"><span class="keyword">function</span>(<span class="params">events</span>) </span>{
+    <span class="keyword">if</span> (!(events || (events = _.result(<span class="keyword">this</span>, <span class="string">'events'</span>)))) <span class="keyword">return</span> <span class="keyword">this</span>;<span class="comment">//如果没有参数也没有events属性，则退出方法</span>
+    <span class="keyword">this</span>.undelegateEvents();<span class="comment">//移除所有事件</span>
+    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> events) {
+        <span class="keyword">var</span> method = events[key];
+        <span class="keyword">if</span> (!_.isFunction(method)) method = <span class="keyword">this</span>[events[key]];
+        <span class="keyword">if</span> (!method) <span class="keyword">continue</span>;
+        <span class="comment">//例如："click #sub1":"add",该步骤将key值拆分成click和#sub1</span>
+        <span class="keyword">var</span> match = key.match(delegateEventSplitter);
+        <span class="keyword">this</span>.delegate(match[<span class="number">1</span>], match[<span class="number">2</span>], _.bind(method, <span class="keyword">this</span>));<span class="comment">//绑定事件</span>
+    }
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+},
+
+<span class="comment">//取消所有委托事件</span>
+undelegateEvents: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">if</span> (<span class="keyword">this</span>.$el) <span class="keyword">this</span>.$el.off(<span class="string">'.delegateEvents'</span> + <span class="keyword">this</span>.cid);<span class="comment">//通过部分字段移除事件</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+},
+
+<span class="comment">//绑定单个事件，事件名为自定义的，可以给子元素绑定</span>
+delegate: <span class="function"><span class="keyword">function</span>(<span class="params">eventName, selector, listener</span>) </span>{
+    <span class="keyword">this</span>.$el.on(eventName + <span class="string">'.delegateEvents'</span> + <span class="keyword">this</span>.cid, selector,listener);
+},
+
+<span class="comment">//移除单个指定事件</span>
+undelegate: <span class="function"><span class="keyword">function</span>(<span class="params">eventName, selector, listener</span>) </span>{
+    <span class="keyword">this</span>.$el.off(eventName + <span class="string">'.delegateEvents'</span> + <span class="keyword">this</span>.cid, selector, listener);
+},
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-25T04:02:05.000Z"><a href="/2016/02/25/css-wordwrap和worldbreak/">2016-02-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/25/css-wordwrap和worldbreak/">css-wordwrap和worldbreak</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="word-wrap和word-break">word-wrap和word-break</h2><p>都是css3属性</p>
+<h4 id="word-wrap属性">word-wrap属性</h4><p>是否可以在单词内断句</p>
+<p>如果某个单词特别特别长，长的超过了所在容器的宽度。默认情况下，这个单词会显示在同一行，当然单词超过了容器的边界，样子很丑陋。</p>
+<p>设置了<code>word-wrap:break-word</code>,允许在单词内部断开。单词会分两行或者多行显示，不管怎么样都会现实在容器内部而不会超过边界。</p>
+<h4 id="word-break属性">word-break属性</h4><p>怎么样进行换行</p>
+<p>默认情况下，对于一段英语段落，换行的位置总是在空格或者标点符号或者连字符出。</p>
+<p>设置了<code>word-break:break-all</code>,换行的位置可以出现在段落的任何位置，不再受到限制。</p>
+<p>我们发现，<code>不受位置限制的换行</code>可能会发生<code>单词内部断句</code>。<br>总之它的好处是可以节约容器内的空间，不会出现太多的空白。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-25T01:37:01.000Z"><a href="/2016/02/25/js-事件-键盘事件/">2016-02-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/25/js-事件-键盘事件/">js-键盘事件</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="键盘事件">键盘事件</h2><h4 id="键盘上有哪些键">键盘上有哪些键</h4><p>辅助键：ctrl,alt,shift,windows,fn<br>功能键：f1~f12<br>字母数字键</p>
+<h4 id="键盘事件-1">键盘事件</h4><p>keydown事件<br>keyup事件<br>keypress事件</p>
+<h4 id="键盘事件的发展过程">键盘事件的发展过程</h4><p><strong>关于keydown和keyup</strong><br>DOM3级以前，keydown事件和keyup事件以及keyCode属性从未标准化；<br>3级DOM事件才标准化了keydown事件和keyup事件,但未标准化keyCode属性，同时提出了新的<code>key属性</code>。</p>
+<h4 id="键盘事件对象的属性">键盘事件对象的属性</h4><p><code>altKey</code>，<code>ctrlKey</code>，<code>shiftKey</code>属性，值为true or false<br><code>keyCode</code>属性，值为键对应的unicode编码。<br><code>key</code>属性，值为键对应的名字（支持的浏览器不多）<br><code>keyIdentifier</code>属性，值为键对应的unicode编码的字符串形式（webkit内核支持）</p>
+<h4 id="keyCode属性弊端">keyCode属性弊端</h4><p><strong>发生keydown和keyup事件</strong><br>对于字母键，输入字母时，keyCode属性总是返回大写字母的unicode编码；<br>对于带标点的数字键，输入标点时，keyCode属性返回数字的unicode编码；</p>
+<p><strong>发生keypress事件</strong><br>以上情况不会发生，输入大写字母和小写字母时，keyCode属性值是各自对应的unicode编码。</p>
+<h4 id="案例：键盘快捷键类">案例：键盘快捷键类</h4><p>功能：</p>
+<ul>
+<li>点击某个键，会出想对应的行为</li>
+<li>监听某个发生键盘事件的元素</li>
+<li>将键的unicode转化为对应的键的名称</li>
+</ul>
+<p><a href="https://github.com/WJer/keymap" target="_blank" rel="external">键盘类的链接</a> </p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-24T13:22:59.000Z"><a href="/2016/02/24/backbonejs-常用解决方案/">2016-02-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/24/backbonejs-常用解决方案/">backbonejs-常用解决方案</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-24T11:30:17.000Z"><a href="/2016/02/24/backbonejs-restful持久化/">2016-02-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/24/backbonejs-restful持久化/">backbonejs-restful持久化</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>##　Restful持久化 ##<br>对于后端的MVC来说，服务器上的数据要和数据库上的数据同步，但是对于前端而言，客户端的数据要和服务器上的数据保持一致。</p>
+<p>backbone.js就提供了一系列简单的API，用于数据的同步。</p>
+<h4 id="整个集合中数据的获取">整个集合中数据的获取</h4><pre><code><span class="built_in">var</span> M=Backbone<span class="built_in">.</span>Model<span class="built_in">.</span>extend({
+    defaults:{
+        <span class="attribute">...</span><span class="attribute">...</span>
+    }
+});
+<span class="built_in">var</span> C=Backbone<span class="built_in">.</span>Collection<span class="built_in">.</span>extend({
+    model:M,
+    url:<span class="string">'**/**/**'</span>
+});
+<span class="built_in">var</span> collection=<span class="literal">new</span> C();
+
+collection<span class="built_in">.</span>fetch();<span class="comment">//关键步骤,从服务器上获取</span>
+</code></pre><h4 id="单个数据模型保存">单个数据模型保存</h4><pre><code><span class="keyword">var</span> <span class="keyword">M</span>=Backbone.Model.extend({
+    defaults:{
+        ......
+    }
+});
+<span class="keyword">var</span> C=Backbone.Collection.extend({
+    model:<span class="keyword">M</span>,
+    url:'**<span class="comment">/**/</span>**'
+});
+<span class="keyword">var</span> collection=new C();
+collection.fetch();
+<span class="keyword">var</span> model=collection.<span class="literal">get</span>(id);
+model.<span class="keyword">set</span>({key1:value1,key2:value2,key3:value3});
+
+model.<span class="keyword">save</span>();<span class="comment">//关键步骤,保存到服务器上</span>
+</code></pre><h4 id="单个数据模型的删除">单个数据模型的删除</h4><pre><code><span class="built_in">var</span> M=Backbone<span class="built_in">.</span>Model<span class="built_in">.</span>extend({
+    defaults:{
+        <span class="attribute">...</span><span class="attribute">...</span>
+    }
+});
+<span class="built_in">var</span> C=Backbone<span class="built_in">.</span>Collection<span class="built_in">.</span>extend({
+    model:M,
+    url:<span class="string">'**/**/**'</span>
+});
+<span class="built_in">var</span> collection=<span class="literal">new</span> C();
+collection<span class="built_in">.</span>fetch();
+<span class="built_in">var</span> model=collection<span class="built_in">.</span>get(id);
+
+model<span class="built_in">.</span>destroy();<span class="comment">//关键步骤，从服务器上删除</span>
+</code></pre><h4 id="当个数据模型局部更新">当个数据模型局部更新</h4><pre><code><span class="built_in">var</span> M=Backbone<span class="built_in">.</span>Model<span class="built_in">.</span>extend({
+    defaults:{
+        <span class="attribute">...</span><span class="attribute">...</span>
+    }
+});
+<span class="built_in">var</span> C=Backbone<span class="built_in">.</span>Collection<span class="built_in">.</span>extend({
+    model:M,
+    url:<span class="string">'**/**/**'</span>
+});
+<span class="built_in">var</span> collection=<span class="literal">new</span> C();
+collection<span class="built_in">.</span>fetch();
+<span class="built_in">var</span> model=collection<span class="built_in">.</span>get(id);
+
+model<span class="built_in">.</span>save({key1:value1,key2:value2},{patch:<span class="literal">true</span>});<span class="comment">//关键步骤。局部更新的内容＋局部更新的参数</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-24T02:58:12.000Z"><a href="/2016/02/24/css-媒体查询/">2016-02-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/24/css-媒体查询/">css-媒体查询</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>媒体查询（Media Queries）<br>媒体查询＝设备类型＋设备特性＋样式</p>
+<p>格式如下：</p>
+<pre><code>＠media 媒体类型 <span class="keyword">and</span> (设备特性:值) <span class="keyword">and</span> (设备特性:值){
+    css样式
+}
+</code></pre><p>设备类型：<br>    all/screen/print/handheld/tv/speech/braille等等</p>
+<p>设备特性<br>    width/height/device-width/device-height/orientation/color等等</p>
+<p>only关键字<br>    如果浏览器不支持媒体查询但识别设备类型怎么办？<br>    only关键字可以告诉这些浏览器浏览器忽略掉媒体查询中的样式，具体行为如下：</p>
+<ul>
+<li>浏览器支持媒体查询：采用样式</li>
+<li>不支持媒体查询但识别设备类型：读到only，就忽略掉样式</li>
+<li>不设备查询不能读取设备类型：有无only，都忽略样式</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-02-24T02:11:16.000Z"><a href="/2016/02/24/js-ajax之XHR对象/">2016-02-24</a></time>
       
       
@@ -285,399 +746,6 @@ worker.postmessage("hello world");
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-02-11T10:12:24.000Z"><a href="/2016/02/11/css-居中篇/">2016-02-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/02/11/css-居中篇/">css-居中篇</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h4 id="块级元素居中之一">块级元素居中之一</h4><p>可以直接设置样式：</p>
-<pre><code>margin:<span class="number">0</span> <span class="keyword">auto</span>;
-</code></pre><p>注意:这种方式只能对块级元素使用，inline-block都不行；不能对没有在标准流的元素使用。</p>
-<h4 id="#">#</h4><h4 id="所有子元素">所有子元素</h4><p>通过css3中的盒模型</p>
-<pre><code>父元素<span class="rules">{
-    <span class="rule"><span class="attribute">display</span>:<span class="value">-moz-box</span></span>;
-    <span class="rule"><span class="attribute">display</span>:<span class="value">-webkit-box</span></span>;
-    <span class="rule"><span class="attribute">-moz-box-align</span>:<span class="value">center</span></span>;
-    <span class="rule"><span class="attribute">-webkit-box-align</span>:<span class="value">center</span></span>;
-    <span class="rule"><span class="attribute">-moz-box-pack</span>:<span class="value">center</span></span>;
-    <span class="rule"><span class="attribute">-webkit-box-pack</span>:<span class="value">center</span></span>;
-}</span>
-</code></pre><p>这样内部的子元素元素就可以居中了。<br>注意：如果内部元素为块级元素，块级元素的宽度会随内容的变化而变化，而不是充满整个一行</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-20T06:33:07.000Z"><a href="/2016/01/20/linux-修改应用程序的命令/">2016-01-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/20/linux-修改应用程序的命令/">linux-修改应用程序的命令</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>ubuntu自带的谷歌浏览器没有插件，这着实让人蛋疼。一直以来都是给火狐放了个旧版的插件，将就着用用；直到某一天，火狐浏览器都开始嫌弃这个旧版的flash插件，总是将其禁用，没办法下载了一个新版的谷歌浏览器。</p>
-<p>爱装逼的我发现可以通过命令打开谷歌浏览器，但是命令有点长，全名是<code>google-chrome-stable</code>，爱装逼没错，但是太麻烦就有错了。那么如何修改这个命令呢？</p>
-<p>进入<code>/usr/bin</code>，几乎所有应用程序的命令都保存在这这里。</p>
-<p>找到’google-chrome-stable’这个文件</p>
-<p>重命名<code>rm google-chrome-stable chrome</code>，这样我们就修改了打开谷歌浏览器的命令。</p>
-<p>ps:我试过软连接的方式，但是总是显示<code>找不到文件或目录</code>，最后才试出了这个办法。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-17T12:56:36.000Z"><a href="/2016/01/17/js-模拟实现java类/">2016-01-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/17/js-模拟实现java类/">js-模拟实现java类</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>##模拟实现java类##<br>要想模拟出java类的所有结构，那当然不可能了。js是弱类型语言，java是强类型语言。<br>可以模拟的部分：    </p>
-<ul>
-<li>静态方法和静态属性</li>
-<li>实例方法和实例属性</li>
-<li>继承</li>
-<li>无法被修改的属性或者方法</li>
-<li>私有属性和方法</li>
-</ul>
-<h4 id="模拟狗">模拟狗</h4><p>定义一个狗的类，通过构造函数来模拟。同时，构造函数内部的属性和方法模拟实例属性和实例方法。</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>{
-    <span class="keyword">this</span>.name=name||<span class="string">""</span>;
-    <span class="keyword">this</span>.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-    }
-}
-</code></pre><p>狗继承哺乳动物，通过原型实现。</p>
-<pre><code>Dog.prototype.<span class="keyword">class</span>=<span class="string">"哺乳动物"</span>;
-Dog.prototype.behavior=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    console.log(<span class="string">"具有哺乳行为。"</span>);
-}
-</code></pre><p>构造函数事实上是一个对象，通过对这个对象添加属性和方法来模拟静态方法和静态属性。</p>
-<pre><code>Dog.LEGS=<span class="number">4</span>;<span class="comment">//有４条腿</span>
-Dog.shout=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-    <span class="built_in">console</span>.log(<span class="string">"旺旺"</span>);
-}
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-17T08:39:23.000Z"><a href="/2016/01/17/linux-安装tomcat/">2016-01-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/17/linux-安装tomcat/">linux-安装tomcat</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>第一步:<br>不用说，当然要下载下来。在官网上，它的压缩包的名字并没有出现linux字样，没关系就下载那个（我记得是前几行里的一个，因为后面的是windows的），还有后缀名是.tar.gz。</p>
-<p>第二步：<br>在<code>/usr</code>下新建个目录tomcat（当然你也可以在<code>/usr/local</code>下创建目录）,将压缩包解压到这个里面。</p>
-<pre><code>tar xvf filename<span class="class">.tar</span><span class="class">.gz</span>
-</code></pre><p>第三步：<br>修改tomcat/bin里的catalina.sh文件</p>
-<pre><code>JAVA_HOME=/usr/local/java/jdk1<span class="number">.6</span><span class="number">.0</span>_18（即jdk的安装目录）
-</code></pre><p>保存退出。</p>
-<p>第四步：<br>通过<code>./startup.sh</code>启动;<br>通过<code>./shutdown.sh</code>关闭;</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-16T15:49:44.000Z"><a href="/2016/01/16/linux-安装jdk/">2016-01-16</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/16/linux-安装jdk/">linux-安装jdk</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><strong>第一步：</strong><br>下载linux版的压缩包。我下的是tar.gz,如果是rpm的，方法自行百度。</p>
-<p><strong>第二步：</strong><br>在/usr下创建java文件夹,将下载的压缩包复制到新建的java目录下(/usr/java)；权限不够的话，注意加上sudo</p>
-<p><strong>第三步：</strong><br>解压缩，命令是<code>tar xvf FileName.tar</code>。权限不够的话，加上sudo</p>
-<p><strong>第四步：</strong><br>配置。</p>
-<pre><code><span class="keyword">vim</span> /etc/<span class="keyword">profile</span>
-</code></pre><p>在profile这个文件里配置如下：</p>
-<pre><code>export JAVA_HOME=/usr/java/jdk1.<span class="number">6.0_45</span>
-
-export PATH=<span class="variable">$JAVA</span>_HOME/bin:<span class="variable">$PATH</span>
-
-export CLASSPATH=.:<span class="variable">$JAVA</span>_HOME/lib/dt.jar:<span class="variable">$JAVA</span>_HOME/lib/tools.jar
-</code></pre><p>保存之后注销系统。<br>注意：如果你保存不了，可能时权限不够。退出之后<code>sudo vim profile</code> 就行了</p>
-<p><strong>第五步：</strong><br>测试一下就ok了</p>
-<pre><code>java
-java -<span class="property">version</span>
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-06T11:08:09.000Z"><a href="/2016/01/06/js-事件-提高性能/">2016-01-06</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/06/js-事件-提高性能/">js-事件-提高性能</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h4 id="性能问题">性能问题</h4><p>当我们创建事件处理程序时，首先需要找到DOM对象，然后再绑定什么事件如何处理。</p>
-<p>如果一个页面的事件很多的话，首先访问的DOM对象就会很多，其次每个事件都是一个对象，那么内存中的对象也就越多，这样一来，性能就会下降。</p>
-<h4 id="如何从事件的角度提高性能">如何从事件的角度提高性能</h4><p><strong>事件委托</strong><br>例如：</p>
-<pre><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>4<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-</code></pre><p>如果要为这个列表的li添加点击事件，传统的方法是分别获取这四个li，然后每个li添加一个点击事件，这样内存中就会出现四个相同的点击事件，内存真的好浪费呀，代码还长。</p>
-<p>而事件委托是这样的：</p>
-<pre><code><span class="keyword">var</span> ul=<span class="built_in">document</span>.getElementByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];
-ul.onclick=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>{
-    <span class="keyword">var</span> li=e.target;
-    <span class="keyword">switch</span>(li.id){
-        .......<span class="comment">//针对不同的li执行不同的动作</span>
-    }
-}
-</code></pre><p>可以看出，事件委托就是把事件绑定到高层元素，然后通过target来判断具体是哪个子元素发生事件。只需一个事件就能达到多种事件的效果。</p>
-<p>ps:可以看出事件必须冒泡，才有可能事件委托。</p>
-<p>ps:可以使用事件委托的事件：click,mousedown,mouseup,keydown,keyup,keypress</p>
-<p>ps:mouseout和mouseover无法使用事件委托。因为鼠标从父元素到子元素和从子元素到父元素都会触发事件，这样就无法确定是不是子元素触发的事件。</p>
-<p><strong>移除事件处理程序</strong><br>设想一下这样的情况，假如我们通过js删除了某个元素节点，但是这个节点已经绑定了某个事件，虽然删除了该节点，但是事件仍然留在内存当中，不能被垃圾回收。甚至对DOM节点的引用也保留在内存里。</p>
-<p>移除事件处理程序就是如果我们要修改文档结构，例如删除某个节点，我们事先也知道这个节点上有事件监听，我们应该先删除事件处理程序，再删除节点。垃圾回收机制会将事件处理程序回收，从而清理内存。</p>
-<p>早起的IE浏览器将页面卸载后还会保留绑定在该页面上的所有事件，这样每关闭一个页面，内存的容量就要减少许多。针对这样的情况，最好的做法就是通过unload事件来移除手游的事件处理程序。</p>
-<p>ps:事件委托也可以避免这样的情况，因为我们把事件绑定在高层元素，子元素删了有何妨？什么都会影响嘛。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-06T10:17:08.000Z"><a href="/2016/01/06/浏览器-html页面加载顺序/">2016-01-06</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/06/浏览器-html页面加载顺序/">浏览器-html页面加载顺序</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -703,13 +771,17 @@ ul.onclick=<span class="function"><span class="keyword">function</span>(<span cl
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
+    <li><a href="/categories/backbonejs/">backbonejs</a><small>3</small></li>
+  
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
   
-    <li><a href="/categories/css/">css</a><small>1</small></li>
+    <li><a href="/categories/css/">css</a><small>3</small></li>
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>17</small></li>
+    <li><a href="/categories/jquery/">jquery</a><small>1</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>18</small></li>
   
     <li><a href="/categories/linux/">linux</a><small>3</small></li>
   

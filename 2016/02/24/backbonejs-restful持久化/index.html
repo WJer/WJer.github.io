@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>backbonejs-restful持久化 | WJer&#39;s time</title>
+  <meta name="author" content="WJer">
+  
+  <meta name="description" content="##　Restful持久化 ##对于后端的MVC来说，服务器上的数据要和数据库上的数据同步，但是对于前端而言，客户端的数据要和服务器上的数据保持一致。
+backbone.js就提供了一系列简单的API，用于数据的同步。
+整个集合中数据的获取var M=Backbone.Model.extend({
+">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="backbonejs-restful持久化"/>
+  <meta property="og:site_name" content="WJer&#39;s time"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="WJer&#39;s time" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe3814b5f53cc394a493cbeb2368f2af' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41207871-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">WJer&#39;s time</a></h1>
+  <h2><a href="/">Windy,only try to survive</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+  
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-24T11:30:17.000Z"><a href="/2016/02/24/backbonejs-restful持久化/">2016-02-24</a></time>
+      
+      
+  
+    <h1 class="title">backbonejs-restful持久化</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>##　Restful持久化 ##<br>对于后端的MVC来说，服务器上的数据要和数据库上的数据同步，但是对于前端而言，客户端的数据要和服务器上的数据保持一致。</p>
+<p>backbone.js就提供了一系列简单的API，用于数据的同步。</p>
+<h4 id="整个集合中数据的获取">整个集合中数据的获取</h4><pre><code><span class="built_in">var</span> M=Backbone<span class="built_in">.</span>Model<span class="built_in">.</span>extend({
+    defaults:{
+        <span class="attribute">...</span><span class="attribute">...</span>
+    }
+});
+<span class="built_in">var</span> C=Backbone<span class="built_in">.</span>Collection<span class="built_in">.</span>extend({
+    model:M,
+    url:<span class="string">'**/**/**'</span>
+});
+<span class="built_in">var</span> collection=<span class="literal">new</span> C();
+
+collection<span class="built_in">.</span>fetch();<span class="comment">//关键步骤,从服务器上获取</span>
+</code></pre><h4 id="单个数据模型保存">单个数据模型保存</h4><pre><code><span class="keyword">var</span> <span class="keyword">M</span>=Backbone.Model.extend({
+    defaults:{
+        ......
+    }
+});
+<span class="keyword">var</span> C=Backbone.Collection.extend({
+    model:<span class="keyword">M</span>,
+    url:'**<span class="comment">/**/</span>**'
+});
+<span class="keyword">var</span> collection=new C();
+collection.fetch();
+<span class="keyword">var</span> model=collection.<span class="literal">get</span>(id);
+model.<span class="keyword">set</span>({key1:value1,key2:value2,key3:value3});
+
+model.<span class="keyword">save</span>();<span class="comment">//关键步骤,保存到服务器上</span>
+</code></pre><h4 id="单个数据模型的删除">单个数据模型的删除</h4><pre><code><span class="built_in">var</span> M=Backbone<span class="built_in">.</span>Model<span class="built_in">.</span>extend({
+    defaults:{
+        <span class="attribute">...</span><span class="attribute">...</span>
+    }
+});
+<span class="built_in">var</span> C=Backbone<span class="built_in">.</span>Collection<span class="built_in">.</span>extend({
+    model:M,
+    url:<span class="string">'**/**/**'</span>
+});
+<span class="built_in">var</span> collection=<span class="literal">new</span> C();
+collection<span class="built_in">.</span>fetch();
+<span class="built_in">var</span> model=collection<span class="built_in">.</span>get(id);
+
+model<span class="built_in">.</span>destroy();<span class="comment">//关键步骤，从服务器上删除</span>
+</code></pre><h4 id="当个数据模型局部更新">当个数据模型局部更新</h4><pre><code><span class="built_in">var</span> M=Backbone<span class="built_in">.</span>Model<span class="built_in">.</span>extend({
+    defaults:{
+        <span class="attribute">...</span><span class="attribute">...</span>
+    }
+});
+<span class="built_in">var</span> C=Backbone<span class="built_in">.</span>Collection<span class="built_in">.</span>extend({
+    model:M,
+    url:<span class="string">'**/**/**'</span>
+});
+<span class="built_in">var</span> collection=<span class="literal">new</span> C();
+collection<span class="built_in">.</span>fetch();
+<span class="built_in">var</span> model=collection<span class="built_in">.</span>get(id);
+
+model<span class="built_in">.</span>save({key1:value1,key2:value2},{patch:<span class="literal">true</span>});<span class="comment">//关键步骤。局部更新的内容＋局部更新的参数</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/backbonejs/">backbonejs</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/HTML5/">HTML5</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/backbonejs/">backbonejs</a><small>3</small></li>
+  
+    <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/jquery/">jquery</a><small>1</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>18</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/插件/">插件</a><small>1</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">个人介绍</h3>
+<ul class="entry">
+
+<li><img src="/imgs/jinmu.jpg" style="width:100%"/></li>
+<li>博主：吴敬</li>
+<li>星座：双鱼座</li>
+<li>现状：合肥工业大学本科生</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
+<!--
+<li><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=86 src="http://music.163.com/outchain/player?type=2&id=39443443&auto=1&height=66"></iframe></li>
+-->
+</ul>
+</div>
+
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src=""></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 WJer
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
+
+
+

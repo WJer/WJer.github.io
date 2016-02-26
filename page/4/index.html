@@ -85,6 +85,630 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-12-18T15:43:05.000Z"><a href="/2015/12/18/浏览器-同源策略/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/浏览器-同源策略/">浏览器-同源策略</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T10:14:22.000Z"><a href="/2015/12/18/浏览器-浏览器缓存机制/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/浏览器-浏览器缓存机制/">浏览器-浏览器缓存机制</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="304状态和200状态">304状态和200状态</h4><p>当客户端的浏览器向服务器第一次发送HTTP请求时，服务器在给客户端响应时，在响应上提供一些标记（last-modified或者etag），因为是第一次响应，返回的必然是200状态。</p>
+<p>缓存过期时，当客户端第二次向服务器发送HTTP请求，该请求头中会有这些标记，服务器会利用这些标记进行比对，如果文件没有被修改，则返回<strong>304状态</strong>，告诉浏览器上一次的文件还可以使用（它们是留存在cache中的）；如果被修改了，则返回最新的文件信息，返回的是<strong>200状态</strong>。</p>
+<h4 id="两种缓存">两种缓存</h4><p>协商缓存：会和服务器商量，看看文件是否修改过，缓存的内容时时保持在最新状态。<br>彻底缓存：在到期之间都不会和服务器交互。即使文件内容发生改变，加载网页还在使用缓存中旧的内容。</p>
+<p>last-modified和etag都属于协商缓存，expires和cache-control属于彻底缓存。</p>
+<h4 id="详解两种标记">详解两种标记</h4><p><strong>last-modified</strong><br>这个标记在服务器响应客户端时提供，格式是这样的：</p>
+<pre><code><span class="keyword">last</span>-modifeid：时间（精确到秒）
+</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求头便会带上这个时间信息，但是格式会发生一些变化：</p>
+<pre><code><span class="keyword">if</span>-modified-<span class="keyword">since</span>：时间点（和上面的时间是一样的）
+</code></pre><p>服务器收到这个事件信息，如果在这个事件之后，文件有更新，那么发送新的文件，返回200状态，否则返回304状态。</p>
+<p><strong>etag</strong><br>区别于last-modified标志，它的格式是这样的：</p>
+<pre><code>Etag:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
+</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求便会带上这个信息，但是格式会发生一些变化：</p>
+<pre><code>If-None-Match:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
+</code></pre><p>服务器进行比对，如果不一致，则发送新的文件，返回200状态，否则返回304状态。</p>
+<p><strong>为什么会出现etag？</strong><br>1.Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>2.如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存<br>3.有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形<br>（from 百度上某大牛的总结）</p>
+<p>ps:两种标记可以一起使用</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T09:17:52.000Z"><a href="/2015/12/18/hexo-遇到的错误/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/hexo-遇到的错误/">hexo-遇到的错误</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>【Error】hexo Deployer not found: undefined<br>注意格式，1、冒号后面跟空格；2、冒号后的值用双引号括起来。</p>
+<p>【Error】hexo deployer not found<br>检查deploy段的拼写，要么就是格式错误（同上）</p>
+<p>【Error】bad indentation of a mapping entry<br>_config.yml配置文件在记事本有空格或者断行。用记事本打开后可能只占一行，不要管他就在它的末尾直接配置就行。万恶的编辑器！！</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="js">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T03:57:41.000Z"><a href="/2015/12/18/js-概念小题-1/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/js-概念小题-1/">js-概念小题(1)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="第一题">第一题</h4><pre><code><span class="keyword">if</span> (!(<span class="string">"a"</span> <span class="keyword">in</span> <span class="built_in">window</span>)) {
+        <span class="keyword">var</span> a = <span class="number">1</span>;
+}
+alert (a);
+</code></pre><p>输出结果：underfined<br>分析原因：因为预编译的原因，a变量的定义会比if语句先发生，但不会进行赋值操作，所以是underfined</p>
+<p>这道题，我还不晓得预编译，蒙也能蒙对。</p>
+<h4 id="第二题">第二题</h4><pre><code><span class="keyword">var</span> a = <span class="number">1</span>,
+        b = <span class="function"><span class="keyword">function</span> <span class="title">a</span> <span class="params">(x)</span> <span class="comment">{
+            x &amp;&amp; a (--x);
+        }</span>;</span>
+alert (a);
+</code></pre><p>输出结果：1<br>分析原因：这样创建函数的方式并不是函数声明方式，a函数并不是全局的。</p>
+<h4 id="第三题">第三题</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span> <span class="params">(x)</span> </span>{
+        <span class="keyword">return</span> x * <span class="number">2</span>;
+}
+<span class="keyword">var</span> a;
+alert (a);
+</code></pre><p>输出结果：function….<br>分析原因：后定义的变量a并没有进行赋值，所以a还是原来的函数，并不会覆盖，所以…..</p>
+<h4 id="第四题">第四题</h4><pre><code><span class="function">function <span class="title">b</span> <span class="params">(x, y, a)</span> </span>{
+        arguments[<span class="number">2</span>] = <span class="number">10</span>;
+        alert (a);
+}
+b(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);
+</code></pre><p>输出结果：10<br>分析原因：参数会和方法的arguments属性保持同步，一个变，另外一个也会跟着变。</p>
+<h4 id="第五题">第五题</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span> <span class="params">()</span> </span>{
+        alert (<span class="keyword">this</span>);
+}
+a.call (<span class="literal">null</span>);
+</code></pre><p>输出结果：window<br>分析原因：call()第一个参数为函数执行环境，如果参数是null，会和不传递任何参数有同样的结果，函数的执行环境都是全局的。</p>
+<p>这些题在实际开发中并没有什么卵用，放出来只是帮助你深刻了解js的一些概念而已。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-16T12:28:30.000Z"><a href="/2015/12/16/js-客户端检测/">2015-12-16</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/16/js-客户端检测/">js-客户端检测</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="客户端检测">客户端检测</h2><p>客户端检测分为三种检测，分别是能力检测，怪癖检测以及用户代理检测。</p>
+<p>ps：优先使用能力检测，其次考虑怪癖检测，最后再是用户代理检测。</p>
+<p>ps：客户端检测是一种补救措施，不到万不得已，不要使用客户端检测。尽量找到最通用的方案，也就是说各大浏览器都可以识别并正常运行的代码。</p>
+<h4 id="能力检测">能力检测</h4><p>能力检测不是在识别浏览器，而是识别浏览器的能力，具体的指某个方法支不支持或者某个属性具不具备。<br><strong> 两个重要的概念： </strong></p>
+<p>1.先检测达成目的最常用的特性</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>{
+    <span class="keyword">if</span>(<span class="built_in">document</span>.getElementById){
+        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.all){
+        <span class="keyword">return</span> <span class="built_in">document</span>.all[id];
+    }<span class="keyword">else</span>{
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"没有这样的方法"</span>);
+    }
+}<span class="comment">//IE5之前不支持document.getElementById，但是IE6+、chrome、safari等其他浏览器都支持，所以它被认为是最常用的特性。</span>
+</code></pre><p>2.测试实际要用到的特性。就是说，你要用哪个方法，就测那个方法存不存在。存在的话提供一套方案，不存在的话提供另外一套方案。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">getWindowWidth</span>(<span class="params"></span>)</span>{
+    <span class="keyword">if</span>(<span class="built_in">document</span>.all){
+        <span class="keyword">return</span> <span class="built_in">document</span>.documentElement.clientWidth;<span class="comment">//错误的用法</span>
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="built_in">window</span>.innerWidth;
+    }
+}<span class="comment">//document.all存在并不意味着clientWidth也存在</span>
+</code></pre><p><strong> 能力检测并不是浏览器检测 </strong><br>ps：能力检测并不能确定浏览器。</p>
+<p>ps：当需要使用某些特定的浏览器特性时，最好时一次性检测所有的特性，而不要分开检测。</p>
+<h4 id="怪癖检测">怪癖检测</h4><p>怪癖检测时想要检测浏览器存在哪些bug。</p>
+<p>ps：最好在一开始就执行此类检测。</p>
+<p>例子：</p>
+<pre><code><span class="keyword">var</span> hasEnumShadowsQuick(){
+    <span class="keyword">var</span> o={<span class="keyword">toString</span>:function(){}};
+    <span class="keyword">var</span> <span class="keyword">count</span>=o;
+    <span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> o){
+        <span class="keyword">if</span>(p == <span class="string">"toString"</span>){
+            <span class="keyword">count</span>++;
+        }
+    }
+    <span class="keyword">return</span> (<span class="keyword">count</span> &gt; 1);
+}();
+</code></pre><p>如果是在safari3以前的版本下运行会返回true，因为他会枚举被隐藏的属性。</p>
+<p>ps:另外一种检测怪癖的方式是通过try-catch。</p>
+<h4 id="用户代理检测">用户代理检测</h4><p><strong> 用户代理字符串 </strong></p>
+<pre><code><span class="variable"><span class="keyword">var</span> ua</span>=navigator.userAgent;<span class="comment">//获取用户代理字符串</span>
+</code></pre><p>用户代理字符串提供的信息：平台、呈现引擎、版本号（浏览器、内核、Mozilla）等。</p>
+<p><strong> 浏览器及内核 </strong></p>
+<p>IE    ————   Trident内核<br>FF  ————   Gecko内核<br>Safari、Chrome ———– Webkit内核<br>Konqueror ———– KTHML内核<br>Opera ———– Presto内核</p>
+<p><strong> 用户代理字符串技术 </strong></p>
+<p>识别呈现引擎–&gt;识别浏览器–&gt;识别平台–&gt;识别Windows操作系统–&gt;识别移动设备–&gt;识别游戏系统</p>
+<pre><code><span class="keyword">var</span> client=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+    <span class="keyword">var</span> engine={
+        <span class="comment">//内核</span>
+        ie: <span class="number">0</span>,
+        gecko: <span class="number">0</span>,
+        webkit: <span class="number">0</span>,
+        khtml:<span class="number">0</span>,
+        operaL0,
+
+        ver: <span class="literal">null</span>
+    };
+    <span class="keyword">var</span> browser={
+        <span class="comment">//浏览器</span>
+        ie: <span class="number">0</span>,
+        firefox: <span class="number">0</span>,
+        safari: <span class="number">0</span>,
+        konq: <span class="number">0</span>,
+        opera: <span class="number">0</span>,
+        chrome <span class="number">0</span>,
+
+        ver: <span class="literal">null</span>
+    }
+    <span class="keyword">var</span> system={
+        <span class="comment">//平台</span>
+        win: <span class="literal">false</span>,
+        mac: <span class="literal">false</span>,
+        xll: <span class="literal">false</span>
+
+        <span class="comment">//移动设备</span>
+        iphone: <span class="literal">false</span>,
+        ipod: <span class="literal">false</span>,
+        ipad: <span class="literal">false</span>,
+        ios: <span class="literal">false</span>,
+        android: <span class="literal">false</span>,
+        nokiaN: <span class="literal">false</span>,
+        winMobile: <span class="literal">false</span>,
+
+        <span class="comment">//游戏系统</span>
+        wii: <span class="literal">false</span>,
+        ps: <span class="literal">false</span> 
+    }
+
+
+        <span class="comment">//以下是检测的代码</span>
+
+        <span class="comment">//检测引擎和浏览器</span>
+        <span class="comment">//通过正则匹配找到用户代理字符串中的版本号</span>
+        <span class="keyword">var</span> ua=navigator.userAgent;<span class="comment">//获取代理字符串</span>
+
+        <span class="keyword">if</span>(<span class="built_in">window</span>.opera){<span class="comment">//opera最会伪装自己</span>
+            engine.ver=browser.ver=<span class="built_in">window</span>.opera.version();
+            engine.opera=browser.ver=<span class="built_in">parseFloat</span>(engine.ver);
+        }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/AppleWebkit\/(\S+)/</span>.test(ua)){<span class="comment">//webkit的用户代理字符串中有KHTML和Gecko字样</span>
+            engine.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+            engine.webkit=<span class="built_in">parseFloat</span>(engine.ver);
+
+            <span class="comment">//确定是chrome？safari？</span>
+            <span class="keyword">if</span>(<span class="regexp">/Chrome\/(\S+)/</span>.test(ua)){<span class="comment">//chrome</span>
+                browser.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+                browser.chrome=<span class="built_in">parseFloat</span>(browser.ver);
+            }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/Version\/(\S+)/</span>.test(ua)){<span class="comment">//safari</span>
+                browser.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+                browser.safari=<span class="built_in">parseFloat</span>(browser.ver);
+            }<span class="keyword">else</span>{<span class="comment">//近似估计</span>
+                <span class="keyword">var</span> safariVersion=<span class="number">1</span>;
+
+                <span class="keyword">if</span>(engine.webkit&lt;<span class="number">100</span>){
+                    safariVersion=<span class="number">1</span>;
+                }<span class="keyword">else</span> <span class="keyword">if</span>(engine.webkit&lt;<span class="number">312</span>){
+                    safariVersion=<span class="number">1.2</span>;
+                }<span class="keyword">else</span> <span class="keyword">if</span>(engine.webkit&lt;<span class="number">412</span>){
+                    safariVersion=<span class="number">1.3</span>;
+                }<span class="keyword">else</span>{
+                    safariVersion=<span class="number">2</span>;
+                }
+                browser.safari=browser.ver=safariVersion;
+            }
+        }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/KHTML\/(\S+)/</span>.test(ua)){<span class="comment">//KHTML的用户代理字符串中有Gecko字样</span>
+            engine.ver=browser.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+            engine.khtml=browser.konq=<span class="built_in">parseFloat</span>(engine.ver);
+        }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/rv:([^\)]+)\)Gecko\/\d{8}/</span>.test(ua)){
+            engine.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+            engine.gecko=<span class="built_in">parseFloat</span>(engine.ver);
+
+            <span class="keyword">if</span>(<span class="regexp">/Firefox\/(\S+)/</span>.test(ua)){
+                browser.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+                browser.firefox=<span class="built_in">parseFloat</span>(browser.ver);
+            }
+        }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="regexp">/MISE([^;]+)/</span>.test(ua)){
+            engine.ver=browser.ver=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+            engine.ie=browser.ie=<span class="built_in">parseFloat</span>(engine.ver);
+        }
+
+        browser.ie=engine.ie;
+        browser.opera=engine.opera;
+
+        <span class="comment">//检测平台</span>
+        <span class="keyword">var</span> p=navigator.platform;
+        system.win=p.indexOf(<span class="string">"Win"</span>)==<span class="number">0</span>;
+        system.mac=p.indexOf(<span class="string">"Mac"</span>)==<span class="number">0</span>;
+        system.xll=(p==<span class="string">"xll"</span>) || (p.indexOf(<span class="string">"Linux"</span>)==<span class="number">0</span>);
+
+        <span class="comment">//检测windows操作系统</span>
+        <span class="keyword">if</span>(system.win){
+            <span class="keyword">if</span>(<span class="regexp">/Win(?:dows)?([^do]{2})\s?(\d+\.\d+)?/</span>.test(ua)){
+                <span class="keyword">if</span>(<span class="built_in">RegExp</span>[<span class="string">"$1"</span>]==<span class="string">"NT"</span>){
+                    <span class="keyword">switch</span>(<span class="built_in">RegExp</span>[<span class="string">"$2"</span>]){
+                        <span class="keyword">case</span> <span class="string">"5.0"</span>:
+                            system.win=<span class="string">"2000"</span>;
+                            <span class="keyword">break</span>;
+                        <span class="keyword">case</span> <span class="string">"5.1"</span>:
+                            system.win=<span class="string">"xp"</span>;
+                            <span class="keyword">break</span>;
+                        <span class="keyword">case</span> <span class="string">"6.0"</span>:
+                            system.win=<span class="string">"Vista"</span>;
+                            <span class="keyword">break</span>;
+                        <span class="keyword">case</span> <span class="string">"6.1"</span>:
+                            system.win=<span class="string">"7"</span>;
+                            <span class="keyword">break</span>;
+                        <span class="keyword">default</span>:
+                            system.win=<span class="string">"NT"</span>;
+                            <span class="keyword">break</span>;
+                    }
+                }<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">RegExp</span>[<span class="string">"$1"</span>]==<span class="string">"9x"</span>){
+                    system.win=<span class="string">"ME"</span>;
+                }<span class="keyword">else</span>{
+                    system.win=<span class="built_in">RegExp</span>[<span class="string">"$1"</span>];
+                }
+            }
+        }
+
+        <span class="comment">//移动设备</span>
+        system.iphone=ua.indexOf(<span class="string">"iPhone"</span>)&gt;-<span class="number">1</span>;
+        system.ipod=ua.indexOf(<span class="string">"iPod"</span>)&gt;-<span class="number">1</span>;
+        system.ipad=ua.indexOf(<span class="string">"iPad"</span>)&gt;-<span class="number">1</span>;
+        system.nokiaN=ua.indexOf(<span class="string">"NokiaN"</span>)&gt;-<span class="number">1</span>;
+
+        <span class="comment">//window mobile</span>
+        <span class="keyword">if</span>(system.win == <span class="string">"CE"</span>){
+            system.winMobile=system.win;
+        }<span class="keyword">else</span> <span class="keyword">if</span>(systen.win==<span class="string">"Ph"</span>){
+            <span class="keyword">if</span>(<span class="regexp">/Windows Phone OS (\d+.\d)/</span>.test(ua)){
+                system.win=<span class="string">"Phone"</span>;
+                systen.winMobile=<span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>[<span class="string">"$1"</span>]);
+            }
+        }
+
+        <span class="comment">//检测IOS版本</span>
+        <span class="keyword">if</span>(system.mac &amp;&amp; ua.indexOf(<span class="string">"Mobile"</span>)&gt;-<span class="number">1</span>){
+            <span class="keyword">if</span>(<span class="regexp">/CPU(?:iPhone)?OS(\d+_\d+)/</span>.test(ua)){
+                system.ios=<span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>.$<span class="number">1.</span>replace(<span class="string">"_"</span>,<span class="string">"."</span>));
+            }<span class="keyword">else</span>{
+                system.ios=<span class="number">2</span>;<span class="comment">//只能猜测</span>
+            }
+        }
+
+        <span class="comment">//检测Android版本</span>
+        <span class="keyword">if</span>(<span class="regexp">/Android(\d+\.\d+)/</span>.test(ua)){
+            system.android=<span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>.$<span class="number">1</span>);
+        }
+
+        <span class="comment">//游戏系统</span>
+        system.wii=ua.indexOf(<span class="string">"Wii"</span>)&gt;-<span class="number">1</span>;
+        system.ps=<span class="regexp">/playstation/i</span>.test(ua);
+
+
+        <span class="keyword">return</span> {
+            engine: engine,
+            browser: browser,
+            system: system
+        };    
+}();
+</code></pre><p>ps:不同的浏览器具备不同的能力，同一款浏览器在不同的平台具备不同的能力；不能直接准确地使用能力检测或怪癖检测；为了跟踪分析等目的需要知道确切的浏览器。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-14T16:58:08.000Z"><a href="/2015/12/15/js-双感叹号/">2015-12-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/15/js-双感叹号/">js-双感叹号</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="双感叹号">双感叹号</h2><pre><code><span class="keyword">var</span> a;<span class="comment">//ａ的值为underfined</span>
+<span class="keyword">var</span> b=!!a;<span class="comment">//b=false</span>
+</code></pre><p>在js当中，每种类型的值都有着相对应的布尔值。双感叹号的目的就是为了将其转换成对应的布尔值。</p>
+<h4 id="为什么要这样做">为什么要这样做</h4><p>这是个大大的疑问？？？？？<br>现在还不清楚，日后一定补充。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-13T12:31:20.000Z"><a href="/2015/12/13/js-闭包/">2015-12-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/13/js-闭包/">js-闭包</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="闭包">闭包</h2><p>闭包就是指有权访问另一个函数作用域中的变量的函数。</p>
+<h4 id="执行环境和作用域">执行环境和作用域</h4><p>执行环境定义了变量或函数有权访问的其他数据。</p>
+<p>每个function都会划分出一个执行环境，也就是上下文；每个执行环境绑定了一个变量对象，相当于一个容器，用来存储function中定义的变量或者方法。eg：window对象，环境内声明的变量和方法都保存在这个对象中。</p>
+<p>每当函数执行时都会创建自己的上下文，该上下文就会被存入上下文栈；结束执行后，就会被弹出。</p>
+<p>作用域链本质上是上下文的变量对象链接起来的串。函数在访问某一个变量时就会在作用域链上一层一层的寻找。</p>
+<pre><code><span class="keyword">var</span> name=<span class="string">"china"</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">provice</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> name=<span class="string">"anhui"</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">city</span><span class="params">()</span></span>{
+        <span class="keyword">var</span> name=<span class="string">"hefei"</span>;
+    }
+}
+</code></pre><p>分析下这个简单的例子：<br>    1.三个执行环境：全局执行环境，provice()执行环境，city()执行环境<br>    2.city()函数执行时会创建自己的作用域链，依次是city()的活动对象，provice()的活动对象，window对象。<br>    3.provice()函数执行时会创建自己的作用域链，依次是provice()的活动对象，window对象。<br>    4.查找变量时就是按照从最里面到最外面的作用域链访问变量。<br>    5.当city()执行完时，这个函数的执行环境就会退出环境栈，并且对应的变量对象也会相应的销毁。同理 provice()也是。</p>
+<p>function执行时，首先是创建上下文，然后绑定变量对象，紧接着创建作用域链，最后将this赋予函数所属的Object。</p>
+<h4 id="闭包-1">闭包</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> name=<span class="number">1</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
+        <span class="keyword">var</span> age=<span class="number">2</span>;
+    }
+}
+<span class="keyword">var</span> b=a();<span class="comment">//b的作用域链包括a函数的活动对象</span>
+b=<span class="literal">null</span>;<span class="comment">//匿名函数不再有引用，垃圾回收机制会安全销毁b函数的作用域链。</span>
+</code></pre><p>以上看来，在a函数的外部可以访问a内部声明的变量和函数。</p>
+<h4 id="闭包的问题">闭包的问题</h4><p>问题例子：</p>
+<pre><code>function createF(){
+    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+        <span class="literal">result</span>[i]=function(){//在内部创建的５个匿名函数访问共同的i变量
+            <span class="keyword">return</span> i;
+        }
+    }
+    <span class="keyword">return</span> <span class="literal">result</span>;
+}
+<span class="keyword">var</span> fs=createF();
+<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+    console.log(fs[i]());//输出<span class="number">5</span>个<span class="number">5</span>
+}
+</code></pre><p>本来每个函数都输出自己的i，结果全都输出相同的数。<br>原因：函数数组中每个函数的作用域链都保存着createF()函数的活动对象，所以它们访问的是同一个i。</p>
+<p>解决方式：</p>
+<pre><code>function createF(){
+    <span class="keyword">var</span> <span class="literal">result</span>=new <span class="type">Array</span>();
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++){
+        <span class="literal">result</span>[i]=function(num){
+            <span class="keyword">return</span> function(){//又创建了一个闭包
+                <span class="keyword">return</span> num;//每个函数都有自己的num变量
+            }
+        }(i);
+    }
+    <span class="keyword">return</span> <span class="literal">result</span>；
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-12-12T13:31:34.000Z"><a href="/2015/12/12/js-继承/">2015-12-12</a></time>
       
       
@@ -295,243 +919,13 @@ inheritPrototype(Sub,Sup);
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">nodejs-使用npm安装模块失败</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
-<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
-<pre><code>cnpm <span class="keyword">install</span> 模块名字
-</code></pre><p>来下载安装模块，很简单吧。</p>
-<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
-<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
-</code></pre><p>我们再输入</p>
-<pre><code><span class="built_in">npm</span> config ls
-</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
-<pre><code>npm <span class="keyword">install</span> 模块名字
-</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
-<p><em>注意</em>：我们可以通过</p>
-<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
-</code></pre><p>来删除新添加的配置项。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-10-23T16:22:03.000Z"><a href="/2015/10/24/linux-解决sublime中文输入/">2015-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/10/24/linux-解决sublime中文输入/">linux-解决sublime中文输入</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>今天用sublime写网页的时候发现竟然不能使用中文，那个蛋疼啊，不得不感慨，技术发展的如此之快（瞎逼逼）。<br>不多说了，说说解决办法吧。</p>
-<h3 id="1-sublime_text3安装">1.sublime text3安装</h3><p>安装方式很多，我直接下载下来安装。</p>
-<h3 id="2-依赖软件安装">2.依赖软件安装</h3><p>这个必须安装，我之前没有安装，后面的步骤一直报错，苦恼了好几天。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libgtk2.<span class="number">0</span>-dev</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-拷贝如下代码到文件sublime_imfix-c文件中，该文件需要自己创建，随便放到那里都行">3.拷贝如下代码到文件sublime_imfix.c文件中，该文件需要自己创建，随便放到那里都行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;gtk/gtk.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;gdk/gdkx.h&gt;</span></span><br><span class="line"></span><br><span class="line">typedef GdkSegment GdkRegionBox;</span><br><span class="line"></span><br><span class="line">struct _GdkRegion</span><br><span class="line">&#123;</span><br><span class="line">    long size;</span><br><span class="line">    long numRects;</span><br><span class="line">    GdkRegionBox *rects;</span><br><span class="line">    GdkRegionBox extents;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">GtkIMContext *<span class="built_in">local</span>_context;</span><br><span class="line"></span><br><span class="line">void</span><br><span class="line">gdk_region_get_clipbox (const GdkRegion *region,</span><br><span class="line">                        GdkRectangle    *rectangle)</span><br><span class="line">&#123;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (region != NULL);</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (rectangle != NULL);</span><br><span class="line"></span><br><span class="line">    rectangle-&gt;x = region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;y = region-&gt;extents.y1;</span><br><span class="line">    rectangle-&gt;width = region-&gt;extents.x2 - region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;height = region-&gt;extents.y2 - region-&gt;extents.y1;</span><br><span class="line">    GdkRectangle rect;</span><br><span class="line">    rect.x = rectangle-&gt;x;</span><br><span class="line">    rect.y = rectangle-&gt;y;</span><br><span class="line">    rect.width = <span class="number">0</span>;</span><br><span class="line">    rect.height = rectangle-&gt;height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rectangle-&gt;width == <span class="number">2</span> &amp;&amp; GTK_IS_IM_CONTEXT(<span class="built_in">local</span>_context)) &#123;</span><br><span class="line">        gtk_im_context_<span class="built_in">set</span>_cursor_location(<span class="built_in">local</span>_context, rectangle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static GdkFilterReturn event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer im_context)</span><br><span class="line">&#123;</span><br><span class="line">    XEvent *xev = (XEvent *)xevent;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (xev-&gt;<span class="built_in">type</span> == KeyRelease &amp;&amp; GTK_IS_IM_CONTEXT(im_context)) &#123;</span><br><span class="line">        GdkWindow *win = g_object_get_data(G_OBJECT(im_context), <span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (GDK_IS_WINDOW(win)) &#123;</span><br><span class="line">            gtk_im_context_<span class="built_in">set</span>_client_window(im_context, win);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> GDK_FILTER_CONTINUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void gtk_im_context_<span class="built_in">set</span>_client_window (GtkIMContext *context,</span><br><span class="line">                                       GdkWindow    *window)</span><br><span class="line">&#123;</span><br><span class="line">    GtkIMContextClass *klass;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (GTK_IS_IM_CONTEXT (context));</span><br><span class="line">    klass = GTK_IM_CONTEXT_GET_CLASS (context);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (klass-&gt;<span class="built_in">set</span>_client_window) &#123;</span><br><span class="line">        klass-&gt;<span class="built_in">set</span>_client_window (context, window);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!GDK_IS_WINDOW (window)) &#123;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    g_object_<span class="built_in">set</span>_data(G_OBJECT(context), <span class="string">"window"</span>, window);</span><br><span class="line">    int width = gdk_window_get_width(window);</span><br><span class="line">    int height = gdk_window_get_height(window);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (width != <span class="number">0</span> &amp;&amp; height != <span class="number">0</span>) &#123;</span><br><span class="line">        gtk_im_context_focus_<span class="keyword">in</span>(context);</span><br><span class="line">        <span class="built_in">local</span>_context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gdk_window_add_filter (window, event_filter, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>进入保留该文件的目录，在终端输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-<span class="number">2.0</span>` <span class="operator">-f</span>PIC</span><br></pre></td></tr></table></figure>
-<h3 id="4-中文输入">4.中文输入</h3><p>我们试试能不能用吧。<br>在终端中输入如下命令：</p>
-<pre><code class="bash">LD_PRELOAD=./libsublime-imfix.so subl             <span class="comment">#subl是安装好SublimeText 3后的程序启动命令</span>
-</code></pre>
-<p>如果一切正常，在启动之后，搜狗输入法就能可以使用了。</p>
-<h3 id="5-最后的设置">5.最后的设置</h3><p>将libsublime-imfix.so拷贝到系统库的默认路径中：</p>
-<pre><code class="bash">sudo cp libsublime-imfix.so /usr/lib/
-</code></pre>
-<p>sudo vim /usr/share/applications/sublime_text.desktop<br>  讲sublime text3启动程序用记事本打开后：<br>将<br>Exec=/opt/sublime_text/sublime_text %F<br>修改为<br>Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ %F</p>
-<p>   将<br>    Exec=/opt/sublime_text/sublime_text -n<br>    修改为<br>      Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ -n<br>    这样通过快捷方式就可以打开支持中文输入的sublime了，通过终端输入subl打开的sublime仍然部支持中文输入。<br>    <em>注：快捷方式可在/usr/share/applications中找到。</em></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-23T16:18:24.000Z"><a href="/2015/08/24/linux-install/">2015-08-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/24/linux-install/">安装ubuntu系统</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-12-13T11:06:14.000Z"><a href="/2014/12/13/js-递归/">2014-12-13</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/12/13/js-递归/">js-递归</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="递归">递归</h2><p>函数的递归很简单，但是在js中要注意一下递归的问题。</p>
-<pre><code><span class="function">function <span class="title">jiecheng</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function">num * <span class="title">jiecheng</span><span class="params">(num - <span class="number">1</span>)</span></span>;
-    }
-}
-</code></pre><p>这是个简单的阶乘，但是存在个问题。</p>
-<pre><code><span class="variable"><span class="keyword">var</span> a</span>=jiecheng;
-jiecheng=<span class="literal">null</span>;
-a(<span class="number">4</span>);<span class="comment">//报错</span>
-</code></pre><p>因为函数的内部是通过调用函数名来实现递归，一旦函数名为null值了，所以就导致错误。</p>
-<p>解决办法：</p>
-<pre><code><span class="function">function <span class="title">jiecheng</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> num * arguments.callee(num - <span class="number">1</span>);
-    }
-}
-</code></pre><p>这种方式是通过使用arguments.callee来代替函数名，但是又会有新的问题：严格模式下，脚本无法访问arguments.callee。</p>
-<p>解决办法：</p>
-<pre><code>var jiecheng=(<span class="function">function <span class="title">f</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function">num*<span class="title">f</span><span class="params">(num-<span class="number">1</span>)</span></span>;
-    }
-});
-</code></pre><p>不管怎么变，f函数名都是有效的，而且也能在严格模式下使用。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
     <a href="/page/3/" class="alignleft prev">上一頁</a>
   
+  
+    <a href="/page/5/" class="alignright next">下一頁</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
@@ -552,13 +946,17 @@ a(<span class="number">4</span>);<span class="comment">//报错</span>
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
+    <li><a href="/categories/backbonejs/">backbonejs</a><small>3</small></li>
+  
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
   
-    <li><a href="/categories/css/">css</a><small>1</small></li>
+    <li><a href="/categories/css/">css</a><small>3</small></li>
   
     <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
   
-    <li><a href="/categories/js/">js</a><small>17</small></li>
+    <li><a href="/categories/jquery/">jquery</a><small>1</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>18</small></li>
   
     <li><a href="/categories/linux/">linux</a><small>3</small></li>
   

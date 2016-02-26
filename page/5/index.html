@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 5 頁 | WJer&#39;s time</title>
+  <meta name="author" content="WJer">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="WJer&#39;s time"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="WJer&#39;s time" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe3814b5f53cc394a493cbeb2368f2af' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41207871-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">WJer&#39;s time</a></h1>
+  <h2><a href="/">Windy,only try to survive</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+  
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">nodejs-使用npm安装模块失败</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
+<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
+<pre><code>cnpm <span class="keyword">install</span> 模块名字
+</code></pre><p>来下载安装模块，很简单吧。</p>
+<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
+<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
+</code></pre><p>我们再输入</p>
+<pre><code><span class="built_in">npm</span> config ls
+</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
+<pre><code>npm <span class="keyword">install</span> 模块名字
+</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
+<p><em>注意</em>：我们可以通过</p>
+<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
+</code></pre><p>来删除新添加的配置项。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-23T16:22:03.000Z"><a href="/2015/10/24/linux-解决sublime中文输入/">2015-10-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/10/24/linux-解决sublime中文输入/">linux-解决sublime中文输入</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天用sublime写网页的时候发现竟然不能使用中文，那个蛋疼啊，不得不感慨，技术发展的如此之快（瞎逼逼）。<br>不多说了，说说解决办法吧。</p>
+<h3 id="1-sublime_text3安装">1.sublime text3安装</h3><p>安装方式很多，我直接下载下来安装。</p>
+<h3 id="2-依赖软件安装">2.依赖软件安装</h3><p>这个必须安装，我之前没有安装，后面的步骤一直报错，苦恼了好几天。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libgtk2.<span class="number">0</span>-dev</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-拷贝如下代码到文件sublime_imfix-c文件中，该文件需要自己创建，随便放到那里都行">3.拷贝如下代码到文件sublime_imfix.c文件中，该文件需要自己创建，随便放到那里都行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;gtk/gtk.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;gdk/gdkx.h&gt;</span></span><br><span class="line"></span><br><span class="line">typedef GdkSegment GdkRegionBox;</span><br><span class="line"></span><br><span class="line">struct _GdkRegion</span><br><span class="line">&#123;</span><br><span class="line">    long size;</span><br><span class="line">    long numRects;</span><br><span class="line">    GdkRegionBox *rects;</span><br><span class="line">    GdkRegionBox extents;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">GtkIMContext *<span class="built_in">local</span>_context;</span><br><span class="line"></span><br><span class="line">void</span><br><span class="line">gdk_region_get_clipbox (const GdkRegion *region,</span><br><span class="line">                        GdkRectangle    *rectangle)</span><br><span class="line">&#123;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (region != NULL);</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (rectangle != NULL);</span><br><span class="line"></span><br><span class="line">    rectangle-&gt;x = region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;y = region-&gt;extents.y1;</span><br><span class="line">    rectangle-&gt;width = region-&gt;extents.x2 - region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;height = region-&gt;extents.y2 - region-&gt;extents.y1;</span><br><span class="line">    GdkRectangle rect;</span><br><span class="line">    rect.x = rectangle-&gt;x;</span><br><span class="line">    rect.y = rectangle-&gt;y;</span><br><span class="line">    rect.width = <span class="number">0</span>;</span><br><span class="line">    rect.height = rectangle-&gt;height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rectangle-&gt;width == <span class="number">2</span> &amp;&amp; GTK_IS_IM_CONTEXT(<span class="built_in">local</span>_context)) &#123;</span><br><span class="line">        gtk_im_context_<span class="built_in">set</span>_cursor_location(<span class="built_in">local</span>_context, rectangle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static GdkFilterReturn event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer im_context)</span><br><span class="line">&#123;</span><br><span class="line">    XEvent *xev = (XEvent *)xevent;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (xev-&gt;<span class="built_in">type</span> == KeyRelease &amp;&amp; GTK_IS_IM_CONTEXT(im_context)) &#123;</span><br><span class="line">        GdkWindow *win = g_object_get_data(G_OBJECT(im_context), <span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (GDK_IS_WINDOW(win)) &#123;</span><br><span class="line">            gtk_im_context_<span class="built_in">set</span>_client_window(im_context, win);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> GDK_FILTER_CONTINUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void gtk_im_context_<span class="built_in">set</span>_client_window (GtkIMContext *context,</span><br><span class="line">                                       GdkWindow    *window)</span><br><span class="line">&#123;</span><br><span class="line">    GtkIMContextClass *klass;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (GTK_IS_IM_CONTEXT (context));</span><br><span class="line">    klass = GTK_IM_CONTEXT_GET_CLASS (context);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (klass-&gt;<span class="built_in">set</span>_client_window) &#123;</span><br><span class="line">        klass-&gt;<span class="built_in">set</span>_client_window (context, window);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!GDK_IS_WINDOW (window)) &#123;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    g_object_<span class="built_in">set</span>_data(G_OBJECT(context), <span class="string">"window"</span>, window);</span><br><span class="line">    int width = gdk_window_get_width(window);</span><br><span class="line">    int height = gdk_window_get_height(window);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (width != <span class="number">0</span> &amp;&amp; height != <span class="number">0</span>) &#123;</span><br><span class="line">        gtk_im_context_focus_<span class="keyword">in</span>(context);</span><br><span class="line">        <span class="built_in">local</span>_context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gdk_window_add_filter (window, event_filter, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进入保留该文件的目录，在终端输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-<span class="number">2.0</span>` <span class="operator">-f</span>PIC</span><br></pre></td></tr></table></figure>
+<h3 id="4-中文输入">4.中文输入</h3><p>我们试试能不能用吧。<br>在终端中输入如下命令：</p>
+<pre><code class="bash">LD_PRELOAD=./libsublime-imfix.so subl             <span class="comment">#subl是安装好SublimeText 3后的程序启动命令</span>
+</code></pre>
+<p>如果一切正常，在启动之后，搜狗输入法就能可以使用了。</p>
+<h3 id="5-最后的设置">5.最后的设置</h3><p>将libsublime-imfix.so拷贝到系统库的默认路径中：</p>
+<pre><code class="bash">sudo cp libsublime-imfix.so /usr/lib/
+</code></pre>
+<p>sudo vim /usr/share/applications/sublime_text.desktop<br>  讲sublime text3启动程序用记事本打开后：<br>将<br>Exec=/opt/sublime_text/sublime_text %F<br>修改为<br>Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ %F</p>
+<p>   将<br>    Exec=/opt/sublime_text/sublime_text -n<br>    修改为<br>      Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ -n<br>    这样通过快捷方式就可以打开支持中文输入的sublime了，通过终端输入subl打开的sublime仍然部支持中文输入。<br>    <em>注：快捷方式可在/usr/share/applications中找到。</em></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-23T16:18:24.000Z"><a href="/2015/08/24/linux-install/">2015-08-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/24/linux-install/">安装ubuntu系统</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-13T11:06:14.000Z"><a href="/2014/12/13/js-递归/">2014-12-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/12/13/js-递归/">js-递归</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="递归">递归</h2><p>函数的递归很简单，但是在js中要注意一下递归的问题。</p>
+<pre><code><span class="function">function <span class="title">jiecheng</span><span class="params">(num)</span></span>{
+    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="function">num * <span class="title">jiecheng</span><span class="params">(num - <span class="number">1</span>)</span></span>;
+    }
+}
+</code></pre><p>这是个简单的阶乘，但是存在个问题。</p>
+<pre><code><span class="variable"><span class="keyword">var</span> a</span>=jiecheng;
+jiecheng=<span class="literal">null</span>;
+a(<span class="number">4</span>);<span class="comment">//报错</span>
+</code></pre><p>因为函数的内部是通过调用函数名来实现递归，一旦函数名为null值了，所以就导致错误。</p>
+<p>解决办法：</p>
+<pre><code><span class="function">function <span class="title">jiecheng</span><span class="params">(num)</span></span>{
+    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> num * arguments.callee(num - <span class="number">1</span>);
+    }
+}
+</code></pre><p>这种方式是通过使用arguments.callee来代替函数名，但是又会有新的问题：严格模式下，脚本无法访问arguments.callee。</p>
+<p>解决办法：</p>
+<pre><code>var jiecheng=(<span class="function">function <span class="title">f</span><span class="params">(num)</span></span>{
+    <span class="keyword">if</span>(num&lt;=<span class="number">1</span>){
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }<span class="keyword">else</span>{
+        <span class="keyword">return</span> <span class="function">num*<span class="title">f</span><span class="params">(num-<span class="number">1</span>)</span></span>;
+    }
+});
+</code></pre><p>不管怎么变，f函数名都是有效的，而且也能在严格模式下使用。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/4/" class="alignleft prev">上一頁</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/HTML5/">HTML5</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/backbonejs/">backbonejs</a><small>3</small></li>
+  
+    <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/jquery/">jquery</a><small>1</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>18</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/插件/">插件</a><small>1</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">个人介绍</h3>
+<ul class="entry">
+
+<li><img src="/imgs/jinmu.jpg" style="width:100%"/></li>
+<li>博主：吴敬</li>
+<li>星座：双鱼座</li>
+<li>现状：合肥工业大学本科生</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
+<!--
+<li><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=86 src="http://music.163.com/outchain/player?type=2&id=39443443&auto=1&height=66"></iframe></li>
+-->
+</ul>
+</div>
+
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src=""></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 WJer
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
+
+
+

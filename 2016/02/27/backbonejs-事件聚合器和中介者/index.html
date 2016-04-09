@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>backbonejs-事件聚合器和中介者 | WJer&#39;s time</title>
+  <meta name="author" content="WJer">
+  
+  <meta name="description" content="今天写完了这篇，但是哔了狗了，误删了，写的那么认真啊，成果为０。算了，吃次亏，再温习一边吧。
+事件聚合器和中介者语义了解语义，将有助于你了解事件聚合器和中介者。假设一个情景：水果店的老板和苹果公司员工聊天，聊得内容是关于“苹果”，结果可想而知，水果店老板眼中的“苹果”是吃的水果，而员工眼中的“苹果”">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="backbonejs-事件聚合器和中介者"/>
+  <meta property="og:site_name" content="WJer&#39;s time"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="WJer&#39;s time" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe3814b5f53cc394a493cbeb2368f2af' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41207871-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">WJer&#39;s time</a></h1>
+  <h2><a href="/">Windy,only try to survive</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+  
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-27T03:07:19.000Z"><a href="/2016/02/27/backbonejs-事件聚合器和中介者/">2016-02-27</a></time>
+      
+      
+  
+    <h1 class="title">backbonejs-事件聚合器和中介者</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天写完了这篇，但是哔了狗了，误删了，写的那么认真啊，成果为０。<br>算了，吃次亏，再温习一边吧。</p>
+<h2 id="事件聚合器和中介者">事件聚合器和中介者</h2><h4 id="语义">语义</h4><p>了解语义，将有助于你了解事件聚合器和中介者。<br>假设一个情景：水果店的老板和苹果公司员工聊天，聊得内容是关于“苹果”，结果可想而知，水果店老板眼中的“苹果”是吃的水果，而员工眼中的“苹果”是用的电子产品，他们理解的事物并不是同一件事，所以话题并不能持续下去。</p>
+<p>语义说白了，就是不同的词语在不同的环境下有着不同的含义。</p>
+<h4 id="事件聚合器">事件聚合器</h4><p>附上事件聚合器代码：</p>
+<pre><code><span class="keyword">var</span> View1=Backbone.View.extend({
+    el:<span class="string">'body'</span>,
+    events:{
+        <span class="string">'click #container'</span>:<span class="string">'dosomething'</span>
+    },
+    initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.on(<span class="string">'something'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="string">'我是view1'</span>);
+        },<span class="keyword">this</span>);
+    },
+    dosomething:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="comment">// console.log('我是view1');</span>
+        Backbone.trigger(<span class="string">'something'</span>);
+    }    
+    });
+    <span class="keyword">var</span> View2=Backbone.View.extend({
+        initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.on(<span class="string">'something'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="string">'我是view2'</span>);
+        },<span class="keyword">this</span>);
+    }    
+});
+</code></pre><p>事件聚合器是内置在<code>Backbone</code>对象上的，通过<code>Backbone.on()</code>来创建事件聚合器，通过<code>Backbone.trigger()</code>来触发事件的。</p>
+<p>ps:dom事件创建的方法是通过键盘或鼠标或滚轮作用在某个dom元素上，从而触发事件，但是这个事件触发器里事件作用在什么上面呢？这种事件区别于dom事件，这个事件的触发仅仅通过触发函数<code>Backbone.trigger()</code>来触发。</p>
+<h4 id="中介者">中介者</h4><p>以考试为例：学生拿到卷子答卷–&gt;老师收卷，学生交卷–&gt;老师批卷–&gt;打分<br>附上中介者代码：</p>
+<pre><code><span class="keyword">var</span> mediator={
+    test:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="keyword">var</span> doTestStudent=getTestpaper();<span class="comment">//学生得到卷子</span>
+        doTestStudent.on(<span class="string">"completeTest"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//答卷完成时</span>
+            <span class="keyword">var</span> doCheckTeacher=getCheckpaper();<span class="comment">//老师收卷</span>
+            doCheckTeacher.on(<span class="string">"completeCheck"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//批卷完成时</span>
+                mark();<span class="comment">//打分</span>
+            });
+        });
+    }
+}
+</code></pre><p><code>mediator</code>从js的角度来看只是个字面量兑现，但是从模式来看，它是个中介者，在这个中介者的内部是考试的流程。</p>
+<h4 id="共性">共性</h4><p><strong>都涉及事件：</strong><br>事件聚合器，听名字就知道，跟事件有密切的联系。<br>中介者，因为内部装的是某个行为的流程，先干什么再干什么，使用事件通知的方式可以很方便实现流程。</p>
+<h4 id="什么时候用">什么时候用</h4><p><strong>事件聚合器</strong><br>如果有很多很多的对象需要监听同一个事件，可以交给事件聚合器，需要触发的时候触发。事件的开销会降低。<br>示例:</p>
+<pre><code><span class="comment">//低效的用法</span>
+<span class="comment">//没有遇到经典的示例，日后补上</span>
+</code></pre><p>如果没有关系的对象之间需要通知，可以使用事件聚合器来通知消息。可以降低耦合。<br>示例：</p>
+<pre><code><span class="keyword">var</span> View1=Backbone.View.extend({
+    events:{
+        <span class="string">'click #container'</span>:<span class="string">'dosomething'</span>
+    },
+    initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+    },
+    dosomething:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.trigger(<span class="string">'something'</span>);
+    }    
+});
+<span class="keyword">var</span> View2=Backbone.View.extend({
+    initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.on(<span class="string">'something'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="string">'我是view2'</span>);
+        },<span class="keyword">this</span>);
+    }    
+});
+<span class="keyword">var</span> view1=<span class="keyword">new</span> View1();
+<span class="keyword">var</span> view2=<span class="keyword">new</span> View2();
+
+<span class="comment">//当view1视图里的某个元素发生点击时，将会通知view2里的操作</span>
+</code></pre><p><strong>中介者</strong><br>如果两个以上的对象有间接的工作关系，我们可以使用中介者，将工作流程写在中介者内。<br>这样一来，对象间的工作关系将仅仅限制在中介者内，同时不需要考虑对象的细节，便于维护。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/backbonejs/">backbonejs</a>
+  </div>
+
+        
+        <!--分享的模块-->
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wjer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/HTML5/">HTML5</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/backbonejs/">backbonejs</a><small>4</small></li>
+  
+    <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/hexo/">hexo</a><small>2</small></li>
+  
+    <li><a href="/categories/jquery/">jquery</a><small>1</small></li>
+  
+    <li><a href="/categories/js/">js</a><small>20</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>3</small></li>
+  
+    <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/underscorejs/">underscorejs</a><small>2</small></li>
+  
+    <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
+  
+    <li><a href="/categories/插件/">插件</a><small>1</small></li>
+  
+    <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
+  
+    <li><a href="/categories/算法/">算法</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">个人介绍</h3>
+<ul class="entry">
+
+<li><img src="/imgs/jinmu.jpg" style="width:100%"/></li>
+<li>博主：吴敬</li>
+<li>星座：双鱼座</li>
+<li>现状：合肥工业大学本科生</li>
+<li>想要约我的<a href="×××" title="QQ:1025620771">联系我</a>！</li>
+<!--
+<li><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=86 src="http://music.163.com/outchain/player?type=2&id=39443443&auto=1&height=66"></iframe></li>
+-->
+</ul>
+</div>
+
+
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src=""></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 WJer
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
+
+
+

@@ -9,8 +9,9 @@
   <meta name="author" content="WJer">
   
   <meta name="description" content="键盘事件键盘上有哪些键辅助键：ctrl,alt,shift,windows,fn功能键：f1~f12字母数字键
-键盘事件keydown事件keyup事件keypress事件
-键盘事件的发展过程关于keydown和keyupDOM3级以前，keydown事件和keyup事件以及keyCode属性从未标">
+键盘事件keydown事件keyup事件这两者都是最低级的事件
+keypress事件是高级事件，详细请看文本事件篇。
+键盘事件的发展过程关于keydown和keyupDOM3级以前，key">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -99,11 +100,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <div class="entry">
       
         <h2 id="键盘事件">键盘事件</h2><h4 id="键盘上有哪些键">键盘上有哪些键</h4><p>辅助键：ctrl,alt,shift,windows,fn<br>功能键：f1~f12<br>字母数字键</p>
-<h4 id="键盘事件-1">键盘事件</h4><p>keydown事件<br>keyup事件<br>keypress事件</p>
+<h4 id="键盘事件-1">键盘事件</h4><p>keydown事件<br>keyup事件<br>这两者都是最低级的事件</p>
+<p>keypress事件<br>是高级事件，详细请看文本事件篇。</p>
 <h4 id="键盘事件的发展过程">键盘事件的发展过程</h4><p><strong>关于keydown和keyup</strong><br>DOM3级以前，keydown事件和keyup事件以及keyCode属性从未标准化；<br>3级DOM事件才标准化了keydown事件和keyup事件,但未标准化keyCode属性，同时提出了新的<code>key属性</code>。</p>
 <h4 id="键盘事件对象的属性">键盘事件对象的属性</h4><p><code>altKey</code>，<code>ctrlKey</code>，<code>shiftKey</code>属性，值为true or false<br><code>keyCode</code>属性，值为键对应的unicode编码。<br><code>key</code>属性，值为键对应的名字（支持的浏览器不多）<br><code>keyIdentifier</code>属性，值为键对应的unicode编码的字符串形式（webkit内核支持）</p>
-<h4 id="keyCode属性弊端">keyCode属性弊端</h4><p><strong>发生keydown和keyup事件</strong><br>对于字母键，输入字母时，keyCode属性总是返回大写字母的unicode编码；<br>对于带标点的数字键，输入标点时，keyCode属性返回数字的unicode编码；</p>
-<p><strong>发生keypress事件</strong><br>以上情况不会发生，输入大写字母和小写字母时，keyCode属性值是各自对应的unicode编码。</p>
+<h4 id="keyCode属性弊端">keyCode属性弊端</h4><p><strong>发生keydown和keyup事件</strong><br>对于字母键，输入字母时，keyCode属性总是返回大写字母的unicode编码；不管是大写还是小写都返回这个键的unicode编码。<br>对于带标点的数字键，输入标点时，keyCode属性返回数字的unicode编码；举个例子，1数字键既能输出1又能输出感叹号，但是keyCode总是返回1对应的unicode编码。</p>
 <h4 id="案例：键盘快捷键类">案例：键盘快捷键类</h4><p>功能：</p>
 <ul>
 <li>点击某个键，会出想对应的行为</li>
@@ -179,11 +180,11 @@ var duoshuoQuery = {short_name:"wjer"};
   <h3 class="title">分類</h3>
   <ul class="entry">
   
-    <li><a href="/categories/HTML5/">HTML5</a><small>1</small></li>
+    <li><a href="/categories/HTML5/">HTML5</a><small>2</small></li>
   
     <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/categories/backbonejs/">backbonejs</a><small>3</small></li>
+    <li><a href="/categories/backbonejs/">backbonejs</a><small>4</small></li>
   
     <li><a href="/categories/bootstrap/">bootstrap</a><small>1</small></li>
   
@@ -193,17 +194,21 @@ var duoshuoQuery = {short_name:"wjer"};
   
     <li><a href="/categories/jquery/">jquery</a><small>1</small></li>
   
-    <li><a href="/categories/js/">js</a><small>18</small></li>
+    <li><a href="/categories/js/">js</a><small>20</small></li>
   
     <li><a href="/categories/linux/">linux</a><small>3</small></li>
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
+  
+    <li><a href="/categories/underscorejs/">underscorejs</a><small>2</small></li>
   
     <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
   
     <li><a href="/categories/插件/">插件</a><small>1</small></li>
   
     <li><a href="/categories/浏览器/">浏览器</a><small>2</small></li>
+  
+    <li><a href="/categories/算法/">算法</a><small>1</small></li>
   
   </ul>
 </div>

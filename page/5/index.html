@@ -85,6 +85,281 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-12-19T09:37:19.000Z"><a href="/2015/12/19/js-DOM节点类型-Element类型/">2015-12-19</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/19/js-DOM节点类型-Element类型/">js-DOM节点类型-Element类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Element类型">Element类型</h3><p><strong>特征</strong><br>    nodeType:1;<br>    nodeName:元素的标签名;<br>    nodeValue: null;<br>    parentNode: Document/Element;<br>    ownerDocument: null;</p>
+<p><strong>特性</strong><br>    特性就是元素标签的属性，只是换了个名字而已。本人分析是为了区别元素标签的属性和DOM对象的属性而这样干的。</p>
+<p><strong>取得特性</strong><br>两种方式：getAttribute()和直接访问DOM对象属性。</p>
+<p>ps：并不是所有的特性都有对应的属性。对于一些公认的特性，才有与之对应的DOM对象的属性。</p>
+<p>ps：在公认的特性中，有两类特殊的特性：style和onclick。两种方式取得的值不想同。由于这样的存在，开发人员在取得自定义特性使用getAttribute(),最普遍使用的还是DOM对象属性。</p>
+<p>ps：ie浏览器中自定义特性也有对应的属性</p>
+<p><strong>设置特性</strong><br>两种方式：setAttribute()和直接设置DOM属性。</p>
+<p>ps：setAttribute()无法设置class和style特性。</p>
+<p>ps：setAttribute()可以设置自定义特性，直接设置DOM属性只能设置属性，如果不是公共特性，并不能反应到元素的特性上。</p>
+<p><strong>移除特性</strong><br>removeAttribute()</p>
+<p><strong>attributes属性</strong><br>所有的特性都保存在这个属性当中。</p>
+<p>ps：这个属性实质上是一个对象集合，它具有一些查找集合元素的方法。</p>
+<p>ps：如果要遍历元素的特性，就可以使用这个属性。</p>
+<p><strong>创建元素</strong><br>大部分浏览器支持：document.createElement()</p>
+<p>ps：大部分浏览器的该方法传递的参数为标签的名称，例如div、a等；</p>
+<pre><code><span class="built_in">document</span>.createElement(<span class="string">'div'</span>);
+</code></pre><p>但是IE浏览器还支持传递整个标签，例如:</p>
+<pre><code>document.createElement("<span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>");
+</code></pre><p>ps：ie7即其以下的浏览器都存在着bug，解决方式是使用下面的方法：</p>
+<pre><code><span class="keyword">if</span>(client.browser.ie &amp;&amp; client.browser.ie&lt;=7){
+    <span class="comment">//低版本无法设置动态创建&lt;iframe&gt;的name特性</span>
+    <span class="keyword">var</span> iframe=document.createElement(<span class="string">"&lt;iframe name=\"</span>myframe\<span class="string">"&gt;&lt;/iframe&gt;"</span>);
+
+    <span class="comment">//低版本无法使用reset()方法重置input元素</span>
+    <span class="keyword">var</span> <span class="keyword">input</span>=document.createElement(<span class="string">"&lt;input type=\"</span>checkbox\<span class="string">"&gt;"</span>);
+
+    <span class="comment">//低版本创建的reset按钮无法重置表单</span>
+    <span class="keyword">var</span> button=document.createElement(<span class="string">"&lt;button type=\"</span>reset\<span class="string">"&gt;&lt;/button&gt;"</span>);
+
+    <span class="comment">//低版本创建的单选按钮，即使name相同，但是也无法实现单选</span>
+    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>1\<span class="string">"&gt;"</span>);
+    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>2\<span class="string">"&gt;"</span>);
+}
+</code></pre><p><strong>元素子节点</strong><br>通过childNodes属性获取直接子节点(所有子节点)。<br>ie浏览器在识别子节点时不会计算文本节点（空白符），而其他浏览器会记录文本节点(空白符)。</p>
+<pre><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="comment">&lt;!--ul子节点数：ie浏览器返回3，其他浏览器返回7--&gt;</span>
+
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="comment">&lt;!--所有浏览器都返回3--&gt;</span>
+</code></pre><p><strong>添加子节点</strong><br>appendChild(node);<br><strong>两类特殊的元素标签</strong><br><code>&lt;script&gt;&lt;/script&gt;</code>和<code>&lt;style&gt;&lt;/style&gt;</code></p>
+<p><code>&lt;script&gt;&lt;/script&gt;</code><br>IE浏览器是不允许对script和style的DOM对象使用操作子节点的方法，例如。<br>appendChild()、removeChild()等。</p>
+<p>动态加载js文件</p>
+<p>加载外部js文件(各浏览器通用)：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);
+    script.type=<span class="string">"text/javascript"</span>;
+    script.src=<span class="string">"url"</span>;
+    <span class="built_in">document</span>.body.appendChild(script);
+}
+</code></pre><p>加载行内js代码</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">'script'</span>);
+    script.type=<span class="string">"text/javascript"</span>;
+    <span class="keyword">try</span>{<span class="comment">//其它浏览器</span>
+        script.appendChild(<span class="built_in">document</span>.createTextNode(code));
+    }<span class="keyword">catch</span>(ex){<span class="comment">//ie浏览器</span>
+        script.text=<span class="string">"code"</span>;
+    }
+    <span class="built_in">document</span>.body.appendChild(script);
+}
+</code></pre><p>动态加载css</p>
+<p>加载外部css文件</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCss</span>(<span class="params">url</span>)</span>{
+    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">'style'</span>);
+    style.rel=<span class="string">"stylesheet"</span>;
+    style.type=<span class="string">"text/css"</span>;
+    style.href=url;
+    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];
+    head.appendChild(style);
+}
+</code></pre><p>加载css样式</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCssString</span>(<span class="params">css</span>)</span>{
+    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">"style"</span>);
+    style.rel=<span class="string">"stylesheet"</span>;
+    style.type=<span class="string">"text/css"</span>;
+    <span class="keyword">try</span>{<span class="comment">//其他浏览器</span>
+        style.appendChild(<span class="built_in">document</span>.createTextNode(css));
+    }<span class="keyword">catch</span>(ex){<span class="comment">//IE浏览器</span>
+        style.stylesheet.cssText=css;
+    }
+    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];
+    head.appendChild(style);
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T15:55:12.000Z"><a href="/2015/12/18/js-JSONP跨域/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/js-JSONP跨域/">js-JSONP跨域</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T15:43:05.000Z"><a href="/2015/12/18/浏览器-同源策略/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/浏览器-同源策略/">浏览器-同源策略</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-18T10:14:22.000Z"><a href="/2015/12/18/浏览器-浏览器缓存机制/">2015-12-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/18/浏览器-浏览器缓存机制/">浏览器-浏览器缓存机制</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="304状态和200状态">304状态和200状态</h4><p>当客户端的浏览器向服务器第一次发送HTTP请求时，服务器在给客户端响应时，在响应上提供一些标记（last-modified或者etag），因为是第一次响应，返回的必然是200状态。</p>
+<p>缓存过期时，当客户端第二次向服务器发送HTTP请求，该请求头中会有这些标记，服务器会利用这些标记进行比对，如果文件没有被修改，则返回<strong>304状态</strong>，告诉浏览器上一次的文件还可以使用（它们是留存在cache中的）；如果被修改了，则返回最新的文件信息，返回的是<strong>200状态</strong>。</p>
+<h4 id="两种缓存">两种缓存</h4><p>协商缓存：会和服务器商量，看看文件是否修改过，缓存的内容时时保持在最新状态。<br>彻底缓存：在到期之间都不会和服务器交互。即使文件内容发生改变，加载网页还在使用缓存中旧的内容。</p>
+<p>last-modified和etag都属于协商缓存，expires和cache-control属于彻底缓存。</p>
+<h4 id="详解两种标记">详解两种标记</h4><p><strong>last-modified</strong><br>这个标记在服务器响应客户端时提供，格式是这样的：</p>
+<pre><code><span class="keyword">last</span>-modifeid：时间（精确到秒）
+</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求头便会带上这个时间信息，但是格式会发生一些变化：</p>
+<pre><code><span class="keyword">if</span>-modified-<span class="keyword">since</span>：时间点（和上面的时间是一样的）
+</code></pre><p>服务器收到这个事件信息，如果在这个事件之后，文件有更新，那么发送新的文件，返回200状态，否则返回304状态。</p>
+<p><strong>etag</strong><br>区别于last-modified标志，它的格式是这样的：</p>
+<pre><code>Etag:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
+</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求便会带上这个信息，但是格式会发生一些变化：</p>
+<pre><code>If-None-Match:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
+</code></pre><p>服务器进行比对，如果不一致，则发送新的文件，返回200状态，否则返回304状态。</p>
+<p><strong>为什么会出现etag？</strong><br>1.Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>2.如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存<br>3.有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形<br>（from 百度上某大牛的总结）</p>
+<p>ps:两种标记可以一起使用</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-12-18T09:17:52.000Z"><a href="/2015/12/18/hexo-遇到的错误/">2015-12-18</a></time>
       
       
@@ -711,227 +986,6 @@ inheritPrototype(Sub,Sup);
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-28T12:28:44.000Z"><a href="/2015/11/28/nodejs-supervisor/">2015-11-28</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/28/nodejs-supervisor/">nodejs-supervisor</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="使用supervisor提高调试效率">使用supervisor提高调试效率</h3><p>每次改完项目的js文件，都要重新node一下，实在是麻烦。</p>
-<p>后来知道了supervisor，一个强大而又实用的工具，很适合调试代码。</p>
-<h4 id="如何安装">如何安装</h4><p>通过</p>
-<pre><code><span class="tag">supervisor</span> <span class="tag">app</span><span class="class">.js</span>
-</code></pre><p>启动。当你修改项目之后，它会检测到你的修改，然后自动重启项目，不需要你再输入命令来启动项目。</p>
-<p>直接用npm安装既可，键入命令: </p>
-<pre><code>npm -g <span class="keyword">install</span> supervisor
-</code></pre><h4 id="自己电脑的问题">自己电脑的问题</h4><p>不知道为什么，我每次安装都不是全局的，安装成功仍然无法使用，不过没关系，手动去实现。例如install到nodejs的文件夹下,以防出错，你还是去nodejs/bin下查看是否有supervisor和node-supervisor这个文件。</p>
-<pre><code>sudo ln -s  nodejs<span class="regexp">/bin/</span>supervisor <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisor
-</code></pre><p>通过软连接的方式来实现全局。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-24T09:46:26.000Z"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">2015-11-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/24/hexo-使用-hexo-d-报错/">hexo-使用&#39;hexo d&#39;报错</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="“ERROR_Deployer_not_found”_错误（for_linux）">“ERROR Deployer not found” 错误（for linux）</h2><p>hexo 升级到3.0之后，再使用</p>
-<pre><code><span class="title">hexo</span> deploy
-</code></pre><p>会出现“ERROR Deployer not found”的错误，看了很多别人的评论，才知道原因。</p>
-<h4 id="原因是缺少”hexo_deploy”的相关模块。">原因是缺少”hexo deploy”的相关模块。</h4><p>既然缺少相关模块，那我们安装吧。但是安装也需要方法的，先给出安装步骤：</p>
-<h5 id="1-进入博客所在的文件夹里">1.进入博客所在的文件夹里</h5><p>没错，这步是必须的，每个项目都有一个node_modules文件夹，正是里面缺少”hexo deploy”的相关模块,所以导致无法使用hexo deploy。网上都没有说这一步，害的菜鸟的我在坑里滚了很长时间，最后才发现这一步的关键。</p>
-<h5 id="2-安装模块">2.安装模块</h5><p>在终端输入</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git  <span class="comment">--save</span></span>
-</code></pre><h5 id="3-修改type">3.修改type</h5><p>博客项目都有个“_config.yml”的文件，修改里面的type为“git”(以前是github；还要注意冒号后面空一格)</p>
-<p>好了，可以使用hexo deploy了，搞定！！</p>
-<p>如果还报了其他的错误，考虑有没有设置git config。当初我是刚安装的git，就忘了设置config global ×××，结果蛋疼了很久。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-11-24T05:16:02.000Z"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">2015-11-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/11/24/nodejs-使用npm安装模块失败/">nodejs-使用npm安装模块失败</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>npm install express，报错！！！<br>npm install formidable，报错！！！<br>我的天！这什么情况啊！！！<br>起初以为是自己改设置改的凌乱了，就决定重新安装nodejs，结果还是install不了，那可咋整？<br>百度一下，分析了一下原因，主要还是受到墙的限制，无法正常访问模块所在的服务器，需要修改代理什么的，也就是换个服务器去下载。<br>百度了许多，现在总结一下解决办法：</p>
-<h3 id="办法一：">办法一：</h3><p>百度上有很多代理，我重点推荐<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝的镜像</a>，戳进去看看吧，上面有教程。<br>其实这个方法很简单，就是安装了一个cnpm取代npm，通过</p>
-<pre><code>cnpm <span class="keyword">install</span> 模块名字
-</code></pre><p>来下载安装模块，很简单吧。</p>
-<h3 id="办法二：">办法二：</h3><p>设置其他的代理，打开终端（或者cmd），输入</p>
-<pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> = <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org
-</code></pre><p>我们再输入</p>
-<pre><code><span class="built_in">npm</span> config ls
-</code></pre><p>可以看到我们刚才设置的那一项。<br>然后通过</p>
-<pre><code>npm <span class="keyword">install</span> 模块名字
-</code></pre><p>显示出express下载成功。<br>我们运行下项目，奇怪！明明显示已经install成功了，在node_modules中也能找到相应的文件夹，怎么还是 not found module。不要怕，往后看。如果可以运行项目的话，那就此止步吧。<br>我们进入nodejs文件目录，在node_modules文件里找到所安装模块的文件夹（例如：名为“formidable”的文件夹），我们把它复制。<br>接着进入项目的根目录里，创建一个node_modules文件夹，把刚刚复制的文件夹保存到这个node_modules文件夹里面。好了node  index.js ,我们发现项目可以运行了。bingo！</p>
-<p><em>注意</em>：我们可以通过</p>
-<pre><code><span class="built_in">npm</span> config <span class="keyword">delete</span> 键名 
-</code></pre><p>来删除新添加的配置项。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-10-23T16:22:03.000Z"><a href="/2015/10/24/linux-解决sublime中文输入/">2015-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/10/24/linux-解决sublime中文输入/">linux-解决sublime中文输入</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>今天用sublime写网页的时候发现竟然不能使用中文，那个蛋疼啊，不得不感慨，技术发展的如此之快（瞎逼逼）。<br>不多说了，说说解决办法吧。</p>
-<h3 id="1-sublime_text3安装">1.sublime text3安装</h3><p>安装方式很多，我直接下载下来安装。</p>
-<h3 id="2-依赖软件安装">2.依赖软件安装</h3><p>这个必须安装，我之前没有安装，后面的步骤一直报错，苦恼了好几天。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libgtk2.<span class="number">0</span>-dev</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-拷贝如下代码到文件sublime_imfix-c文件中，该文件需要自己创建，随便放到那里都行">3.拷贝如下代码到文件sublime_imfix.c文件中，该文件需要自己创建，随便放到那里都行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;gtk/gtk.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;gdk/gdkx.h&gt;</span></span><br><span class="line"></span><br><span class="line">typedef GdkSegment GdkRegionBox;</span><br><span class="line"></span><br><span class="line">struct _GdkRegion</span><br><span class="line">&#123;</span><br><span class="line">    long size;</span><br><span class="line">    long numRects;</span><br><span class="line">    GdkRegionBox *rects;</span><br><span class="line">    GdkRegionBox extents;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">GtkIMContext *<span class="built_in">local</span>_context;</span><br><span class="line"></span><br><span class="line">void</span><br><span class="line">gdk_region_get_clipbox (const GdkRegion *region,</span><br><span class="line">                        GdkRectangle    *rectangle)</span><br><span class="line">&#123;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (region != NULL);</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (rectangle != NULL);</span><br><span class="line"></span><br><span class="line">    rectangle-&gt;x = region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;y = region-&gt;extents.y1;</span><br><span class="line">    rectangle-&gt;width = region-&gt;extents.x2 - region-&gt;extents.x1;</span><br><span class="line">    rectangle-&gt;height = region-&gt;extents.y2 - region-&gt;extents.y1;</span><br><span class="line">    GdkRectangle rect;</span><br><span class="line">    rect.x = rectangle-&gt;x;</span><br><span class="line">    rect.y = rectangle-&gt;y;</span><br><span class="line">    rect.width = <span class="number">0</span>;</span><br><span class="line">    rect.height = rectangle-&gt;height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rectangle-&gt;width == <span class="number">2</span> &amp;&amp; GTK_IS_IM_CONTEXT(<span class="built_in">local</span>_context)) &#123;</span><br><span class="line">        gtk_im_context_<span class="built_in">set</span>_cursor_location(<span class="built_in">local</span>_context, rectangle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static GdkFilterReturn event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer im_context)</span><br><span class="line">&#123;</span><br><span class="line">    XEvent *xev = (XEvent *)xevent;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (xev-&gt;<span class="built_in">type</span> == KeyRelease &amp;&amp; GTK_IS_IM_CONTEXT(im_context)) &#123;</span><br><span class="line">        GdkWindow *win = g_object_get_data(G_OBJECT(im_context), <span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (GDK_IS_WINDOW(win)) &#123;</span><br><span class="line">            gtk_im_context_<span class="built_in">set</span>_client_window(im_context, win);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> GDK_FILTER_CONTINUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void gtk_im_context_<span class="built_in">set</span>_client_window (GtkIMContext *context,</span><br><span class="line">                                       GdkWindow    *window)</span><br><span class="line">&#123;</span><br><span class="line">    GtkIMContextClass *klass;</span><br><span class="line">    g_<span class="built_in">return</span>_<span class="keyword">if</span>_fail (GTK_IS_IM_CONTEXT (context));</span><br><span class="line">    klass = GTK_IM_CONTEXT_GET_CLASS (context);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (klass-&gt;<span class="built_in">set</span>_client_window) &#123;</span><br><span class="line">        klass-&gt;<span class="built_in">set</span>_client_window (context, window);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!GDK_IS_WINDOW (window)) &#123;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    g_object_<span class="built_in">set</span>_data(G_OBJECT(context), <span class="string">"window"</span>, window);</span><br><span class="line">    int width = gdk_window_get_width(window);</span><br><span class="line">    int height = gdk_window_get_height(window);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (width != <span class="number">0</span> &amp;&amp; height != <span class="number">0</span>) &#123;</span><br><span class="line">        gtk_im_context_focus_<span class="keyword">in</span>(context);</span><br><span class="line">        <span class="built_in">local</span>_context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gdk_window_add_filter (window, event_filter, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>进入保留该文件的目录，在终端输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-<span class="number">2.0</span>` <span class="operator">-f</span>PIC</span><br></pre></td></tr></table></figure>
-<h3 id="4-中文输入">4.中文输入</h3><p>我们试试能不能用吧。<br>在终端中输入如下命令：</p>
-<pre><code class="bash">LD_PRELOAD=./libsublime-imfix.so subl             <span class="comment">#subl是安装好SublimeText 3后的程序启动命令</span>
-</code></pre>
-<p>如果一切正常，在启动之后，搜狗输入法就能可以使用了。</p>
-<h3 id="5-最后的设置">5.最后的设置</h3><p>将libsublime-imfix.so拷贝到系统库的默认路径中：</p>
-<pre><code class="bash">sudo cp libsublime-imfix.so /usr/lib/
-</code></pre>
-<p>sudo vim /usr/share/applications/sublime_text.desktop<br>  讲sublime text3启动程序用记事本打开后：<br>将<br>Exec=/opt/sublime_text/sublime_text %F<br>修改为<br>Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ %F</p>
-<p>   将<br>    Exec=/opt/sublime_text/sublime_text -n<br>    修改为<br>      Exec=bash -c ‘LD_PRELOAD=/usr/lib/libsublime-imfix.so /opt/sublime_text/sublime_text’ -n<br>    这样通过快捷方式就可以打开支持中文输入的sublime了，通过终端输入subl打开的sublime仍然部支持中文输入。<br>    <em>注：快捷方式可在/usr/share/applications中找到。</em></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -975,7 +1029,11 @@ inheritPrototype(Sub,Sup);
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
   
-    <li><a href="/categories/underscorejs/">underscorejs</a><small>2</small></li>
+    <li><a href="/categories/seajs/">seajs</a><small>1</small></li>
+  
+    <li><a href="/categories/underscorejs/">underscorejs</a><small>4</small></li>
+  
+    <li><a href="/categories/前端优化/">前端优化</a><small>1</small></li>
   
     <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
   

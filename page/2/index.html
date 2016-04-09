@@ -85,6 +85,359 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-02-29T06:20:07.000Z"><a href="/2016/02/29/underscorejs-数组方法之flatten源码分析/">2016-02-29</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/29/underscorejs-数组方法之flatten源码分析/">underscorejs-数组方法之flatten</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天，朋友给我讲面经时提到了一道题，js实现“多维数组压平”，看到这里的时候，我立马就想到了underscorejs中有这个方法，但那毕竟是别人的成果，自己会用但不知如何实现是硬生生的嚼别人的馒头，一点味都没有，于是我自己写了这个方法。</p>
+<pre><code>function <span class="type">Util</span>(){}
+<span class="type">Util</span>.flattern=function(arr,isrepeat){
+    <span class="keyword">if</span>(!arr) <span class="keyword">return</span>;//没有数组，则退出
+    <span class="keyword">var</span> <span class="literal">result</span>=[];//结果
+    traverse(arr);
+    //遍历的函数
+    function traverse(arr){
+        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++){
+            <span class="keyword">if</span>(<span class="type">Util</span>.isArray(arr[i])){
+                traverse(arr[i]);
+            }<span class="keyword">else</span>{
+                <span class="literal">result</span>.push(arr[i]);
+            }
+        }
+    }
+    <span class="keyword">if</span>(isrepeat) <span class="literal">result</span>=<span class="type">Util</span>.norepeat(<span class="literal">result</span>);
+    <span class="keyword">return</span> <span class="literal">result</span>;
+}
+<span class="type">Util</span>.isArray=function(arr){
+    <span class="keyword">return</span> <span class="type">Object</span>.prototype.toString.call(arr).slice(<span class="number">8</span>,-<span class="number">1</span>)===<span class="string">"Array"</span>;
+}
+</code></pre><p>没错，基本原理就是递归。</p>
+<p>ps:遍历数组的时候使用for循环，避免使用for-each循环。</p>
+<p>下面我们再来看看underscorejs如何实现的。</p>
+<pre><code><span class="keyword">var</span> flatten = function(input, shallow, strict, startIndex) {
+    <span class="keyword">var</span> output = [], idx = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = startIndex || <span class="number">0</span>, length = getLength(input); i &lt; length; i++) {
+        <span class="keyword">var</span> <span class="keyword">value</span> = input[i];<span class="comment">//取值</span>
+        <span class="keyword">if</span> (isArrayLike(<span class="keyword">value</span>) &amp;&amp; (_.isArray(<span class="keyword">value</span>) || _.isArgument(<span class="keyword">value</span>))){<span class="comment">//考虑到三种情况</span>
+            <span class="keyword">if</span> (!shallow) <span class="keyword">value</span> = flatten(<span class="keyword">value</span>, shallow, strict);<span class="comment">//开始递归</span>
+            <span class="keyword">var</span> j = <span class="number">0</span>, len = <span class="keyword">value</span>.length;
+            output.length += len;<span class="comment">//需要多少用多少</span>
+            <span class="keyword">while</span> (j &lt; len) {
+                output[idx++] = <span class="keyword">value</span>[j++];<span class="comment">//添加到输出的数组中</span>
+            }
+        } <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params">!strict</span>) </span>{
+            output[idx++] = <span class="keyword">value</span>;
+        }
+    }
+    <span class="keyword">return</span> output;
+};
+</code></pre><p>大神考虑的真周全，<code>类似数组</code>和<code>arguments</code>都不放过。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-27T03:07:19.000Z"><a href="/2016/02/27/backbonejs-事件聚合器和中介者/">2016-02-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/27/backbonejs-事件聚合器和中介者/">backbonejs-事件聚合器和中介者</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天写完了这篇，但是哔了狗了，误删了，写的那么认真啊，成果为０。<br>算了，吃次亏，再温习一边吧。</p>
+<h2 id="事件聚合器和中介者">事件聚合器和中介者</h2><h4 id="语义">语义</h4><p>了解语义，将有助于你了解事件聚合器和中介者。<br>假设一个情景：水果店的老板和苹果公司员工聊天，聊得内容是关于“苹果”，结果可想而知，水果店老板眼中的“苹果”是吃的水果，而员工眼中的“苹果”是用的电子产品，他们理解的事物并不是同一件事，所以话题并不能持续下去。</p>
+<p>语义说白了，就是不同的词语在不同的环境下有着不同的含义。</p>
+<h4 id="事件聚合器">事件聚合器</h4><p>附上事件聚合器代码：</p>
+<pre><code><span class="keyword">var</span> View1=Backbone.View.extend({
+    el:<span class="string">'body'</span>,
+    events:{
+        <span class="string">'click #container'</span>:<span class="string">'dosomething'</span>
+    },
+    initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.on(<span class="string">'something'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="string">'我是view1'</span>);
+        },<span class="keyword">this</span>);
+    },
+    dosomething:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="comment">// console.log('我是view1');</span>
+        Backbone.trigger(<span class="string">'something'</span>);
+    }    
+    });
+    <span class="keyword">var</span> View2=Backbone.View.extend({
+        initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.on(<span class="string">'something'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="string">'我是view2'</span>);
+        },<span class="keyword">this</span>);
+    }    
+});
+</code></pre><p>事件聚合器是内置在<code>Backbone</code>对象上的，通过<code>Backbone.on()</code>来创建事件聚合器，通过<code>Backbone.trigger()</code>来触发事件的。</p>
+<p>ps:dom事件创建的方法是通过键盘或鼠标或滚轮作用在某个dom元素上，从而触发事件，但是这个事件触发器里事件作用在什么上面呢？这种事件区别于dom事件，这个事件的触发仅仅通过触发函数<code>Backbone.trigger()</code>来触发。</p>
+<h4 id="中介者">中介者</h4><p>以考试为例：学生拿到卷子答卷–&gt;老师收卷，学生交卷–&gt;老师批卷–&gt;打分<br>附上中介者代码：</p>
+<pre><code><span class="keyword">var</span> mediator={
+    test:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="keyword">var</span> doTestStudent=getTestpaper();<span class="comment">//学生得到卷子</span>
+        doTestStudent.on(<span class="string">"completeTest"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//答卷完成时</span>
+            <span class="keyword">var</span> doCheckTeacher=getCheckpaper();<span class="comment">//老师收卷</span>
+            doCheckTeacher.on(<span class="string">"completeCheck"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//批卷完成时</span>
+                mark();<span class="comment">//打分</span>
+            });
+        });
+    }
+}
+</code></pre><p><code>mediator</code>从js的角度来看只是个字面量兑现，但是从模式来看，它是个中介者，在这个中介者的内部是考试的流程。</p>
+<h4 id="共性">共性</h4><p><strong>都涉及事件：</strong><br>事件聚合器，听名字就知道，跟事件有密切的联系。<br>中介者，因为内部装的是某个行为的流程，先干什么再干什么，使用事件通知的方式可以很方便实现流程。</p>
+<h4 id="什么时候用">什么时候用</h4><p><strong>事件聚合器</strong><br>如果有很多很多的对象需要监听同一个事件，可以交给事件聚合器，需要触发的时候触发。事件的开销会降低。<br>示例:</p>
+<pre><code><span class="comment">//低效的用法</span>
+<span class="comment">//没有遇到经典的示例，日后补上</span>
+</code></pre><p>如果没有关系的对象之间需要通知，可以使用事件聚合器来通知消息。可以降低耦合。<br>示例：</p>
+<pre><code><span class="keyword">var</span> View1=Backbone.View.extend({
+    events:{
+        <span class="string">'click #container'</span>:<span class="string">'dosomething'</span>
+    },
+    initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+
+    },
+    dosomething:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.trigger(<span class="string">'something'</span>);
+    }    
+});
+<span class="keyword">var</span> View2=Backbone.View.extend({
+    initialize:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        Backbone.on(<span class="string">'something'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="built_in">console</span>.log(<span class="string">'我是view2'</span>);
+        },<span class="keyword">this</span>);
+    }    
+});
+<span class="keyword">var</span> view1=<span class="keyword">new</span> View1();
+<span class="keyword">var</span> view2=<span class="keyword">new</span> View2();
+
+<span class="comment">//当view1视图里的某个元素发生点击时，将会通知view2里的操作</span>
+</code></pre><p><strong>中介者</strong><br>如果两个以上的对象有间接的工作关系，我们可以使用中介者，将工作流程写在中介者内。<br>这样一来，对象间的工作关系将仅仅限制在中介者内，同时不需要考虑对象的细节，便于维护。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-26T03:24:46.000Z"><a href="/2016/02/26/jquery-on()/">2016-02-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/26/jquery-on()/">jquery-on()</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>过去我使用jquery添加方法时，确实如官方推荐，使用on()代替bind()，殊不知，on()方法的用法有很多种，现在来补补过去遗漏的用法。</p>
+<h4 id="一个元素一个事件一个函数">一个元素一个事件一个函数</h4><pre><code>$(<span class="string">'#ele'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><h4 id="多个元素一个事件一个函数">多个元素一个事件一个函数</h4><pre><code>$(<span class="string">'#ele1,#ele2'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><p>####　一个元素多个事件一个函数 ####</p>
+<pre><code>$(<span class="string">'#ele'</span>).<span class="keyword">on</span>(<span class="string">'mouseover mouseout'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><h4 id="一个元素多个事件多个函数">一个元素多个事件多个函数</h4><pre><code>$(<span class="string">'#ele'</span>).on({
+    click:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ......
+    },
+    mouseover:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ......
+    }
+});
+</code></pre><h4 id="自定义事件">自定义事件</h4><pre><code>$(<span class="string">'#ele'</span>).<span class="keyword">on</span>(<span class="string">'myevent'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>
+</code></pre><h4 id="给子元素添加事件">给子元素添加事件</h4><pre><code>$(<span class="string">'#parent'</span>).<span class="keyword">on</span>(<span class="string">'click'</span>,<span class="string">'#sub'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{
+    ......
+}</span>);</span>    
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-26T03:09:39.000Z"><a href="/2016/02/26/backbonejs-view-setElement()源码分析/">2016-02-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/02/26/backbonejs-view-setElement()源码分析/">backbonejs-view-setElement源码分析</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>源码：</p>
+<pre><code>setElement: <span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>{
+    <span class="keyword">this</span>.undelegateEvents();<span class="comment">//移除所有事件</span>
+    <span class="keyword">this</span>._setElement(element);<span class="comment">//重新设置视图管理的标签</span>
+    <span class="keyword">this</span>.delegateEvents();<span class="comment">//绑定所有事件</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;<span class="comment">//返回视图对象</span>
+},
+
+<span class="comment">//重新设置视图管理的标签：$el和el</span>
+_setElement: <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>{
+    <span class="keyword">this</span>.$el = el <span class="keyword">instanceof</span> Backbone.$ ? el : Backbone.$(el);<span class="comment">//如果标签已经包装成backbone.$样子，那么直接赋值；否则进行包装再赋值</span>
+    <span class="keyword">this</span>.el = <span class="keyword">this</span>.$el[<span class="number">0</span>];
+},
+
+<span class="comment">//委托所有事件</span>
+delegateEvents: <span class="function"><span class="keyword">function</span>(<span class="params">events</span>) </span>{
+    <span class="keyword">if</span> (!(events || (events = _.result(<span class="keyword">this</span>, <span class="string">'events'</span>)))) <span class="keyword">return</span> <span class="keyword">this</span>;<span class="comment">//如果没有参数也没有events属性，则退出方法</span>
+    <span class="keyword">this</span>.undelegateEvents();<span class="comment">//移除所有事件</span>
+    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> events) {
+        <span class="keyword">var</span> method = events[key];
+        <span class="keyword">if</span> (!_.isFunction(method)) method = <span class="keyword">this</span>[events[key]];
+        <span class="keyword">if</span> (!method) <span class="keyword">continue</span>;
+        <span class="comment">//例如："click #sub1":"add",该步骤将key值拆分成click和#sub1</span>
+        <span class="keyword">var</span> match = key.match(delegateEventSplitter);
+        <span class="keyword">this</span>.delegate(match[<span class="number">1</span>], match[<span class="number">2</span>], _.bind(method, <span class="keyword">this</span>));<span class="comment">//绑定事件</span>
+    }
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+},
+
+<span class="comment">//取消所有委托事件</span>
+undelegateEvents: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">if</span> (<span class="keyword">this</span>.$el) <span class="keyword">this</span>.$el.off(<span class="string">'.delegateEvents'</span> + <span class="keyword">this</span>.cid);<span class="comment">//通过部分字段移除事件</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+},
+
+<span class="comment">//绑定单个事件，事件名为自定义的，可以给子元素绑定</span>
+delegate: <span class="function"><span class="keyword">function</span>(<span class="params">eventName, selector, listener</span>) </span>{
+    <span class="keyword">this</span>.$el.on(eventName + <span class="string">'.delegateEvents'</span> + <span class="keyword">this</span>.cid, selector,listener);
+},
+
+<span class="comment">//移除单个指定事件</span>
+undelegate: <span class="function"><span class="keyword">function</span>(<span class="params">eventName, selector, listener</span>) </span>{
+    <span class="keyword">this</span>.$el.off(eventName + <span class="string">'.delegateEvents'</span> + <span class="keyword">this</span>.cid, selector, listener);
+},
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-02-25T04:02:05.000Z"><a href="/2016/02/25/css-wordwrap和worldbreak/">2016-02-25</a></time>
       
       
@@ -492,213 +845,6 @@ abort<span class="list">()</span><span class="comment">;</span>
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-02-23T07:43:42.000Z"><a href="/2016/02/23/HTML5-webworker见解/">2016-02-23</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/02/23/HTML5-webworker见解/">HTML5-webworker见解</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>多线程是个很高效的事情，HTML5也增加了关于线程的新API。</p>
-<h4 id="如何使用">如何使用</h4><p>script.js</p>
-<pre><code>onmessage=<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>{
-    var <span class="type">data</span>=event.<span class="type">data</span>;
-    postmessage(<span class="type">data</span>);
-}
-</code></pre><p>index.html</p>
-<pre><code><span class="comment">&lt;!--js部分--&gt;</span>
-var worker=new WebWorker('script.js');
-worker.onmessage=function(event){
-    alert(event.data);
-}
-worker.postmessage("hello world");
-</code></pre><h4 id="哪种场合可以使用">哪种场合可以使用</h4><p><strong>提高渲染速度</strong><br>我们都知道浏览器在执行js时是不渲染页面的，如果我们要使用js处理一大堆数据，势必会浪费时间，这时我们可以交给线程来做，最后再将处理的结果返回给浏览器。<br>这样渲染和执行js同时进行，大大提高了页面的加载速度。<br><strong>ajax请求</strong><br>线程中是可以进行ajax请求的，</p>
-<h4 id="能力有限">能力有限</h4><p>线程中是无法访问window、document对象的，意味着不能进行DOM操作。<br>不是所有的浏览器都支持该API</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-02-23T06:16:43.000Z"><a href="/2016/02/23/css-影响/">2016-02-23</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/02/23/css-影响/">css-影响</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h4 id="影响一">影响一</h4><p><code>float:left/right</code>的设定会导致<code>块级元素</code>显示<code>内联元素</code>的特征,就是说不再充满整个一行，宽度由内容来决定。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-02-11T10:12:24.000Z"><a href="/2016/02/11/css-居中篇/">2016-02-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/02/11/css-居中篇/">css-居中篇</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h4 id="块级元素居中之一">块级元素居中之一</h4><p>可以直接设置样式：</p>
-<pre><code>margin:<span class="number">0</span> <span class="keyword">auto</span>;
-</code></pre><p>注意:这种方式只能对块级元素使用，inline-block都不行；不能对没有在标准流的元素使用。</p>
-<h4 id="所有子元素">所有子元素</h4><p>通过css3中的盒模型</p>
-<pre><code>父元素<span class="rules">{
-    <span class="rule"><span class="attribute">display</span>:<span class="value">-moz-box</span></span>;
-    <span class="rule"><span class="attribute">display</span>:<span class="value">-webkit-box</span></span>;
-    <span class="rule"><span class="attribute">-moz-box-align</span>:<span class="value">center</span></span>;
-    <span class="rule"><span class="attribute">-webkit-box-align</span>:<span class="value">center</span></span>;
-    <span class="rule"><span class="attribute">-moz-box-pack</span>:<span class="value">center</span></span>;
-    <span class="rule"><span class="attribute">-webkit-box-pack</span>:<span class="value">center</span></span>;
-}</span>
-</code></pre><p>这样内部的子元素元素就可以居中了。<br>注意：如果内部元素为块级元素，块级元素的宽度会随内容的变化而变化，而不是充满整个一行</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-01-20T06:33:07.000Z"><a href="/2016/01/20/linux-修改应用程序的命令/">2016-01-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/01/20/linux-修改应用程序的命令/">linux-修改应用程序的命令</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>ubuntu自带的谷歌浏览器没有插件，这着实让人蛋疼。一直以来都是给火狐放了个旧版的插件，将就着用用；直到某一天，火狐浏览器都开始嫌弃这个旧版的flash插件，总是将其禁用，没办法下载了一个新版的谷歌浏览器。</p>
-<p>爱装逼的我发现可以通过命令打开谷歌浏览器，但是命令有点长，全名是<code>google-chrome-stable</code>，爱装逼没错，但是太麻烦就有错了。那么如何修改这个命令呢？</p>
-<p>进入<code>/usr/bin</code>，几乎所有应用程序的命令都保存在这这里。</p>
-<p>找到’google-chrome-stable’这个文件</p>
-<p>重命名<code>rm google-chrome-stable chrome</code>，这样我们就修改了打开谷歌浏览器的命令。</p>
-<p>ps:我试过软连接的方式，但是总是显示<code>找不到文件或目录</code>，最后才试出了这个办法。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -742,7 +888,11 @@ worker.postmessage("hello world");
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
   
-    <li><a href="/categories/underscorejs/">underscorejs</a><small>2</small></li>
+    <li><a href="/categories/seajs/">seajs</a><small>1</small></li>
+  
+    <li><a href="/categories/underscorejs/">underscorejs</a><small>4</small></li>
+  
+    <li><a href="/categories/前端优化/">前端优化</a><small>1</small></li>
   
     <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
   

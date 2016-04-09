@@ -85,6 +85,519 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-01-03T06:38:18.000Z"><a href="/2016/01/03/js-DOM扩展-HTML5/">2016-01-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/03/js-DOM扩展-HTML5/">js-DOM扩展-HTML5</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="HTML5">HTML5</h2><p>传统HTML规范的核心内容是定义标记，而和js先关的API是由DOM规范来定义。<br>HTML5规范不仅定义了新的标签，而且定义了大量的js API。</p>
+<h4 id="与类相关">与类相关</h4><p><strong>getElementsByClassName()</strong><br>通过类名来获得DOM节点，可以传多个类名。</p>
+<p>返回NodeList对象,同样也具有性能问题。</p>
+<p>支持的浏览器：IE9+,FF3+,SF3.1+,CH,OP9.5+</p>
+<p><strong>classLIst属性</strong><br>所有的元素节点都有这个属性，这是个类的集合。</p>
+<p>该属性具有的方法：</p>
+<ul>
+<li>add()</li>
+<li>contains()</li>
+<li>remove()</li>
+<li>toggle()</li>
+</ul>
+<p>支持的浏览器：FF3.6+,CH</p>
+<h4 id="焦点管理">焦点管理</h4>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-02T08:58:20.000Z"><a href="/2016/01/02/js-DOM扩展-元素遍历/">2016-01-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/02/js-DOM扩展-元素遍历/">js-DOM扩展-元素遍历</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="元素遍历">元素遍历</h2><p>为什么要新增加元素遍历？<br>有些浏览器在获得某个DOM节点的childNodes时会将空文本节点包括进去，为了弥补这样的差异，Element Traversal新定义了一组属性。</p>
+<ul>
+<li>childElementCount:返回子元素的个数</li>
+<li>firstElementChild:返回第一个子元素</li>
+<li>lastElementChild:返回最后一个子元素</li>
+<li>previousElementSibling:返回某个元素前一个同辈子元素</li>
+<li>nextElementSibling:返回某个元素后一个同辈子元素</li>
+</ul>
+<p>支持：IE9+,FF3.5+,SF4+,CH,OP10+</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-30T12:09:43.000Z"><a href="/2015/12/30/js-DOM扩展-选择符API/">2015-12-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/30/js-DOM扩展-选择符API/">js-DOM扩展-选择符API</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="选择符API">选择符API</h2><h4 id="选择符API_level1的核心">选择符API level1的核心</h4><p>通过选择器来获得DOM对象</p>
+<p>核心：querySelector()和querySelectorAll()</p>
+<p>支持的浏览器：IE8+,ff3.5+,SF3.1+,CH,OP10+</p>
+<p>可以通过document或者元素节点来调用这两种方法。</p>
+<p><strong>querySelector()</strong><br>返回选择器匹配到的第一个元素节点,没有匹配到则返回null</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"parent"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"sub"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"sub"</span>&gt;</span>2<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"sub"</span>&gt;</span>3<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"sub"</span>&gt;</span>4<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+    <span class="keyword">var</span> div=<span class="built_in">document</span>.getElementById(<span class="string">'parent'</span>);
+    <span class="keyword">var</span> sub1=div.querySelector(<span class="string">'.sub'</span>);<span class="comment">//返回第一子节点</span>
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p><strong>querySelectorAll()</strong><br>返回选择器匹配到的所有节点，该方法返回一个NodeLIst的实例。没有匹配到，NodeList就是空的。</p>
+<p>ps：NodeLIst底层实现不是对文档的动态查询，而是一组元素的快照。？？？？</p>
+<h4 id="选择符API_level２的核心">选择符API level２的核心</h4><p><strong>matchesSelector()</strong><br>如果调用的元素与选择器匹配，则返回true;否则返回false。</p>
+<p>其他浏览器可能有相同功能的方法，但是名字不同。</p>
+<p>下面是实现此功能并兼容各浏览器的包装函数：</p>
+<pre><code>function matchesSelect<span class="subst">or</span>(element,<span class="keyword">select</span><span class="subst">or</span>){
+    <span class="keyword">if</span>(element<span class="built_in">.</span>matchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>)){
+        <span class="keyword">return</span> element<span class="built_in">.</span>matchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(element<span class="built_in">.</span>msMatchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>)){<span class="comment">//兼容ie9+</span>
+        <span class="keyword">return</span> element<span class="built_in">.</span>msMatchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(element<span class="built_in">.</span>mozMatchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>)){<span class="comment">//兼容ff3.6+</span>
+        <span class="keyword">return</span> element<span class="built_in">.</span>mozMatchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>);
+    }<span class="keyword">else</span> <span class="keyword">if</span>(element<span class="built_in">.</span>webkitMatchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>)){<span class="comment">//兼容sf和ch</span>
+        <span class="keyword">return</span> element<span class="built_in">.</span>webkitMatchesSelect<span class="subst">or</span>(<span class="keyword">select</span><span class="subst">or</span>)
+    }<span class="keyword">else</span>{
+        throw <span class="literal">new</span> Err<span class="subst">or</span>(<span class="string">"not suppoted"</span>);
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-12-26T14:02:23.000Z"><a href="/2015/12/26/插件-上下轮播图片插件/">2015-12-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/12/26/插件-上下轮播图片插件/">插件-上下轮播图片插件</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>这是前端网看到的一个插件，样子还是挺不错的，于是研究了一下源码，力图吸取一些经验，将来，自己也可以写出高效而又美观的代码。</p>
+<p>先看html，再看js源码<br>附上js源码：</p>
+<pre><code><span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">A</span>)</span><span class="collection">{//A就是jquery对象
+A.fn.th_video_focus=function<span class="list">(<span class="keyword">E</span>)</span><span class="collection">{//E为参数信息        
+    var G=<span class="collection">{//默认的参数
+        actClass:<span class="string">"cur"</span>,
+        navContainerClass:<span class="string">".focus_pic_preview"</span>,
+        focusContainerClass:<span class="string">".focus_pic"</span>,
+        animTime:600,
+        delayTime:5000
+    }</span><span class="comment">;</span>
+    if<span class="list">(<span class="keyword">E</span>)</span><span class="collection">{
+        A.extend<span class="list">(<span class="keyword">G</span>,E)</span><span class="comment">;</span>
+    }</span>        
+    var C=G.actClass;
+    var D=G.navContainerClass;
+    var B=G.focusContainerClass;
+    var F=G.animTime;
+    var H=G.delayTime;
+    var I=null;
+    return this.each<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{    
+        var O=A<span class="list">(<span class="keyword">this</span>)</span><span class="comment">;</span>
+        var M=A<span class="list">(<span class="keyword">D+</span><span class="string">" li"</span>,O)</span><span class="comment">;</span>
+        var P=A<span class="list">(<span class="keyword">B+</span><span class="string">" li"</span>,O)</span><span class="comment">;</span>
+        var L=M.length;
+        var K=O.height<span class="list">()</span><span class="comment">;</span>
+        function N<span class="list">(<span class="keyword">R</span>)</span><span class="collection">{//轮播动作
+            var V=K*R*<span class="list">(<span class="keyword">-1</span>)</span><span class="comment">;</span>
+            A<span class="list">(<span class="keyword">B</span>,O)</span>.stop<span class="list">()</span>.animate<span class="list">(<span class="collection">{top:V}</span>,F,function<span class="list">()</span><span class="collection">{
+                var Y=O.find<span class="list">(<span class="string">"h3"</span>)</span>, X=Y.height<span class="list">()</span><span class="comment">;</span>
+                Y.height<span class="list">(<span class="number">0</span>)</span>
+                   .html<span class="list">(<span class="keyword">A</span><span class="list">(<span class="keyword">B+</span><span class="string">" li"</span>)</span>
+                   .eq<span class="list">(<span class="keyword">R</span>)</span>.find<span class="list">(<span class="string">"img"</span>)</span>
+                      .attr<span class="list">(<span class="string">"alt"</span>)</span>)</span>
+                     .animate<span class="list">(<span class="collection">{height:X}</span>,<span class="number">600</span>)</span>
+            }</span>)</span><span class="comment">;</span>
+            A<span class="list">(<span class="keyword">D+</span><span class="string">" li"</span>)</span>.eq<span class="list">(<span class="keyword">R</span>)</span>
+                        .addClass<span class="list">(<span class="keyword">C</span>)</span>
+                        .siblings<span class="list">()</span>
+                        .removeClass<span class="list">(<span class="keyword">C</span>)</span><span class="comment">;</span>
+        }</span>            
+        function Q<span class="list">()</span><span class="collection">{//清除循环，设定轮播动作循环
+            if<span class="list">(<span class="keyword">I</span>)</span><span class="collection">{
+                clearInterval<span class="list">(<span class="keyword">I</span>)</span>
+            }</span>
+            I=setInterval<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+                var R=A<span class="list">(<span class="keyword">D+</span><span class="string">" li."</span>+C)</span>.index<span class="list">()</span><span class="comment">;</span>
+                N<span class="list">(<span class="list">(<span class="keyword">R+1</span>)</span>%L)</span>
+            }</span>,H)</span><span class="comment">;</span>
+        }</span>    
+        O.hover<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+                    if<span class="list">(<span class="keyword">I</span>)</span><span class="collection">{
+                        clearInterval<span class="list">(<span class="keyword">I</span>)</span>
+                    }</span>
+                }</span>,function<span class="list">()</span><span class="collection">{
+                    Q<span class="list">()</span>
+                }</span>)</span><span class="comment">;        </span>
+            var J=null;
+        M.hover<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{                
+            var R=A<span class="list">(<span class="keyword">this</span>)</span>.index<span class="list">()</span><span class="comment">;            </span>
+            if<span class="list">(<span class="keyword">I</span>)</span><span class="collection">{
+                clearInterval<span class="list">(<span class="keyword">I</span>)</span>
+            }</span>
+            J=setTimeout<span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
+                N<span class="list">(<span class="keyword">R</span>)</span>
+            }</span>,<span class="number">300</span>)</span>
+        }</span>,function<span class="list">()</span><span class="collection">{
+            if<span class="list">(<span class="keyword">J</span>)</span><span class="collection">{
+                clearTimeout<span class="list">(<span class="keyword">J</span>)</span>
+            }</span>
+            Q<span class="list">()</span><span class="comment">;</span>
+        }</span>)</span><span class="comment">;            </span>
+        Q<span class="list">()</span><span class="comment">;    </span>
+    }</span>)</span>
+}</span></span></span>
+</code></pre><p>})(jQuery);</p>
+<p>这样的命名太无奈了，竟然使用大写的字母，根本分不清哪个变量是干嘛用的。我换了一下变量名称，以求大家更容易理解。</p>
+<p>附上html源码：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/1999/xhtml"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span> /&gt;</span>
+<span class="tag">&lt;<span class="title">title</span>&gt;</span>5屏jQuery上下轮播焦点图代码 - 中国前端网<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/cnqianduan.css"</span> <span class="attribute">media</span>=<span class="value">"screen"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>/&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"js/jquery-1.8.3.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"js/cnqianduan.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+<span class="comment">&lt;!--焦点图--&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"film_focus"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"film_focus_desc"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">h3</span>&gt;</span>中国前端网 - www.cnqianduan.com<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"film_focus_nav"</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"cur"</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题1<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题1<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题2<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题2<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题3<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题3<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题4<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题4<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">b</span>&gt;</span>长标题5<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>短标题5<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"film_focus_imgs_wrap"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"film_focus_imgs"</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题1"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题2"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"images/a3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题3"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题4"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+                 <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://www.cnqianduan.com"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span>  <span class="attribute">src</span>=<span class="value">"images/a5.jpg"</span> <span class="attribute">alt</span>=<span class="value">"标题5"</span> /&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="comment">&lt;!--焦点图END--&gt;</span> 
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    $(<span class="string">".film_focus"</span>).th_video_focus({
+        navContainerClass:<span class="string">".film_focus_nav"</span>,
+        focusContainerClass:<span class="string">".film_focus_imgs"</span>,
+        delayTime:<span class="number">3000</span>
+    });
+
+});    
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>用过Jquery的都知道，为了避免$冲突，可以通过匿名函数的方式替换掉$,使用其他的名称，我们暂且使用jquery吧。</p>
+<pre><code><span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">jquery</span>)</span><span class="collection">{
+    //这里jquery就相当于$
+}</span>)</span><span class="list">(<span class="keyword">jQuery</span>)</span><span class="comment">;</span>
+</code></pre><p>想一个方法名，就lunbo吧，简单从粗暴。然后添加到jQuery对象中，设置一个参数，传递的是对象。<br><em>为什么要传递对象，在java中数组、集合都能作为保存数据容器，但是在js中，对象是最好的选择，它可以保存各式各样的数据。</em></p>
+<pre><code>jquery.fn.lunbo=<span class="function"><span class="keyword">function</span><span class="params">(paramObj)</span></span>{
+    ......
+}
+</code></pre><p>如果你调用lunbo方法，不传递参数,那么就应该要有一些默认的设置：</p>
+<pre><code>var defaultObj={
+    actClass:<span class="string">"cur"</span>,<span class="comment">//聚焦的样式</span>
+    navContainerClass:<span class="string">".focus_pic_preview"</span>,<span class="comment">//左侧的标题nav</span>
+    focusContainerClass:<span class="string">".focus_pic"</span>,<span class="comment">//右侧的图片列表</span>
+    animTime:<span class="number">600</span>,<span class="comment">//动作完成的时间</span>
+    delayTime:<span class="number">5000</span><span class="comment">//循环的周期</span>
+}
+</code></pre><p>默认的设置好了，如果传递参数，怎么去覆盖默认值呢？</p>
+<pre><code><span class="keyword">if</span>(paramObj){
+    jquery.<span class="keyword">extend</span>(defaultObj,paramObj);
+}
+</code></pre><p>如果要用到默认值中的某个属性，总是通过obj.attribute是不是很麻烦？拿出来保存到变量中吧。</p>
+<pre><code>var cur=<span class="keyword">default</span>Obj.actClass,
+    navClass=<span class="keyword">default</span>Obj.navContainerClass,
+    focusClass=<span class="keyword">default</span>Obj.focusContainerClass,
+    animate=<span class="keyword">default</span>Obj.animTime,
+    delay=<span class="keyword">default</span>Obj.delayTime;
+</code></pre><p>顺便获取dom对象吧。</p>
+<pre><code>var film_focus=jquery(<span class="keyword">this</span>),<span class="comment">//最外层的那个div</span>
+    nav=jquery(navClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取左侧的文字li</span>
+    imgs=jquery(focusClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取右侧的图片li</span>
+    liamount=nav.length,<span class="comment">//获取左侧文字li的数量</span>
+    <span class="variable">height</span>=film_focus.<span class="variable">height</span>();<span class="comment">//获取一张图片的高度</span>
+</code></pre><p>图片轮播这个动作是一个单独的方法，这样可以多次调用。它需要一个下标参数，用来保存哪个nav获得聚焦，图片需要移动多少px。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">imgmove</span><span class="params">(index)</span></span>{
+    <span class="keyword">var</span> newtop=index*height*(-<span class="number">1</span>);<span class="comment">//计算图片移动的位置</span>
+    jquery(focusClass,film_focus)<span class="comment">//获取图片列表</span>
+        .stop()<span class="comment">//移动停止</span>
+        .animate({top:newtop},animate,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//开始移动</span>
+            <span class="keyword">var</span> h3=film_focus.find(<span class="string">"h3"</span>),
+                h3_height=h3.height();<span class="comment">//获取h3高度</span>
+                h3
+                    .height(<span class="number">0</span>)<span class="comment">//h3消失</span>
+                    .html(imgs.eq(index).find(<span class="string">'img'</span>).attr(‘alt’))<span class="comment">//修改h3的内容</span>
+                    .animate({height:h3_height},<span class="number">600</span>)<span class="comment">//h3出现</span>
+        });
+        nav.eq(index).addClass(cur).siblings().removeClass(cur);<span class="comment">//左侧显示指定的文字li        </span>
+}
+</code></pre><p>如果不点击左侧的nav，图片应该循环轮播。</p>
+<pre><code>var <span class="built_in">circle</span>=null;<span class="comment">//循环事件</span>
+<span class="function"><span class="keyword">function</span> <span class="title">autoLunbo</span><span class="params">()</span>{</span>
+    <span class="keyword">if</span>(<span class="built_in">circle</span>){
+        clearInterval(<span class="built_in">circle</span>);<span class="comment">//清除循环事件</span>
+    }
+    <span class="built_in">circle</span>=setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        var index=jquery(navClass+<span class="string">" li."</span>+cur).index();
+        imgmove((index+<span class="number">1</span>)<span class="built_in">%</span>liamount);
+    },delay);
+}
+</code></pre><p>如果鼠标放上去，图片应该停止轮播;拿开继续轮播</p>
+<pre><code>film_focus.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="keyword">if</span>(<span class="built_in">circle</span>){
+        clearInterval(<span class="built_in">circle</span>);
+    }
+},<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    autoLunbo();
+});
+</code></pre><p>如果鼠标放在nav上，就要轮播到相对应的图片</p>
+<pre><code><span class="keyword">var</span> J=<span class="literal">null</span>;
+nav.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> index=jquery.index();<span class="comment">//获取鼠标停在li的下标</span>
+    <span class="keyword">if</span>(circle){
+        clearInterval(circle);<span class="comment">//停止轮播</span>
+    }
+    J=setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        imgmove(index);<span class="comment">//图片移动到指定位置</span>
+    },<span class="number">300</span>);
+
+},<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">if</span>(J){
+        clearTimeout(J);
+    }
+    autoLunbo();<span class="comment">//继续从当前位置开始轮播</span>
+});
+</code></pre><p>我们为了保持jquery对象的链式调用方法，需要`return this.each(function(){……})</p>
+<p>最后整理一下，得到如下代码：</p>
+<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">(jquery)</span></span>{
+jquery.fn.lunbo=<span class="function"><span class="keyword">function</span><span class="params">(paramObj)</span></span>{
+    <span class="keyword">var</span> <span class="keyword">default</span>={
+        actClass:<span class="string">"cur"</span>,<span class="comment">//聚焦的样式</span>
+        navContainerClass:<span class="string">".focus_pic_preview"</span>,<span class="comment">//左侧的标题nav</span>
+        focusContainerClass:<span class="string">".focus_pic"</span>,<span class="comment">//右侧的图片列表</span>
+        animTime:<span class="number">600</span>,<span class="comment">//动作完成的时间</span>
+        delayTime:<span class="number">5000</span><span class="comment">//循环的周期</span>
+    };
+
+    <span class="keyword">var</span> cur=<span class="keyword">default</span>.actClass,
+        navClass=<span class="keyword">default</span>.navContainerClass,
+        focusClass=<span class="keyword">default</span>.focusContainerClass,
+        animate=<span class="keyword">default</span>.animTime,
+        delay=<span class="keyword">default</span>.delayTime;
+
+    <span class="keyword">var</span> film_focus=jquery(<span class="keyword">this</span>),<span class="comment">//最外层的那个div</span>
+        nav=jquery(navClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取左侧的文字li</span>
+        imgs=jquery(focusClass+<span class="string">" li"</span>,film_focus),<span class="comment">//获取右侧的图片li</span>
+        liamount=film_focus_nav.length,<span class="comment">//获取左侧文字li的数量</span>
+        height=film_focus.height();<span class="comment">//获取一张图片的高度</span>
+
+    <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">each</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="function"><span class="keyword">function</span> <span class="title">imgmove</span><span class="params">(index)</span></span>{
+        <span class="keyword">var</span> newtop=index*height*(-<span class="number">1</span>);<span class="comment">//计算图片移动的位置</span>
+        jquery(focusClass,film_focus)<span class="comment">//获取图片列表</span>
+            .stop()<span class="comment">//移动停止</span>
+            .animate({top:newtop},animate,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{<span class="comment">//开始移动</span>
+                <span class="keyword">var</span> h3=film_focus.find(<span class="string">"h3"</span>),
+                    h3_height=h3.height();<span class="comment">//获取h3高度</span>
+                    h3
+                        .height(<span class="number">0</span>)<span class="comment">//h3消失</span>
+                        .html(imgs.eq(index).find(<span class="string">'img'</span>).attr(‘alt’))<span class="comment">//修改h3的内容</span>
+                        .animate({height:h3_height},<span class="number">600</span>)<span class="comment">//h3出现</span>
+            });
+            nav.eq(index).addClass(cur).siblings().removeClass(cur);<span class="comment">//左侧显示指定的文字li        </span>
+        }
+
+        <span class="keyword">var</span> circle=<span class="literal">null</span>;<span class="comment">//循环事件</span>
+        <span class="function"><span class="keyword">function</span> <span class="title">autoLunbo</span><span class="params">()</span></span>{
+            <span class="keyword">if</span>(circle){
+                clearInterval(circle);<span class="comment">//清除循环事件</span>
+            }
+            circle=setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                <span class="keyword">var</span> index=jquery(nav+<span class="string">" li."</span>+cur);
+                imgmove((index+<span class="number">1</span>)%liamount);
+            },delay);
+        }
+
+        film_focus.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">if</span>(circle){
+                clearInterval(circle);
+            }
+        },<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            autoLunbo();
+        });
+
+        <span class="keyword">var</span> J=<span class="literal">null</span>;
+        nav.hover(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">var</span> index=jquery.index();<span class="comment">//获取鼠标停在li的下标</span>
+            <span class="keyword">if</span>(circle){
+                clearInterval(circle);<span class="comment">//停止轮播</span>
+            }
+            J=setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+                imgmove(index);<span class="comment">//图片移动到指定位置</span>
+            },<span class="number">300</span>);
+
+        },<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">if</span>(J){
+                clearTimeout(J);
+            }
+            autoLunbo();<span class="comment">//继续从当前位置开始轮播</span>
+        });
+
+        autoLunbo();
+    })
+}})(jQuery);
+`
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-12-25T15:19:39.000Z"><a href="/2015/12/25/js-DOM节点类型-Attr类型/">2015-12-25</a></time>
       
       
@@ -476,281 +989,6 @@ col-<span class="built_in">md</span>-push-
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-19T09:37:19.000Z"><a href="/2015/12/19/js-DOM节点类型-Element类型/">2015-12-19</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/19/js-DOM节点类型-Element类型/">js-DOM节点类型-Element类型</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="Element类型">Element类型</h3><p><strong>特征</strong><br>    nodeType:1;<br>    nodeName:元素的标签名;<br>    nodeValue: null;<br>    parentNode: Document/Element;<br>    ownerDocument: null;</p>
-<p><strong>特性</strong><br>    特性就是元素标签的属性，只是换了个名字而已。本人分析是为了区别元素标签的属性和DOM对象的属性而这样干的。</p>
-<p><strong>取得特性</strong><br>两种方式：getAttribute()和直接访问DOM对象属性。</p>
-<p>ps：并不是所有的特性都有对应的属性。对于一些公认的特性，才有与之对应的DOM对象的属性。</p>
-<p>ps：在公认的特性中，有两类特殊的特性：style和onclick。两种方式取得的值不想同。由于这样的存在，开发人员在取得自定义特性使用getAttribute(),最普遍使用的还是DOM对象属性。</p>
-<p>ps：ie浏览器中自定义特性也有对应的属性</p>
-<p><strong>设置特性</strong><br>两种方式：setAttribute()和直接设置DOM属性。</p>
-<p>ps：setAttribute()无法设置class和style特性。</p>
-<p>ps：setAttribute()可以设置自定义特性，直接设置DOM属性只能设置属性，如果不是公共特性，并不能反应到元素的特性上。</p>
-<p><strong>移除特性</strong><br>removeAttribute()</p>
-<p><strong>attributes属性</strong><br>所有的特性都保存在这个属性当中。</p>
-<p>ps：这个属性实质上是一个对象集合，它具有一些查找集合元素的方法。</p>
-<p>ps：如果要遍历元素的特性，就可以使用这个属性。</p>
-<p><strong>创建元素</strong><br>大部分浏览器支持：document.createElement()</p>
-<p>ps：大部分浏览器的该方法传递的参数为标签的名称，例如div、a等；</p>
-<pre><code><span class="built_in">document</span>.createElement(<span class="string">'div'</span>);
-</code></pre><p>但是IE浏览器还支持传递整个标签，例如:</p>
-<pre><code>document.createElement("<span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>");
-</code></pre><p>ps：ie7即其以下的浏览器都存在着bug，解决方式是使用下面的方法：</p>
-<pre><code><span class="keyword">if</span>(client.browser.ie &amp;&amp; client.browser.ie&lt;=7){
-    <span class="comment">//低版本无法设置动态创建&lt;iframe&gt;的name特性</span>
-    <span class="keyword">var</span> iframe=document.createElement(<span class="string">"&lt;iframe name=\"</span>myframe\<span class="string">"&gt;&lt;/iframe&gt;"</span>);
-
-    <span class="comment">//低版本无法使用reset()方法重置input元素</span>
-    <span class="keyword">var</span> <span class="keyword">input</span>=document.createElement(<span class="string">"&lt;input type=\"</span>checkbox\<span class="string">"&gt;"</span>);
-
-    <span class="comment">//低版本创建的reset按钮无法重置表单</span>
-    <span class="keyword">var</span> button=document.createElement(<span class="string">"&lt;button type=\"</span>reset\<span class="string">"&gt;&lt;/button&gt;"</span>);
-
-    <span class="comment">//低版本创建的单选按钮，即使name相同，但是也无法实现单选</span>
-    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>1\<span class="string">"&gt;"</span>);
-    <span class="keyword">var</span> radio1=document.createElement(<span class="string">"&lt;input type=\"</span>radio\<span class="string">" name=\"</span>choice\<span class="string">" value=\"</span>2\<span class="string">"&gt;"</span>);
-}
-</code></pre><p><strong>元素子节点</strong><br>通过childNodes属性获取直接子节点(所有子节点)。<br>ie浏览器在识别子节点时不会计算文本节点（空白符），而其他浏览器会记录文本节点(空白符)。</p>
-<pre><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-<span class="comment">&lt;!--ul子节点数：ie浏览器返回3，其他浏览器返回7--&gt;</span>
-
-<span class="tag">&lt;<span class="title">ul</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
-<span class="comment">&lt;!--所有浏览器都返回3--&gt;</span>
-</code></pre><p><strong>添加子节点</strong><br>appendChild(node);<br><strong>两类特殊的元素标签</strong><br><code>&lt;script&gt;&lt;/script&gt;</code>和<code>&lt;style&gt;&lt;/style&gt;</code></p>
-<p><code>&lt;script&gt;&lt;/script&gt;</code><br>IE浏览器是不允许对script和style的DOM对象使用操作子节点的方法，例如。<br>appendChild()、removeChild()等。</p>
-<p>动态加载js文件</p>
-<p>加载外部js文件(各浏览器通用)：</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params"></span>)</span>{
-    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">"script"</span>);
-    script.type=<span class="string">"text/javascript"</span>;
-    script.src=<span class="string">"url"</span>;
-    <span class="built_in">document</span>.body.appendChild(script);
-}
-</code></pre><p>加载行内js代码</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params"></span>)</span>{
-    <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">'script'</span>);
-    script.type=<span class="string">"text/javascript"</span>;
-    <span class="keyword">try</span>{<span class="comment">//其它浏览器</span>
-        script.appendChild(<span class="built_in">document</span>.createTextNode(code));
-    }<span class="keyword">catch</span>(ex){<span class="comment">//ie浏览器</span>
-        script.text=<span class="string">"code"</span>;
-    }
-    <span class="built_in">document</span>.body.appendChild(script);
-}
-</code></pre><p>动态加载css</p>
-<p>加载外部css文件</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCss</span>(<span class="params">url</span>)</span>{
-    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">'style'</span>);
-    style.rel=<span class="string">"stylesheet"</span>;
-    style.type=<span class="string">"text/css"</span>;
-    style.href=url;
-    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];
-    head.appendChild(style);
-}
-</code></pre><p>加载css样式</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadCssString</span>(<span class="params">css</span>)</span>{
-    <span class="keyword">var</span> style=<span class="built_in">document</span>.createElement(<span class="string">"style"</span>);
-    style.rel=<span class="string">"stylesheet"</span>;
-    style.type=<span class="string">"text/css"</span>;
-    <span class="keyword">try</span>{<span class="comment">//其他浏览器</span>
-        style.appendChild(<span class="built_in">document</span>.createTextNode(css));
-    }<span class="keyword">catch</span>(ex){<span class="comment">//IE浏览器</span>
-        style.stylesheet.cssText=css;
-    }
-    <span class="keyword">var</span> head=<span class="built_in">document</span>.getElementByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];
-    head.appendChild(style);
-}
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-18T15:55:12.000Z"><a href="/2015/12/18/js-JSONP跨域/">2015-12-18</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/18/js-JSONP跨域/">js-JSONP跨域</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-18T15:43:05.000Z"><a href="/2015/12/18/浏览器-同源策略/">2015-12-18</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/18/浏览器-同源策略/">浏览器-同源策略</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-12-18T10:14:22.000Z"><a href="/2015/12/18/浏览器-浏览器缓存机制/">2015-12-18</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/12/18/浏览器-浏览器缓存机制/">浏览器-浏览器缓存机制</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h4 id="304状态和200状态">304状态和200状态</h4><p>当客户端的浏览器向服务器第一次发送HTTP请求时，服务器在给客户端响应时，在响应上提供一些标记（last-modified或者etag），因为是第一次响应，返回的必然是200状态。</p>
-<p>缓存过期时，当客户端第二次向服务器发送HTTP请求，该请求头中会有这些标记，服务器会利用这些标记进行比对，如果文件没有被修改，则返回<strong>304状态</strong>，告诉浏览器上一次的文件还可以使用（它们是留存在cache中的）；如果被修改了，则返回最新的文件信息，返回的是<strong>200状态</strong>。</p>
-<h4 id="两种缓存">两种缓存</h4><p>协商缓存：会和服务器商量，看看文件是否修改过，缓存的内容时时保持在最新状态。<br>彻底缓存：在到期之间都不会和服务器交互。即使文件内容发生改变，加载网页还在使用缓存中旧的内容。</p>
-<p>last-modified和etag都属于协商缓存，expires和cache-control属于彻底缓存。</p>
-<h4 id="详解两种标记">详解两种标记</h4><p><strong>last-modified</strong><br>这个标记在服务器响应客户端时提供，格式是这样的：</p>
-<pre><code><span class="keyword">last</span>-modifeid：时间（精确到秒）
-</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求头便会带上这个时间信息，但是格式会发生一些变化：</p>
-<pre><code><span class="keyword">if</span>-modified-<span class="keyword">since</span>：时间点（和上面的时间是一样的）
-</code></pre><p>服务器收到这个事件信息，如果在这个事件之后，文件有更新，那么发送新的文件，返回200状态，否则返回304状态。</p>
-<p><strong>etag</strong><br>区别于last-modified标志，它的格式是这样的：</p>
-<pre><code>Etag:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
-</code></pre><p>如果缓存到期，客户端第二次请求相同的url时，请求便会带上这个信息，但是格式会发生一些变化：</p>
-<pre><code>If-None-Match:“<span class="number">5</span>d8c72a5edda8d6a:<span class="number">3239</span>″
-</code></pre><p>服务器进行比对，如果不一致，则发送新的文件，返回200状态，否则返回304状态。</p>
-<p><strong>为什么会出现etag？</strong><br>1.Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间<br>2.如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存<br>3.有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形<br>（from 百度上某大牛的总结）</p>
-<p>ps:两种标记可以一起使用</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -794,7 +1032,11 @@ col-<span class="built_in">md</span>-push-
   
     <li><a href="/categories/node-js/">node.js</a><small>2</small></li>
   
-    <li><a href="/categories/underscorejs/">underscorejs</a><small>2</small></li>
+    <li><a href="/categories/seajs/">seajs</a><small>1</small></li>
+  
+    <li><a href="/categories/underscorejs/">underscorejs</a><small>4</small></li>
+  
+    <li><a href="/categories/前端优化/">前端优化</a><small>1</small></li>
   
     <li><a href="/categories/推荐/">推荐</a><small>1</small></li>
   
